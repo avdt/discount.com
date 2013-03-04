@@ -11,28 +11,27 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.discount.domain.User;
-import com.discount.service.UserService;
+import com.discount.domain.Product;
+import com.discount.service.ProductService;
 
 @Controller
-@Path(RestUrls.USER_URL)
-public class UserRestService {
+@Path(RestUrls.PRODUCT_URL)
+public class ProductRestService {
 
 	@Autowired
-	private UserService userService;
+	private ProductService productService;
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("all")
-	public List<User> getAll() {
-		return userService.findAll();
+	public List<Product> getAll() {
+		return productService.findAll();
 	}
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("get/{id}")
-	public User get(@PathParam("id") Integer id) {
-		return userService.findById(id);
+	public Product get(@PathParam("id") Integer id) {
+		return productService.findById(id);
 	}
-
 }

@@ -11,7 +11,7 @@ import com.discount.domain.UserRole;
 import com.discount.service.UserRoleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/resources/root-context.xml" })
+@ContextConfiguration(locations = { "classpath:WEB-INF/spring/root-context.xml" })
 public class UserRoleServiceImplTest {
 
 	@Autowired

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.UserDAO;
-import com.discount.domain.Client;
 import com.discount.domain.User;
 
 @Repository
@@ -38,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	@Transactional
 	public User findById(Integer id) {
-		return (User) sessionFactory.getCurrentSession().get(Client.class, id);
+		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 
 	@Override
