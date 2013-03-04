@@ -3,13 +3,12 @@ package com.discount.services.impl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.discount.model.Client;
-import com.discount.services.ClientService;
+import com.discount.domain.Client;
+import com.discount.service.ClientService;
 
 public class ClientServiceImplTest {
+	
 	@Autowired
 	ClientService clientService;
 

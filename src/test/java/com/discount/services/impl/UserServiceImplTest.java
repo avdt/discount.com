@@ -8,10 +8,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.discount.model.User;
-import com.discount.model.UserRole;
-import com.discount.services.UserRoleService;
-import com.discount.services.UserService;
+import com.discount.domain.User;
+import com.discount.domain.UserRole;
+import com.discount.service.UserRoleService;
+import com.discount.service.UserService;
 
 public class UserServiceImplTest {
 	private ApplicationContext appContext = new ClassPathXmlApplicationContext(

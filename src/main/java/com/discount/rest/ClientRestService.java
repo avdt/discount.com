@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,25 +18,25 @@ import com.discount.domain.Client;
 import com.discount.service.ClientService;
 
 @Controller
-@Path("/rest/client")
+@Path(RestUrls.CLIENT_URL)
 public class ClientRestService {
 
 	@Autowired
 	private ClientService clientService;
 
 	@GET
-	@Path("get")
+	@Path("get/{id}")
 	@Produces("application/json")
-	public Client getClient() {
+	public Client getClient(@PathParam("id") Integer id) {
 
-		Client client = clientService.findByName("init client");
+		Client client = clientService.findById(id);
 		return client;
 
 	}
 
 	@GET
 	@Produces({/* MediaType.APPLICATION_XML, */MediaType.APPLICATION_JSON })
-	@Path("datas")
+	@Path("all")
 	public List<Client> getAll() {
 		return clientService.findAll();
 	}

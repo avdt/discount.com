@@ -8,13 +8,13 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.discount.model.Client;
-import com.discount.model.Product;
-import com.discount.model.ProductCategory;
-import com.discount.model.ProductSettings;
-import com.discount.services.ClientService;
-import com.discount.services.ProductCategoryService;
-import com.discount.services.ProductService;
+import com.discount.domain.Client;
+import com.discount.domain.Product;
+import com.discount.domain.ProductCategory;
+import com.discount.domain.ProductSettings;
+import com.discount.service.ClientService;
+import com.discount.service.ProductCategoryService;
+import com.discount.service.ProductService;
 
 public class ProductServiceImplTest {
 	ApplicationContext appContext = new ClassPathXmlApplicationContext(

@@ -8,8 +8,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.discount.model.ProductCategory;
-import com.discount.services.ProductCategoryService;
+import com.discount.domain.ProductCategory;
+import com.discount.service.ProductCategoryService;
 
 public class ProductCategoryServiceImplTest {
 	ApplicationContext appContext = new ClassPathXmlApplicationContext(

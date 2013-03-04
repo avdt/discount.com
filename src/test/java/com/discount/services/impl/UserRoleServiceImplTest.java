@@ -2,20 +2,23 @@ package com.discount.services.impl;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.discount.model.UserRole;
-import com.discount.services.UserRoleService;
+import com.discount.domain.UserRole;
+import com.discount.service.UserRoleService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/resources/root-context.xml" })
 public class UserRoleServiceImplTest {
-	ApplicationContext appContext = new ClassPathXmlApplicationContext(
-			"spring/config/BeanLocations.xml");
+
+	@Autowired
+	private UserRoleService userRoleService;
 
 	@Test
 	public void testSaveAndFind() {
-		UserRoleService userRoleService = (UserRoleService) appContext
-				.getBean("userRoleService");
 		UserRole expectedUserRole = getUserRole();
 		userRoleService.save(expectedUserRole);
 
@@ -29,8 +32,6 @@ public class UserRoleServiceImplTest {
 
 	@Test
 	public void testUpdate() {
-		UserRoleService userRoleService = (UserRoleService) appContext
-				.getBean("userRoleService");
 		UserRole expectedUserRole = getUserRole();
 		userRoleService.save(expectedUserRole);
 

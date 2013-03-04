@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.discount.model.Product;
-import com.discount.model.ProductSettings;
-import com.discount.services.ProductService;
-import com.discount.services.ProductSettingsService;
+import com.discount.domain.Product;
+import com.discount.domain.ProductSettings;
+import com.discount.service.ProductService;
+import com.discount.service.ProductSettingsService;
 
 public class ProductSettingsServiceImplTest {
 	ApplicationContext appContext = new ClassPathXmlApplicationContext(
