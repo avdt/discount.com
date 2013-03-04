@@ -2,54 +2,75 @@ package com.discount.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.UserDAO;
+import com.discount.domain.Client;
 import com.discount.domain.User;
 
 @Repository
-public class UserDAOImpl  implements UserDAO {
+public class UserDAOImpl implements UserDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public void save(User user) {
-		getHibernateTemplate().save(user);
+		sessionFactory.getCurrentSession().save(user);
 	}
 
 	@Override
+	@Transactional
 	public void update(User user) {
-		getHibernateTemplate().update(user);
+		sessionFactory.getCurrentSession().update(user);
 	}
 
 	@Override
+	@Transactional
 	public void delete(User user) {
-		getHibernateTemplate().delete(user);
+		sessionFactory.getCurrentSession().delete(user);
 	}
 
 	@Override
+	@Transactional
 	public User findById(Integer id) {
-		List<User> list = getHibernateTemplate().find("from User where id=?",
-				id);
-		return list.get(0);
+		return (User) sessionFactory.getCurrentSession().get(Client.class, id);
 	}
 
 	@Override
+	@Transactional
 	public User findByEmail(String email) {
-		List<User> list = getHibernateTemplate().find(
-				"from User where email=?", email);
-		return list.get(0);
+		// List<User> list = getHibernateTemplate().find(
+		// "from User where email=?", email);
+		// return list.get(0);
+
+		// TODO: body
+
+		return null;
 	}
 
 	@Override
+	@Transactional
 	public User findByLogin(String login) {
-		List<User> list = getHibernateTemplate().find(
-				"from User where login=?", login);
-		return list.get(0);
+		// List<User> list = getHibernateTemplate().find(
+		// "from User where login=?", login);
+		// return list.get(0);
+
+		// TODO: body
+
+		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<User> findAll() {
-		List<User> list = getHibernateTemplate().find("from User");
-		return list;
+		return sessionFactory.getCurrentSession().createQuery("from User")
+				.list();
 	}
 
 }

@@ -29,10 +29,10 @@ public class ClientController {
 		return "client";
 	}
 
-	// @RequestMapping("/")
-	// public String home() {
-	// return "redirect:/index";
-	// }
+	@RequestMapping("/")
+	public String home() {
+		return "redirect:/index";
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addclient(@ModelAttribute("client") Client client,
@@ -44,7 +44,7 @@ public class ClientController {
 	}
 
 	@RequestMapping("/delete/{clientId}")
-	public String deleteclient(@PathVariable("clientId") Integer clientId) {
+	public String deleteClient(@PathVariable("clientId") Integer clientId) {
 
 		clientService.delete(clientService.findById(clientId));
 

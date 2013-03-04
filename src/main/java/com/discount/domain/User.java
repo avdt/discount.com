@@ -34,17 +34,17 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	@Column(name = "`firstName`")
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name = "`lastName`")
+	@Column(name = "last_name")
 	private String lastName;
 
 	@Column(name = "email")
 	private String email;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	@JoinTable(name = "`user_role`", joinColumns = { @JoinColumn(name = "`userId`", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "`roleId`", nullable = false, updatable = false) })
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "role_id", nullable = false, updatable = false) })
 	private List<UserRole> roles;
 
 	public Integer getId() {

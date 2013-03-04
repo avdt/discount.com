@@ -2,7 +2,10 @@ package com.discount.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.UserRoleDAO;
 import com.discount.domain.UserRole;
@@ -10,39 +13,50 @@ import com.discount.domain.UserRole;
 @Repository
 public class UserRoleDAOImpl implements UserRoleDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+
 	@Override
 	public void save(UserRole object) {
-		getHibernateTemplate().save(object);
+		sessionFactory.getCurrentSession().save(object);
 	}
 
 	@Override
+	@Transactional
 	public void update(UserRole object) {
-		getHibernateTemplate().update(object);
+		sessionFactory.getCurrentSession().update(object);
 	}
 
 	@Override
+	@Transactional
 	public void delete(UserRole object) {
-		getHibernateTemplate().delete(object);
+		sessionFactory.getCurrentSession().delete(object);
 	}
 
 	@Override
+	@Transactional
 	public UserRole findById(Integer id) {
-		List<UserRole> list = getHibernateTemplate().find(
-				"from UserRole where id=?", id);
-		return list.get(0);
+		return (UserRole) sessionFactory.getCurrentSession().get(
+				UserRole.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<UserRole> findAll() {
-		List<UserRole> list = getHibernateTemplate().find("from UserRole");
-		return list;
+		return sessionFactory.getCurrentSession().createQuery("from UserRole")
+				.list();
 	}
 
 	@Override
+	@Transactional
 	public UserRole findByRole(String role) {
-		List<UserRole> list = getHibernateTemplate().find(
-				"from UserRole where role=?", role);
-		return list.get(0);
+		// List<UserRole> list = getHibernateTemplate().find(
+		// "from UserRole where role=?", role);
+		// return list.get(0);
+
+		// TODO: body
+		return null;
 	}
 
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.ProductDAO;
-import com.discount.domain.Client;
 import com.discount.domain.Product;
 
 @Repository
