@@ -19,14 +19,14 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LOGIN, method = RequestMethod.GET)
 	public String login(ModelMap model) {
 
 		return "login";
 
 	}
 
-	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LOGIN_FAILED, method = RequestMethod.GET)
 	public String loginerror(ModelMap model) {
 
 		model.addAttribute("error", "true");
@@ -34,7 +34,7 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LOGOUT, method = RequestMethod.GET)
 	public String logout(ModelMap model) {
 
 		return "login";

@@ -14,13 +14,13 @@ import com.discount.domain.Client;
 import com.discount.service.ClientService;
 
 @Controller
-@RequestMapping("/client")
+@RequestMapping(UrlConstants.CLIENT)
 public class ClientController {
 
 	@Autowired
 	private ClientService clientService;
 
-	@RequestMapping("/client")
+	@RequestMapping(UrlConstants.CLIENT)
 	public String getClients(Map<String, Object> map) {
 
 		map.put("client", new Client());
@@ -34,7 +34,7 @@ public class ClientController {
 		return "redirect:/index";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.ADD, method = RequestMethod.POST)
 	public String addClient(@ModelAttribute("client") Client client,
 			BindingResult result) {
 
@@ -43,7 +43,7 @@ public class ClientController {
 		return "redirect:/client";
 	}
 
-	@RequestMapping("/delete/{clientId}")
+	@RequestMapping(UrlConstants.DELETE_CLIENT)
 	public String deleteClient(@PathVariable("clientId") Integer clientId) {
 
 		clientService.delete(clientService.findById(clientId));

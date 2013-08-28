@@ -10,7 +10,7 @@
 			/WEB-INF/spring/root-context.xml
 		</param-value>
 	</context-param>
-	
+
 	<context-param>
 		<param-name>resteasy.resources</param-name>
 		<param-value>com.discount.rest.ClientRestService</param-value>
@@ -35,6 +35,21 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
 	</servlet-mapping>
 
 	<!-- Фильтр для перекодировки в utf8 -->

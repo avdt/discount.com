@@ -14,13 +14,13 @@ import com.discount.domain.Product;
 import com.discount.service.ProductService;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping(UrlConstants.PRODUCTS)
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping("/products")
+	@RequestMapping(UrlConstants.PRODUCTS)
 	public String getProducts(Map<String, Object> map) {
 
 		map.put("products", productService.findAll());
@@ -28,14 +28,14 @@ public class ProductController {
 		return "products";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.ADD, method = RequestMethod.GET)
 	public String addClient(@ModelAttribute("product") Product product,
 			BindingResult result) {
 
 		return "add-product";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.ADD, method = RequestMethod.POST)
 	public String saveClient(@ModelAttribute("product") Product product,
 			BindingResult result) {
 
@@ -44,7 +44,7 @@ public class ProductController {
 		return "redirect:/products";
 	}
 
-	@RequestMapping("/delete/{productId}")
+	@RequestMapping(UrlConstants.DELETE_PRODUCT)
 	public String deleteClient(@PathVariable("productId") Integer productId) {
 
 		productService.delete(productService.findById(productId));
