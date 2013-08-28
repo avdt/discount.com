@@ -17,9 +17,9 @@
 	
 		 <div class="tabbable tabs-left">
 	        <ul class="nav nav-tabs" id="adminTab">
-			    <li class="active"><a href="#users" data-toggle="tab">Users</a></li>
-			    <li><a href="#categories" data-toggle="tab">Categories</a></li>
-			    <li><a href="#products" data-toggle="tab">Products</a></li>
+			    <li class="active"><a href="#users" data-toggle="tab"><spring:message code="admin.tab.users" /></a></li>
+			    <li><a href="#categories" data-toggle="tab"><spring:message code="admin.tab.categories" /></a></li>
+			    <li><a href="#products" data-toggle="tab"><spring:message code="admin.tab.products" /></a></li>
 	   		</ul>
 	   		
 	   		<div class="tab-content">
@@ -27,24 +27,18 @@
 				<div class="tab-pane fade" id="categories">
 					
 					<ul class="nav nav-tabs" id="categoryTab">
-					    <li class="active"><a href="#create_category" data-toggle="tab">Create Category</a></li>
-					    <li><a href="#all_categories" data-toggle="tab">All Categories</a></li>
+					    <li class="active"><a href="#create_category" data-toggle="tab"><spring:message code="admin.tab.category.create" /></a></li>
+					    <li><a href="#all_categories" data-toggle="tab"><spring:message code="admin.tab.category.all" /></a></li>
 			   		</ul>
 			   		<div class="tab-content">
 						<div class="tab-pane fade in active" id="create_category">
 						<!-- Create new category -->
 						
 						    <form:form method="post" action="admin/category/add" commandName="category">
-							    <%-- fieldset>
-							    <legend>New Category</legend>
-							    <form:input path="name" />
-							    <!-- <input type="text" placeholder="Category Name"> -->
-							    <button type="submit" class="btn">Submit</button>
-							    </fieldset> --%>
 								<fieldset>
-									<form:input path="name" type="text" placeholder="Category Name"/>
+									<spring:message code="admin.tab.category.name" var="categoryName"/>
+									<form:input path="name" type="text" placeholder="${categoryName}"/>
 									<input type="file" id="upload" name="upload"/>
-									
 									
 									<input type="submit"
 										value="<spring:message code="label.addcontact"/>" />
