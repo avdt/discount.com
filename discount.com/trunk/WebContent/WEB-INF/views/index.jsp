@@ -4,8 +4,6 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <layout:page title="Alfero">
 	<jsp:attribute name="extraHeader">
-    	<link rel="stylesheet" type="text/css"
-			href="<c:url value="/css/index.css" />" />
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>

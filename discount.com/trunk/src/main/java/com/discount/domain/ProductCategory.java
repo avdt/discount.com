@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "category", uniqueConstraints = {
@@ -27,6 +30,12 @@ public class ProductCategory {
 
 	@Column(name = "name", nullable = false, length = 100)
 	private String name;
+
+	@Transient
+	private MultipartFile file;
+
+	@Column(name = "image", nullable = true)
+	private String image;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "productCategory")
 	private List<Product> products;
@@ -67,5 +76,21 @@ public class ProductCategory {
 			}
 		}
 		return result;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

@@ -6,8 +6,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <layout:page title="Admin Tools">
 	<jsp:attribute name="extraHeader">
-    	<link rel="stylesheet" type="text/css"
-			href="<c:url value="/css/index.css" />" />
 		<script type="text/javascript"
 			src="<c:url value="/js/admin.js" /> "></script>
     </jsp:attribute>
@@ -34,34 +32,39 @@
 						<div class="tab-pane fade in active" id="create_category">
 						<!-- Create new category -->
 						
-						    <form:form method="post" action="admin/category/add" commandName="category">
+						    <form:form method="post" action="admin/category/add" commandName="category" enctype="multipart/form-data">
 								<fieldset>
 									<spring:message code="admin.tab.category.name" var="categoryName"/>
 									<form:input path="name" type="text" placeholder="${categoryName}"/>
-									<input type="file" id="upload" name="upload"/>
+									<form:input path="file" type="file" id="upload" name="upload"/>
 									
 									<input type="submit"
 										value="<spring:message code="label.addcontact"/>" />
 								 </fieldset>
 							</form:form>
-						
 						</div>
 						<div class="tab-pane fade" id="all_categories">
 						<!-- All categories -->
 						<c:if test="${!empty categories}">
-						
-						<c:forEach items="${categories}" var="category">
-						<div class="span4">
-							<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
+							<div class="bs-docs-grid">
+								<div class="row-fluid show-grid">
+									<c:forEach items="${categories}" var="category">
+										<div class="thumbnails">
+											<div class="span3 thumbnail">
+												<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
+												<a href="#">
+													<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/${category.image}">
+													<h2>${category.name}</h2>
+												</a>
+											</div>
+										</div>
+									
+									</c:forEach>
 							
-							<h2>${category.name}</h2>
-							<p>
-							<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						</c:forEach>
-						
+								</div>
+							</div>
 						</c:if>
+
 						</div>
 					</div>
 					</div>

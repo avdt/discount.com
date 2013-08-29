@@ -4,12 +4,11 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <layout:page title="Boilers">
 	<jsp:attribute name="extraHeader">
-    	<link rel="stylesheet" type="text/css"
-			href="<c:url value="/css/index.css" />" />
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
 	    Boilers will be here.
+	    <img src="http://localhost:8080${pageContext.request.contextPath}/images/IMG_19072013_103032.png" alt="Big Boat"/>
 	</jsp:body>
 </layout:page>
