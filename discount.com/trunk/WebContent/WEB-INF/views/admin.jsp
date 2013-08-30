@@ -30,13 +30,23 @@
 			   		</ul>
 			   		<div class="tab-content">
 						<div class="tab-pane fade in active" id="create_category">
+						
 						<!-- Create new category -->
 						
 						    <form:form method="post" action="admin/category/add" commandName="category" enctype="multipart/form-data">
 								<fieldset>
 									<spring:message code="admin.tab.category.name" var="categoryName"/>
-									<form:input path="name" type="text" placeholder="${categoryName}"/>
-									<form:input path="file" type="file" id="upload" name="upload"/>
+									<spring:message code="admin.tab.category.property" var="property"/>
+									
+									<div>
+										<form:input path="file" type="file" id="upload" name="upload"/>
+									</div>
+									<div>
+										<form:input path="name" type="text" placeholder="${categoryName}"/>
+									</div>
+									<div>
+										<form:input path="name" type="text" placeholder="${property}"/>
+									</div>
 									
 									<input type="submit"
 										value="<spring:message code="label.addcontact"/>" />
@@ -44,31 +54,49 @@
 							</form:form>
 						</div>
 						<div class="tab-pane fade" id="all_categories">
+						
 						<!-- All categories -->
-						<c:if test="${!empty categories}">
-							<div class="bs-docs-grid">
-								<div class="row-fluid show-grid">
-									<c:forEach items="${categories}" var="category">
-										<div class="thumbnails">
-											<div class="span3 thumbnail">
-												<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
-												<a href="#">
-													<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/${category.image}">
-													<h2>${category.name}</h2>
-												</a>
+						
+							<c:if test="${!empty categories}">
+								<div class="bs-docs-grid">
+									<div class="row-fluid show-grid">
+										<c:forEach items="${categories}" var="category">
+											<div class="thumbnails">
+												<div class="span3 thumbnail">
+													<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
+													<a href="#">
+														<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:8080/${category.image}">
+														<h2>${category.name}</h2>
+													</a>
+												</div>
 											</div>
-										</div>
-									
-									</c:forEach>
-							
+										
+										</c:forEach>
+								
+									</div>
 								</div>
-							</div>
-						</c:if>
+							</c:if>
 
 						</div>
 					</div>
 					</div>
-				<div class="tab-pane fade" id="products">Add Product</div>
+				<div class="tab-pane fade" id="products">
+				
+				    <div class="dropdown">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Select category  
+					    	<b class="caret"></b>
+				    	</a>
+					        
+					   <!--  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"> -->
+					    <ul id="menu2" class="dropdown-menu" aria-labelledby="drop5" role="menu">
+						    <c:forEach items="${categories}" var="category">
+						    	<li role="presentation">
+									<a href="#" tabindex="-1" role="menuitem">${category.name}</a>
+								</li>
+						    </c:forEach>
+					    </ul>
+				    </div>
+				</div>
 			</div>
 			 
 		</div>

@@ -9,6 +9,6 @@
     </jsp:attribute>
 	<jsp:body>
 	    Boilers will be here.
-	    <img src="http://localhost:8080${pageContext.request.contextPath}/images/IMG_19072013_103032.png" alt="Big Boat"/>
+	    <img src="http://localhost:8080/images/Vintoniv.jpg" alt="Big Boat"/>
 	</jsp:body>
 </layout:page>

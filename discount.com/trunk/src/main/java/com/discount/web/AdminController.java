@@ -53,7 +53,7 @@ public class AdminController {
 
 		categoryService.save(category);
 
-		return "admin";
+		return "redirect:/admin";
 	}
 
 	@RequestMapping(UrlConstants.DELETE_CATEGORY)
@@ -61,6 +61,6 @@ public class AdminController {
 
 		categoryService.delete(categoryService.findById(categoryId));
 
-		return "admin";
+		return "redirect:/admin";
 	}
 }
