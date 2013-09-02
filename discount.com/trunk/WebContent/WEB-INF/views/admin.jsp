@@ -73,7 +73,7 @@
 									<div class="row-fluid show-grid">
 										<div class="thumbnails">
 										<c:forEach items="${categories}" var="category">
-												<div id="@("category"+category.id)" class="span4 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
+												<div id="@("category"+category.id)"+${category.id} class="span4 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
 													<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
 													<a href="#">
 														<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:8080/${category.image}">

@@ -31,5 +31,5 @@
 	<import resource="security.xml" />
 	
 	
-	<!-- <import resource="classpath:springmvc-resteasy.xml" /> -->
+	<import resource="classpath:springmvc-resteasy.xml" />
 </beans>
