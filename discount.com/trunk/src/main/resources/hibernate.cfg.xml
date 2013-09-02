@@ -8,6 +8,7 @@
 		<mapping class="com.discount.domain.Client" />
 		<mapping class="com.discount.domain.Product" />
 		<mapping class="com.discount.domain.ProductSettings" />
+		<mapping class="com.discount.domain.CategorySettings" />
 		<mapping class="com.discount.domain.ProductCategory" />
 		<mapping class="com.discount.domain.User" />
 		<mapping class="com.discount.domain.UserRole" />

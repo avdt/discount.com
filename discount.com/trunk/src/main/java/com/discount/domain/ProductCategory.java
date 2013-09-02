@@ -40,6 +40,9 @@ public class ProductCategory {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "productCategory")
 	private List<Product> products;
 
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "productCategory")
+	private List<CategorySettings> settings;
+
 	public Integer getId() {
 		return id;
 	}
@@ -92,5 +95,13 @@ public class ProductCategory {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public List<CategorySettings> getSettings() {
+		return settings;
+	}
+
+	public void setSettings(List<CategorySettings> settings) {
+		this.settings = settings;
 	}
 }

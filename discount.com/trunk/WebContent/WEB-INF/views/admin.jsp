@@ -4,6 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page import="com.discount.domain.FieldTypes" %>
 <layout:page title="Admin Tools">
 	<jsp:attribute name="extraHeader">
 		<script type="text/javascript"
@@ -44,10 +45,20 @@
 									<div>
 										<form:input path="name" type="text" placeholder="${categoryName}"/>
 									</div>
-									<div>
-										<form:input path="name" type="text" placeholder="${property}"/>
+									<div class="category-settings-container">
+										<div class="category-setting">
+											<form:input path="settings[0].fieldName" type="text" placeholder="${property}"/>
+											<c:set var="fieldTypes" value="<%=FieldTypes.values()%>"/>
+									         <form:select path="settings[0].fieldType">
+										    	<option><c:out value="TEXT"></c:out></option>
+										    	<option><c:out value="NUMBER"></c:out></option>
+										     </form:select>
+										</div>
 									</div>
-									
+								    <a class="btn" href="#" id="add-category-setting"><i class="icon-plus"></i></a>
+								    
+								    <a id="toolll" title="" data-placement="right" data-toggle="tooltip" href="#" data-original-title="Tooltip on right">Tooltip on right</a>
+								    
 									<input type="submit"
 										value="<spring:message code="label.addcontact"/>" />
 								 </fieldset>
@@ -60,18 +71,18 @@
 							<c:if test="${!empty categories}">
 								<div class="bs-docs-grid">
 									<div class="row-fluid show-grid">
+										<div class="thumbnails">
 										<c:forEach items="${categories}" var="category">
-											<div class="thumbnails">
-												<div class="span3 thumbnail">
+												<div id="@("category"+category.id)" class="span4 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
 													<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
 													<a href="#">
 														<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:8080/${category.image}">
 														<h2>${category.name}</h2>
 													</a>
 												</div>
-											</div>
 										
 										</c:forEach>
+										</div>
 								
 									</div>
 								</div>

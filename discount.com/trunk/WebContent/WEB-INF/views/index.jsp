@@ -17,13 +17,13 @@
 		    <!-- Carousel items -->
 		    <div class="carousel-inner">
 		    <div class="active item">
-		    	<img alt="" src="http://localhost:8080/images/Vintoniv.jpg">
+		    	<img alt="" src="http://localhost:8080/images/bootstrap-mdo-sfmoma-01.jpg">
 		    </div>
 		    <div class="item">
-		    	<img alt="" src="http://localhost:8080/images/airline.PNG">
+		    	<img alt="" src="http://localhost:8080/images/bootstrap-mdo-sfmoma-02.jpg">
 		    </div>
 		    <div class="item">
-		    	<img alt="" src="http://localhost:8080/images/airline.PNG">
+		    	<img alt="" src="http://localhost:8080/images/bootstrap-mdo-sfmoma-03.jpg">
 		    </div>
 		    </div>
 		    <!-- Carousel nav -->
