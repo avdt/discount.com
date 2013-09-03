@@ -27,9 +27,10 @@
 				<form:input path="price" type="text" placeholder="${price}"/>
 			</div>
 			<div>
-		     	<c:forEach items="${selectedCategory.settings}" var="setting">
+		     	<c:forEach items="${selectedCategory.settings}" var="setting" varStatus="status">
 		     		<div>
-						<form:input path="name" type="text" placeholder="${setting.fieldName}"/>
+						<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
+						<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
 					</div>
 		     	</c:forEach>
 	     	</div>

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.discount.domain.CategorySettings;
 import com.discount.domain.Product;
 import com.discount.domain.ProductCategory;
+import com.discount.domain.ProductSettings;
 import com.discount.domain.User;
 import com.discount.service.FileUploadService;
 import com.discount.service.ProductCategoryService;
@@ -40,6 +40,7 @@ public class AdminController {
 		map.put("product", new Product());
 
 		map.put("categories", categoryService.findAll());
+		map.put("products", productService.findAll());
 
 		return "admin";
 	}
@@ -72,13 +73,8 @@ public class AdminController {
 	@RequestMapping(value = UrlConstants.NEW_PRODUCT, method = RequestMethod.GET)
 	public String newProduct(@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) throws IllegalStateException, IOException {
-
 		ProductCategory category = categoryService.findById(categoryId);
-		List<CategorySettings> settings = category.getSettings();
 
-		for (CategorySettings categorySettings : settings) {
-			System.out.println(categorySettings.getFieldName());
-		}
 		map.put("selectedCategory", category);
 		map.put("product", new Product());
 
@@ -86,7 +82,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_PRODUCT, method = RequestMethod.POST)
-	public String createProduct(@ModelAttribute("product") Product product,
+	public String saveProduct(@ModelAttribute("product") Product product,
 			@PathVariable("categoryId") Integer categoryId)
 			throws IllegalStateException, IOException {
 
@@ -96,6 +92,12 @@ public class AdminController {
 			String filePath = fileUploadService.save(file);
 			product.setImage(filePath);
 		}
+
+		List<ProductSettings> settings = product.getSettings();
+
+		for (ProductSettings productSettings : settings) {
+			System.out.println(productSettings.getPropertyName());
+		}
 		ProductCategory category = categoryService.findById(categoryId);
 		product.setCategory(category);
 
@@ -103,4 +105,13 @@ public class AdminController {
 
 		return "redirect:/admin";
 	}
+
+	@RequestMapping(UrlConstants.DELETE_PRODUCT)
+	public String deleteProduct(@PathVariable("productId") Integer productId) {
+
+		productService.delete(productService.findById(productId));
+
+		return "redirect:/admin";
+	}
+
 }

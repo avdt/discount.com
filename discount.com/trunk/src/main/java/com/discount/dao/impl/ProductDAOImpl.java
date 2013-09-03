@@ -53,17 +53,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	@Transactional
-	public List<Product> findByClientId(Integer clientId) {
-		// List<Product> list = getHibernateTemplate().find(
-		// "from Product where clientId=?", clientId);
-		// return list;
-
-		// TODO: body
-		return null;
-	}
-
-	@Override
-	@Transactional
 	public Product findByName(String name) {
 		// List<Product> list = getHibernateTemplate().find(
 		// "from Product where name=?", name);
@@ -79,8 +68,8 @@ public class ProductDAOImpl implements ProductDAO {
 		// "from Product where productCategoryId=?", productCategoryId);
 		// return list;
 
-		// TODO: body
-		return null;
+		return sessionFactory.getCurrentSession().createQuery("from Product")
+				.list();
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.discount.dao.ProductDAO;
 import com.discount.domain.Product;
+import com.discount.domain.ProductSettings;
 import com.discount.service.ProductService;
 
 @Service("productService")
@@ -16,8 +17,13 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
-	public void save(Product object) {
-		productDAO.save(object);
+	public void save(Product product) {
+		List<ProductSettings> settings = product.getSettings();
+		for (ProductSettings productSettings : settings) {
+			productSettings.setProduct(product);
+		}
+
+		productDAO.save(product);
 	}
 
 	@Override

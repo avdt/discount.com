@@ -39,11 +39,11 @@ public class ProductCategory {
 	@Column(name = "image", nullable = true)
 	private String image;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "category")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Product> products;
-	
+
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(/* fetch = FetchType.EAGER, */cascade = CascadeType.ALL, mappedBy = "productCategory")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
 	private List<CategorySettings> settings;
 
 	public Integer getId() {

@@ -4,13 +4,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.discount.domain.Product;
 import com.discount.service.ProductService;
 
 @Controller
@@ -28,28 +24,24 @@ public class ProductController {
 		return "products";
 	}
 
-	@RequestMapping(value = UrlConstants.ADD, method = RequestMethod.GET)
-	public String addClient(@ModelAttribute("product") Product product,
-			BindingResult result) {
+	@RequestMapping(UrlConstants.GET_PRODUCT)
+	public String getProductsByCategoryId(
+			@PathVariable("categoryId") Integer categoryId,
+			Map<String, Object> map) {
 
-		return "add-product";
+		map.put("productByCategory",
+				productService.findByCategoryId(categoryId));
+
+		return "product";
 	}
 
-	@RequestMapping(value = UrlConstants.ADD, method = RequestMethod.POST)
-	public String saveClient(@ModelAttribute("product") Product product,
-			BindingResult result) {
+	@RequestMapping(UrlConstants.GET_PRODUCT)
+	public String getProductById(@PathVariable("productId") Integer productId,
+			Map<String, Object> map) {
 
-		productService.save(product);
+		map.put("product", productService.findById(productId));
 
-		return "redirect:/products";
-	}
-
-	@RequestMapping(UrlConstants.DELETE_PRODUCT)
-	public String deleteClient(@PathVariable("productId") Integer productId) {
-
-		productService.delete(productService.findById(productId));
-
-		return "redirect:/products";
+		return "product";
 	}
 
 }
