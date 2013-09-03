@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -37,10 +39,11 @@ public class ProductCategory {
 	@Column(name = "image", nullable = true)
 	private String image;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "productCategory")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "category")
 	private List<Product> products;
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "productCategory")
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(/* fetch = FetchType.EAGER, */cascade = CascadeType.ALL, mappedBy = "productCategory")
 	private List<CategorySettings> settings;
 
 	public Integer getId() {

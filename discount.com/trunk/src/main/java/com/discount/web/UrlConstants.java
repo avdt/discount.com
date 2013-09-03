@@ -17,6 +17,9 @@ public class UrlConstants {
 	public final static String PRODUCTS = "/products";
 	public final static String DELETE_PRODUCT = "/delete/{productId}";
 	public final static String ADD_CATEGORY = "/category/add";
+	public final static String NEW_PRODUCT = "/new-product/{categoryId}";
+	public final static String ADD_PRODUCT = "/new-product/{categoryId}/add";
 	public final static String DELETE_CATEGORY = "/category/delete/{categoryId}";
+//	public final static String DELETE_PRODUCT = "/product/delete/{productId}";
 
 }

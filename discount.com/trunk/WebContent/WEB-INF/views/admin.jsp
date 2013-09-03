@@ -9,8 +9,11 @@
 	<jsp:attribute name="extraHeader">
 		<script type="text/javascript"
 			src="<c:url value="/js/admin.js" /> "></script>
+		<link rel="stylesheet" type="text/css"
+			href="<c:url value="/css/admin.css" />" />
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
+	
     </jsp:attribute>
 	<jsp:body>
 	
@@ -38,6 +41,7 @@
 								<fieldset>
 									<spring:message code="admin.tab.category.name" var="categoryName"/>
 									<spring:message code="admin.tab.category.property" var="property"/>
+									<spring:message code="admin.tab.category.property.unit" var="unit"/>
 									
 									<div>
 										<form:input path="file" type="file" id="upload" name="upload"/>
@@ -49,10 +53,11 @@
 										<div class="category-setting">
 											<form:input path="settings[0].fieldName" type="text" placeholder="${property}"/>
 											<c:set var="fieldTypes" value="<%=FieldTypes.values()%>"/>
-									         <form:select path="settings[0].fieldType">
+									        <form:select id="field-type-select" path="settings[0].fieldType">
 										    	<option><c:out value="TEXT"></c:out></option>
 										    	<option><c:out value="NUMBER"></c:out></option>
-										     </form:select>
+										    </form:select>
+										    <form:input path="settings[0].unit" type="text" placeholder="${unit}"/>
 										</div>
 									</div>
 								    <a class="btn" href="#" id="add-category-setting"><i class="icon-plus"></i></a>
@@ -67,45 +72,53 @@
 						<div class="tab-pane fade" id="all_categories">
 						
 						<!-- All categories -->
-						
-							<c:if test="${!empty categories}">
-								<div class="bs-docs-grid">
-									<div class="row-fluid show-grid">
-										<div class="thumbnails">
-										<c:forEach items="${categories}" var="category">
-												<div id="@("category"+category.id)"+${category.id} class="span4 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
-													<a href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
-													<a href="#">
-														<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:8080/${category.image}">
-														<h2>${category.name}</h2>
-													</a>
-												</div>
-										
-										</c:forEach>
+							<c:choose>
+								<c:when test="${!empty categories}">
+									<div class="bs-docs-grid">
+										<div class="row-fluid show-grid">
+											<div class="thumbnails">
+											<c:forEach items="${categories}" var="category">
+													<div id="@("category"+category.id)"+${category.id} class="span4 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
+														<a class="category-remove-icon" href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
+														<a href="#">
+															<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:8080/${category.image}">
+															<h2>${category.name}</h2>
+														</a>
+													</div>
+											
+											</c:forEach>
+											</div>
+									
 										</div>
-								
 									</div>
-								</div>
-							</c:if>
-
+								</c:when>
+								<c:otherwise>
+									<spring:message code="admin.tab.category.noCategory"/>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					</div>
 				<div class="tab-pane fade" id="products">
-				
-				    <div class="dropdown">
-					    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Select category  
-					    	<b class="caret"></b>
-				    	</a>
-					        
-					   <!--  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"> -->
-					    <ul id="menu2" class="dropdown-menu" aria-labelledby="drop5" role="menu">
-						    <c:forEach items="${categories}" var="category">
-						    	<li role="presentation">
-									<a href="#" tabindex="-1" role="menuitem">${category.name}</a>
-								</li>
-						    </c:forEach>
-					    </ul>
+					
+					<!-- Create product -->
+				    
+				    <div>
+				    	<form:form method="post" action="admin/category/add" commandName="product" enctype="multipart/form-data">
+						    <div class="dropdown">
+							    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							    	<spring:message code="admin.tab.category.select"/>
+						    		<b class="caret"></b>
+						    	</a>
+							    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							    	<c:forEach items="${categories}" var="category">
+									    <li role="presentation">
+											<a href="${pageContext.request.contextPath}/admin/new-product/${category.id}" tabindex="-1" role="menuitem">${category.name}</a>
+										</li>
+									</c:forEach>
+							    </ul>
+						    </div>	
+						</form:form>
 				    </div>
 				</div>
 			</div>

@@ -3,7 +3,6 @@ package com.discount.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +28,11 @@ public class CategorySettings {
 	@Column(name = "field_type")
 	private String fieldType;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
-			CascadeType.PERSIST, CascadeType.REFRESH })
+	@Column(name = "unit")
+	private String unit;
+
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "category_id", referencedColumnName = "id", insertable = true)
 	private ProductCategory productCategory;
 
@@ -64,6 +66,14 @@ public class CategorySettings {
 
 	public void setFieldType(String fieldType) {
 		this.fieldType = fieldType;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 }

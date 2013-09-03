@@ -11,17 +11,28 @@ import com.discount.service.FileUploadService;
 @Service("fileUploadService")
 public class FileUploadServiceImpl implements FileUploadService {
 
-	// TODO: replace into .properties file
-	private final static String path = "c:/alfero/images/";
+	private static final String RELATIVE_FILE_PATH = "images/";
+	private final static String ABSOLUTE_FILE_PATH = "c:/alfero/images/";
+	private final static String DEFAULT_IMAGE = "default.jpg";
 
 	@Override
 	public String save(MultipartFile file) throws IllegalStateException,
 			IOException {
-		String filePath = path + file.getOriginalFilename();
+		final String relativeSavedFilePath;
+		final String filePath;
+
+		String originalFileName = file.getOriginalFilename();
+		if (originalFileName != "") {
+			filePath = ABSOLUTE_FILE_PATH + originalFileName;
+			relativeSavedFilePath = RELATIVE_FILE_PATH + originalFileName;
+		} else {
+			filePath = ABSOLUTE_FILE_PATH + DEFAULT_IMAGE;
+			relativeSavedFilePath = RELATIVE_FILE_PATH + DEFAULT_IMAGE;
+		}
 		File dest = new File(filePath);
 		file.transferTo(dest);
 
-		return "images/" + file.getOriginalFilename();
+		return relativeSavedFilePath;
 	}
 
 }
