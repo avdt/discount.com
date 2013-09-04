@@ -18,7 +18,8 @@ public class UrlConstants {
 	public final static String PLUMBING = "/plumbing";
 
 	public final static String CATEGORIES = "/categories";
-	public final static String ADD_CATEGORY = "/category/add";
+	public final static String NEW_CATEGORY = "/new-category/{parentCategoryId}";
+	public final static String ADD_CATEGORY = "/new-category/{parentCategoryId}/add";
 	public final static String DELETE_CATEGORY = "/category/delete/{categoryId}";
 
 	public final static String PRODUCTS = "/products";

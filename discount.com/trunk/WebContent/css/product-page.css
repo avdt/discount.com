@@ -1,0 +1,10 @@
+.left-area {}
+	.left-area .product-img {width: 30%;}
+	.left-area .modal-close {margin-right: 10px;margin-top: 5px;}
+
+.right-area {bottom: 230px;left: 35%;position: relative;}
+	.right-area #product-price {color: #E74B30;left: 1%;position: relative;}
+	.right-area #settings .setting-name {text-align: left;}
+	.right-area #buy {bottom: 55px;left: 15%;position: relative;}
+.comments {}
+    

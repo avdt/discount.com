@@ -24,16 +24,16 @@ public class ProductController {
 		return "products";
 	}
 
-	@RequestMapping(UrlConstants.GET_PRODUCT)
-	public String getProductsByCategoryId(
-			@PathVariable("categoryId") Integer categoryId,
-			Map<String, Object> map) {
-
-		map.put("productByCategory",
-				productService.findByCategoryId(categoryId));
-
-		return "product";
-	}
+//	@RequestMapping(UrlConstants.GET_PRODUCT)
+//	public String getProductsByCategoryId(
+//			@PathVariable("categoryId") Integer categoryId,
+//			Map<String, Object> map) {
+//
+//		map.put("productByCategory",
+//				productService.findByCategoryId(categoryId));
+//
+//		return "product";
+//	}
 
 	@RequestMapping(UrlConstants.GET_PRODUCT)
 	public String getProductById(@PathVariable("productId") Integer productId,

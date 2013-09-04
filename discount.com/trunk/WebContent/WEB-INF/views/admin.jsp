@@ -7,10 +7,8 @@
 <%@ page import="com.discount.domain.FieldTypes" %>
 <layout:page title="Admin Tools">
 	<jsp:attribute name="extraHeader">
-		<script type="text/javascript"
-			src="<c:url value="/js/admin.js" /> "></script>
-		<link rel="stylesheet" type="text/css"
-			href="<c:url value="/css/admin.css" />" />
+		<script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
+		<link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
 	

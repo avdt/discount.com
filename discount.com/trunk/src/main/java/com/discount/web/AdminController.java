@@ -45,13 +45,29 @@ public class AdminController {
 		return "admin";
 	}
 
+	@RequestMapping(value = UrlConstants.NEW_CATEGORY, method = RequestMethod.GET)
+	public String newCategory(
+			@PathVariable("parentCategoryId") Integer parentCategoryId,
+			Map<String, Object> map) throws IllegalStateException, IOException {
+		ProductCategory category = categoryService.findById(parentCategoryId);
+
+		map.put("parentCategory", category);
+		map.put("category", new ProductCategory());
+
+		return "new-category";
+	}
+
 	@RequestMapping(value = UrlConstants.ADD_CATEGORY, method = RequestMethod.POST)
-	public String createCategory(
-			@ModelAttribute("category") ProductCategory category)
+	public String saveCategory(
+			@ModelAttribute("category") ProductCategory category,
+			@PathVariable("parentCategoryId") Integer parentCategoryId)
 			throws IllegalStateException, IOException {
 
 		MultipartFile file = category.getFile();
 
+		ProductCategory parentCategory = categoryService
+				.findById(parentCategoryId);
+		category.setParentCategory(parentCategory);
 		if (null != file) {
 			String filePath = fileUploadService.save(file);
 			category.setImage(filePath);

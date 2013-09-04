@@ -1,0 +1,5 @@
+#left-area {width: 40%;}
+	#left-area #parent-category {}
+		#left-area #parent-category .setting-name {text-align: left;}
+		
+#right-area {left: 45%;position: absolute;top: 25%;}

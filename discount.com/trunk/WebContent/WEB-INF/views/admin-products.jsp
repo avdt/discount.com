@@ -15,7 +15,7 @@
     
 		<div class="tab-pane fade in active" id="create_product">
 		
-	    	<form:form method="post" action="admin/category/add" commandName="product" enctype="multipart/form-data">
+	    	<form:form>
 			    <div class="dropdown">
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				    	<spring:message code="admin.tab.category.select"/>

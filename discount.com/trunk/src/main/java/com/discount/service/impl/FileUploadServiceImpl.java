@@ -25,12 +25,12 @@ public class FileUploadServiceImpl implements FileUploadService {
 		if (originalFileName != "") {
 			filePath = ABSOLUTE_FILE_PATH + originalFileName;
 			relativeSavedFilePath = RELATIVE_FILE_PATH + originalFileName;
+			File dest = new File(filePath);
+			file.transferTo(dest);
 		} else {
 			filePath = ABSOLUTE_FILE_PATH + DEFAULT_IMAGE;
 			relativeSavedFilePath = RELATIVE_FILE_PATH + DEFAULT_IMAGE;
 		}
-		File dest = new File(filePath);
-		file.transferTo(dest);
 
 		return relativeSavedFilePath;
 	}

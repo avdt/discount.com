@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -45,6 +47,14 @@ public class ProductCategory {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
 	private List<CategorySettings> settings;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "parent_category_id")
+	private ProductCategory parentCategory;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "parentCategory")
+	private List<ProductCategory> childCategories;
 
 	public Integer getId() {
 		return id;
@@ -106,5 +116,21 @@ public class ProductCategory {
 
 	public void setSettings(List<CategorySettings> settings) {
 		this.settings = settings;
+	}
+
+	public ProductCategory getParentCategory() {
+		return parentCategory;
+	}
+
+	public void setParentCategory(ProductCategory parentCategory) {
+		this.parentCategory = parentCategory;
+	}
+
+	public List<ProductCategory> getChildCategories() {
+		return childCategories;
+	}
+
+	public void setChildCategories(List<ProductCategory> childCategories) {
+		this.childCategories = childCategories;
 	}
 }

@@ -61,6 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Product> findByCategoryId(Integer productCategoryId) {
@@ -68,8 +69,12 @@ public class ProductDAOImpl implements ProductDAO {
 		// "from Product where productCategoryId=?", productCategoryId);
 		// return list;
 
-		return sessionFactory.getCurrentSession().createQuery("from Product")
-				.list();
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from Product p where p.category.id = "
+								+ " :productCategoryId")
+				.setInteger("productCategoryId", productCategoryId).list();
 	}
 
 }
