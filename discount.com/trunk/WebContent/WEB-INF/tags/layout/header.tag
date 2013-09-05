@@ -9,10 +9,29 @@
 				<ul class="nav">
 					<li class="active"><a href="${pageContext.request.contextPath}/index">Home</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a></li>
-					<li><a href="${pageContext.request.contextPath}/boilers"><spring:message code="header.boilers" /></a></li>
-					<li><a href="${pageContext.request.contextPath}/plumbing"><spring:message code="header.plumbing" /></a></li>
+					
+					<!-- ROOT CATEGORIES -->
+					<c:forEach items="${categories}" var="category">
+						<c:if test="${category.root}">
+							<li class="dropdown">
+								<a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="${pageContext.request.contextPath}/boilers">
+									<label>${category.name}</label>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
+									<c:forEach items="${category.childCategories}" var="childCategory">
+										<li role="presentation">
+											<a href="${pageContext.request.contextPath}/products/${childCategory.id}" tabindex="-1" role="menuitem">${childCategory.name}</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</li>
+						</c:if>
+					</c:forEach>
+					
 					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="header.aboutUs" /></a></li>
 					<li><a href="${pageContext.request.contextPath}/contacts"><spring:message code="header.contacts" /></a></li>
+					<li><a href="${pageContext.request.contextPath}/sale"><spring:message code="header.sale" /></a></li>
+					
 				</ul>
 			</div>
 		</div>

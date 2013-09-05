@@ -56,6 +56,9 @@ public class ProductCategory {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "parentCategory")
 	private List<ProductCategory> childCategories;
 
+	@Column(name = "root", nullable = false)
+	private boolean root;
+
 	public Integer getId() {
 		return id;
 	}
@@ -133,4 +136,13 @@ public class ProductCategory {
 	public void setChildCategories(List<ProductCategory> childCategories) {
 		this.childCategories = childCategories;
 	}
+
+	public boolean isRoot() {
+		return root;
+	}
+
+	public void setRoot(boolean root) {
+		this.root = root;
+	}
+
 }

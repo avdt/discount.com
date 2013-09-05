@@ -35,26 +35,25 @@
 	    <!-- ALL PRODUCTS -->
 	    
 	    <div class="tab-pane fade" id="all_products">
-	    All products
-	    <div class="row-fluid">
-	        <ul class="thumbnails">
-	        	<c:forEach items="${products}" var="product">
-						
-				    <li class="span4">
-					    <div class="thumbnail">
-					    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
-						    <a href="products/get/${product.id}">
-							    <img data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
-							    <h4>${product.name}</h4>
-						    </a>
-						    <p>${product.category.name}</p>
-						    <p>${product.price}</p>
-					    </div>
-				    </li>
-			    
-			    </c:forEach>
-		    </ul>
-    	</div>
+		    <div class="row-fluid">
+		        <ul class="thumbnails">
+		        	<c:forEach items="${products}" var="product">
+							
+					    <li class="span4">
+						    <div class="thumbnail">
+						    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
+							    <a href="products/get/${product.id}">
+								    <img data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
+								    <h4>${product.name}</h4>
+							    </a>
+							    <p>${product.category.name}</p>
+							    <p>${product.price}</p>
+						    </div>
+					    </li>
+				    
+				    </c:forEach>
+			    </ul>
+	    	</div>
     
 	    </div>
 	</div>

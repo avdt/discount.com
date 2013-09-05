@@ -47,11 +47,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findByClientId(Integer clientId) {
-		return productDAO.findByClientId(clientId);
-	}
-
-	@Override
 	public Product findByName(String name) {
 		return this.productDAO.findByName(name);
 	}
@@ -59,6 +54,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findByCategoryId(Integer productCategoryId) {
 		return this.productDAO.findByCategoryId(productCategoryId);
+	}
+
+	@Override
+	public List<Product> findSale() {
+		return productDAO.findSale();
 	}
 
 }

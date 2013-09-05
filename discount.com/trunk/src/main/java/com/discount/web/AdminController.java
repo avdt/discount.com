@@ -39,7 +39,8 @@ public class AdminController {
 		map.put("user", new User());
 		map.put("product", new Product());
 
-		map.put("categories", categoryService.findAll());
+		List<ProductCategory> categories = categoryService.findAll();
+		map.put("categories", categories);
 		map.put("products", productService.findAll());
 
 		return "admin";

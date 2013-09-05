@@ -64,17 +64,22 @@ public class ProductDAOImpl implements ProductDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Product> findByCategoryId(Integer productCategoryId) {
-		// List<Product> list = getHibernateTemplate().find(
-		// "from Product where productCategoryId=?", productCategoryId);
-		// return list;
-
+	public List<Product> findByCategoryId(Integer categoryId) {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(
 						"from Product p where p.category.id = "
-								+ " :productCategoryId")
-				.setInteger("productCategoryId", productCategoryId).list();
+								+ " :categoryId")
+				.setInteger("categoryId", categoryId).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Product> findSale() {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Product p where p.sale = " + " :sale")
+				.setBoolean("sale", true).list();
 	}
 
 }

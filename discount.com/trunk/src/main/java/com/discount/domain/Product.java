@@ -58,8 +58,12 @@ public class Product {
 
 	@Column(name = "image")
 	private String image;
+
 	@Transient
 	private MultipartFile file;
+
+	@Column(name = "sale")
+	private boolean sale;
 
 	public Integer getId() {
 		return id;
@@ -161,6 +165,14 @@ public class Product {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public boolean isSale() {
+		return sale;
+	}
+
+	public void setSale(boolean sale) {
+		this.sale = sale;
 	}
 
 }

@@ -7,22 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.discount.domain.ProductCategory;
+import com.discount.domain.Product;
 import com.discount.service.ProductCategoryService;
+import com.discount.service.ProductService;
 
 @Controller
-@RequestMapping(UrlConstants.ABOUT)
-public class AboutUsController {
+@RequestMapping(UrlConstants.SALE)
+public class SaleController {
 
 	@Autowired
 	private ProductCategoryService categoryService;
 
-	@RequestMapping(UrlConstants.ABOUT)
-	public String getInfoAboutUs(Map<String, Object> map) {
-		List<ProductCategory> categories = categoryService.findAll();
-		map.put("categories", categories);
+	@Autowired
+	private ProductService productService;
 
-		return "about";
+	@RequestMapping(UrlConstants.SALE)
+	public String getInfoAboutUs(Map<String, Object> map) {
+		map.put("categories", categoryService.findAll());
+
+		List<Product> saleProducts = productService.findSale();
+		map.put("saleProducts", saleProducts);
+
+		return "sale";
 	}
 
 }

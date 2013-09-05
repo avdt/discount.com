@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
 
 @Controller
@@ -15,6 +16,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ProductCategoryService categoryService;
 
 	@RequestMapping(UrlConstants.PRODUCTS)
 	public String getProducts(Map<String, Object> map) {
@@ -24,16 +27,17 @@ public class ProductController {
 		return "products";
 	}
 
-//	@RequestMapping(UrlConstants.GET_PRODUCT)
-//	public String getProductsByCategoryId(
-//			@PathVariable("categoryId") Integer categoryId,
-//			Map<String, Object> map) {
-//
-//		map.put("productByCategory",
-//				productService.findByCategoryId(categoryId));
-//
-//		return "product";
-//	}
+	@RequestMapping(UrlConstants.GET_PRODUCT_BY_CATEGORY)
+	public String getProductsByCategoryId(
+			@PathVariable("categoryId") Integer categoryId,
+			Map<String, Object> map) {
+
+		map.put("category", categoryService.findById(categoryId));
+		map.put("productsByCategory",
+				productService.findByCategoryId(categoryId));
+
+		return "products-by-category";
+	}
 
 	@RequestMapping(UrlConstants.GET_PRODUCT)
 	public String getProductById(@PathVariable("productId") Integer productId,

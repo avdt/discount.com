@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <layout:page title="${product.name}">
 	<jsp:attribute name="extraHeader">
 		<link rel="stylesheet" type="text/css"
@@ -30,8 +32,7 @@
 	    		<h2>${product.price}</h2>
 	    	</div>
 	    	<div id="buy">
-				 <input type="submit" value="<spring:message code="label.addcontact"/>" />
-	    		 <button class="btn btn-large btn-primary" type="button">Buy</button>
+	    		 <button class="btn btn-large btn-primary" type="button"><spring:message code="buy"/></button>
 	    	</div>
 	    	<div>
 	    		${product.description}
