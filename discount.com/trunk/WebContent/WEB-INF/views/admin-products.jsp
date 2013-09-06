@@ -41,6 +41,7 @@
 							
 					    <li class="span4">
 						    <div class="thumbnail">
+						    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
 						    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
 							    <a href="products/get/${product.id}">
 								    <img data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">

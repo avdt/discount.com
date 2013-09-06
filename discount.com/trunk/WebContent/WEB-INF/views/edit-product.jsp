@@ -4,14 +4,14 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<layout:page title="Admin Tools">
+<layout:page title="${product.name}">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
 		<div id="new-product-container">
-		    <form:form method="post" action="${selectedCategory.id}/add" commandName="product" enctype="multipart/form-data">
+		    <form:form method="post" action="${product.id}/${product.category.id}/update" commandName="product" enctype="multipart/form-data">
 				<div id=left-area>
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
@@ -21,6 +21,8 @@
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
+						<form:input style="display:none;" path="id" type="text" value="${product.id}"/>
+						<form:input path="image" type="text" value="${product.image}"/>
 						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
 					<div>
@@ -30,10 +32,11 @@
 						<form:input path="price" type="text" placeholder="${price}"/>
 					</div>
 					<div>
-				     	<c:forEach items="${selectedCategory.settings}" var="setting" varStatus="status">
+				     	<c:forEach items="${product.category.settings}" var="setting" varStatus="status">
 				     		<div>
 								<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
 								<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
+								<!--<form:input style="display:none;" path="settings[${status.count-1}].id" type="text" value="${setting.id}"/>-->
 							</div>
 				     	</c:forEach>
 			     	</div>

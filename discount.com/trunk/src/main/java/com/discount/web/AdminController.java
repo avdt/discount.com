@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.discount.domain.Product;
 import com.discount.domain.ProductCategory;
-import com.discount.domain.ProductSettings;
 import com.discount.domain.User;
 import com.discount.service.FileUploadService;
 import com.discount.service.ProductCategoryService;
@@ -87,6 +86,37 @@ public class AdminController {
 		return "redirect:/admin";
 	}
 
+	@RequestMapping(UrlConstants.EDIT_PRODUCT)
+	public String editCategory(@PathVariable("categoryId") Integer categoryId,
+			Map<String, Object> map) {
+		ProductCategory category = categoryService.findById(categoryId);
+		map.put("category", category);
+
+		return "edit-category";
+	}
+
+	@RequestMapping(value = UrlConstants.UPDATE_PRODUCT, method = RequestMethod.POST)
+	public String updateCategory(
+			@PathVariable("categoryId") Integer categoryId,
+			@ModelAttribute("product") Product product)
+			throws IllegalStateException, IOException {
+
+		MultipartFile file = product.getFile();
+
+		if (null != file) {
+			String filePath = fileUploadService.save(file);
+			product.setImage(filePath);
+		}
+
+		ProductCategory category = categoryService.findById(categoryId);
+		category.setId(null);
+		product.setCategory(category);
+
+		productService.save(product);
+
+		return "redirect:/admin";
+	}
+
 	@RequestMapping(value = UrlConstants.NEW_PRODUCT, method = RequestMethod.GET)
 	public String newProduct(@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) throws IllegalStateException, IOException {
@@ -110,11 +140,6 @@ public class AdminController {
 			product.setImage(filePath);
 		}
 
-		List<ProductSettings> settings = product.getSettings();
-
-		for (ProductSettings productSettings : settings) {
-			System.out.println(productSettings.getPropertyName());
-		}
 		ProductCategory category = categoryService.findById(categoryId);
 		product.setCategory(category);
 
@@ -127,6 +152,36 @@ public class AdminController {
 	public String deleteProduct(@PathVariable("productId") Integer productId) {
 
 		productService.delete(productService.findById(productId));
+
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(UrlConstants.EDIT_PRODUCT)
+	public String editProduct(@PathVariable("productId") Integer productId,
+			Map<String, Object> map) {
+		Product product = productService.findById(productId);
+		map.put("product", product);
+
+		return "edit-product";
+	}
+
+	@RequestMapping(value = UrlConstants.UPDATE_PRODUCT, method = RequestMethod.POST)
+	public String updateProduct(@PathVariable("categoryId") Integer categoryId,
+			@ModelAttribute("product") Product product)
+			throws IllegalStateException, IOException {
+
+		MultipartFile file = product.getFile();
+
+		if (null != file) {
+			String filePath = fileUploadService.save(file);
+			product.setImage(filePath);
+		}
+
+		ProductCategory category = categoryService.findById(categoryId);
+		category.setId(null);
+		product.setCategory(category);
+
+		productService.save(product);
 
 		return "redirect:/admin";
 	}

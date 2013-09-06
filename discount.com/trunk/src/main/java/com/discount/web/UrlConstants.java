@@ -21,11 +21,15 @@ public class UrlConstants {
 	public final static String NEW_CATEGORY = "/new-category/{parentCategoryId}";
 	public final static String ADD_CATEGORY = "/new-category/{parentCategoryId}/add";
 	public final static String DELETE_CATEGORY = "/category/delete/{categoryId}";
+	public final static String EDIT_CATEGORY = "/category/edit/{productId}";
+	public final static String UPDATE_CATEGORY = "/product/edit/{productId}/update";
 
 	public final static String PRODUCTS = "/products";
 	public final static String NEW_PRODUCT = "/new-product/{categoryId}";
 	public final static String ADD_PRODUCT = "/new-product/{categoryId}/add";
+	public final static String UPDATE_PRODUCT = "/product/edit/{productId}/{categoryId}/update";
 	public final static String DELETE_PRODUCT = "/product/delete/{productId}";
+	public final static String EDIT_PRODUCT = "/product/edit/{productId}";
 	public final static String GET_PRODUCT = "/get/{productId}";
 	public final static String GET_PRODUCT_BY_CATEGORY = "/{categoryId}";
 
