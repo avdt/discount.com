@@ -25,7 +25,8 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	@Transactional
 	public void update(Product object) {
-		sessionFactory.getCurrentSession().update(object);
+		sessionFactory.getCurrentSession().merge(object);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override

@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "product", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "name") })
+@org.hibernate.annotations.Entity(dynamicUpdate = true)
 public class Product {
 
 	@Id
@@ -33,12 +34,13 @@ public class Product {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory category;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "product")
 	private List<ProductSettings> settings;
 
 	@Column(name = "name")

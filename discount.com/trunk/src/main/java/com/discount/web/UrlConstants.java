@@ -21,8 +21,8 @@ public class UrlConstants {
 	public final static String NEW_CATEGORY = "/new-category/{parentCategoryId}";
 	public final static String ADD_CATEGORY = "/new-category/{parentCategoryId}/add";
 	public final static String DELETE_CATEGORY = "/category/delete/{categoryId}";
-	public final static String EDIT_CATEGORY = "/category/edit/{productId}";
-	public final static String UPDATE_CATEGORY = "/product/edit/{productId}/update";
+	public final static String EDIT_CATEGORY = "/category/edit/{categoryId}";
+	public final static String UPDATE_CATEGORY = "/category/edit/{categoryId}/update";
 
 	public final static String PRODUCTS = "/products";
 	public final static String NEW_PRODUCT = "/new-product/{categoryId}";

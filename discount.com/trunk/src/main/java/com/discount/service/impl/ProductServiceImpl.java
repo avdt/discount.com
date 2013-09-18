@@ -19,8 +19,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void save(Product product) {
 		List<ProductSettings> settings = product.getSettings();
-		for (ProductSettings productSettings : settings) {
-			productSettings.setProduct(product);
+		if (settings != null) {
+			for (ProductSettings productSettings : settings) {
+				productSettings.setProduct(product);
+			}
 		}
 
 		productDAO.save(product);
@@ -29,8 +31,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void update(Product product) {
 		List<ProductSettings> settings = product.getSettings();
-		for (ProductSettings productSettings : settings) {
-			productSettings.setProduct(product);
+		if (settings != null) {
+			for (ProductSettings productSettings : settings) {
+				productSettings.setProduct(product);
+			}
 		}
 		productDAO.update(product);
 	}

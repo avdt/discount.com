@@ -8,11 +8,11 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
-        <div id="myCarousel" class="carousel slide">
+        <div id="home-page-banner" class="carousel slide home-page-banner">
 		    <ol class="carousel-indicators">
-		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		    <li data-target="#myCarousel" data-slide-to="1"></li>
-		    <li data-target="#myCarousel" data-slide-to="2"></li>
+		    <li data-target="#home-page-banner" data-slide-to="0" class="active"></li>
+		    <li data-target="#home-page-banner" data-slide-to="1"></li>
+		    <li data-target="#home-page-banner" data-slide-to="2"></li>
 		    </ol>
 		    <!-- Carousel items -->
 		    <div class="carousel-inner">
@@ -27,8 +27,32 @@
 		    </div>
 		    </div>
 		    <!-- Carousel nav -->
-		    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		    <a class="carousel-control left" href="#home-page-banner" data-slide="prev">&lsaquo;</a>
+		    <a class="carousel-control right" href="#home-page-banner" data-slide="next">&rsaquo;</a>
 	    </div>
+	    
+	    <hr/>
+	    <!-- ALL CATEGORIES -->
+	    <div id="categories-carousel">
+		    <div class="image_carousel">
+				<div id="foo2">
+					<c:forEach items="${categories}" var="category">
+						<div class="span3 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
+							<a href="${pageContext.request.contextPath}/products/${category.id}">
+								<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:1234/${category.image}">
+								<h2>${category.name}</h2>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="clearfix"></div>
+				<a class="carousel-control left" id="foo2_prev" href="#" data-slide="prev">&lsaquo;</a>
+		    	<a class="carousel-control right" id="foo2_next" href="#" data-slide="next">&rsaquo;</a>
+				<div class="pagination" id="foo2_pag"></div>
+			</div>
+
+
+	    </div>
+	    
 	</jsp:body>
 </layout:page>

@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "category", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "name") })
+@org.hibernate.annotations.Entity(dynamicUpdate = true)
 public class ProductCategory {
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "product_category_id_seq")
@@ -41,7 +42,8 @@ public class ProductCategory {
 	@Column(name = "image", nullable = true)
 	private String image;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "category")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "category")
 	private List<Product> products;
 
 	@LazyCollection(LazyCollectionOption.FALSE)

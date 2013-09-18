@@ -86,7 +86,7 @@ public class AdminController {
 		return "redirect:/admin";
 	}
 
-	@RequestMapping(UrlConstants.EDIT_PRODUCT)
+	@RequestMapping(UrlConstants.EDIT_CATEGORY)
 	public String editCategory(@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) {
 		ProductCategory category = categoryService.findById(categoryId);
@@ -95,7 +95,7 @@ public class AdminController {
 		return "edit-category";
 	}
 
-	@RequestMapping(value = UrlConstants.UPDATE_PRODUCT, method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.UPDATE_CATEGORY, method = RequestMethod.POST)
 	public String updateCategory(
 			@PathVariable("categoryId") Integer categoryId,
 			@ModelAttribute("product") Product product)
@@ -178,10 +178,10 @@ public class AdminController {
 		}
 
 		ProductCategory category = categoryService.findById(categoryId);
-		category.setId(null);
+//		category.setId(null);
 		product.setCategory(category);
 
-		productService.save(product);
+		productService.update(product);
 
 		return "redirect:/admin";
 	}
