@@ -16,8 +16,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 	private final static String DEFAULT_IMAGE = "default.jpg";
 
 	@Override
-	public String save(MultipartFile file) throws IllegalStateException,
-			IOException {
+	public String upload(MultipartFile file){
 		final String relativeSavedFilePath;
 		final String filePath;
 
@@ -26,7 +25,15 @@ public class FileUploadServiceImpl implements FileUploadService {
 			filePath = ABSOLUTE_FILE_PATH + originalFileName;
 			relativeSavedFilePath = RELATIVE_FILE_PATH + originalFileName;
 			File dest = new File(filePath);
-			file.transferTo(dest);
+			try {
+				file.transferTo(dest);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			filePath = ABSOLUTE_FILE_PATH + DEFAULT_IMAGE;
 			relativeSavedFilePath = RELATIVE_FILE_PATH + DEFAULT_IMAGE;

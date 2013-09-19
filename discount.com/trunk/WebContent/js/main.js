@@ -9,23 +9,23 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#foo2").carouFredSel({
+	$("#categories-carousel").carouFredSel({
 		circular: false,
 		infinite: false,
 		auto 	: false,
 		width	: 960,
 		items	: {
-			visible	: 3
+			visible	: 4
 		},
 		prev	: {	
-			button	: "#foo2_prev",
+			button	: "#categories-carousel_prev",
 			key		: "left"
 		},
 		next	: { 
-			button	: "#foo2_next",
+			button	: "#categories-carousel_next",
 			key		: "right"
 		},
-		pagination	: "#foo2_pag"
+		pagination	: "#categories-carousel_pag"
 	});
 
 

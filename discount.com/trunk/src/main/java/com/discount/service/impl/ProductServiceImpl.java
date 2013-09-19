@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.discount.dao.ProductDAO;
 import com.discount.domain.Product;
 import com.discount.domain.ProductSettings;
+import com.discount.service.FileUploadService;
 import com.discount.service.ProductService;
 
 @Service("productService")
@@ -16,26 +18,22 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 
+	@Autowired
+	private FileUploadService fileUploadService;
+
 	@Override
 	public void save(Product product) {
-		List<ProductSettings> settings = product.getSettings();
-		if (settings != null) {
-			for (ProductSettings productSettings : settings) {
-				productSettings.setProduct(product);
-			}
-		}
+		uploadImage(product);
+		matchSettings(product);
 
 		productDAO.save(product);
 	}
 
 	@Override
 	public void update(Product product) {
-		List<ProductSettings> settings = product.getSettings();
-		if (settings != null) {
-			for (ProductSettings productSettings : settings) {
-				productSettings.setProduct(product);
-			}
-		}
+		uploadImage(product);
+		matchSettings(product);
+
 		productDAO.update(product);
 	}
 
@@ -67,6 +65,23 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findSale() {
 		return productDAO.findSale();
+	}
+
+	private void matchSettings(Product product) {
+		List<ProductSettings> settings = product.getSettings();
+		if (settings != null) {
+			for (ProductSettings productSettings : settings) {
+				productSettings.setProduct(product);
+			}
+		}
+	}
+
+	private void uploadImage(Product product) {
+		MultipartFile file = product.getFile();
+		if (null != file) {
+			String filePath = fileUploadService.upload(file);
+			product.setImage(filePath);
+		}
 	}
 
 }

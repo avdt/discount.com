@@ -22,9 +22,9 @@ public class ProductSettings {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	@JoinColumn(name = "product_id", referencedColumnName = "id", insertable = true)
+	@ManyToOne(/* fetch = FetchType.EAGER, */cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name = "product_id")
 	private Product product;
 
 	@Column(name = "property_name")

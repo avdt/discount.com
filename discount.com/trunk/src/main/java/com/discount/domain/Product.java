@@ -40,7 +40,8 @@ public class Product {
 	private ProductCategory category;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "product")
+	@OneToMany(/* fetch = FetchType.EAGER, */cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST }, mappedBy = "product")
 	private List<ProductSettings> settings;
 
 	@Column(name = "name")

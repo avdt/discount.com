@@ -1,11 +1,12 @@
 package com.discount.service;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface GenericService<T> {
-	void save(T object);
+	void save(T object) throws IllegalStateException, IOException;
 
-	void update(T object);
+	void update(T object) throws IOException;
 
 	void delete(T object);
 

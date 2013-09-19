@@ -8,13 +8,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.ProductDAO;
+import com.discount.dao.ProductSettingsDAO;
 import com.discount.domain.Product;
+import com.discount.domain.ProductSettings;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	@Autowired
+	private ProductSettingsDAO productSettingsDAO;
 
 	@Override
 	@Transactional
@@ -24,8 +29,15 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	@Transactional
-	public void update(Product object) {
-		sessionFactory.getCurrentSession().merge(object);
+	public void update(Product product) {
+		// cause of Hibernate bug
+//		List<ProductSettings> settings = product.getSettings();
+//		for (ProductSettings productSettings : settings) {
+//			productSettingsDAO.delete(productSettings);
+//			sessionFactory.getCurrentSession().flush();
+//		}
+
+		sessionFactory.getCurrentSession().merge(product);
 		sessionFactory.getCurrentSession().flush();
 	}
 

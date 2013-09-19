@@ -25,6 +25,7 @@
 <script type="text/javascript" src="<c:url value="/js/bootstrap.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.carouFredSel-6.2.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
 <!-- Process the given input fragment -->
 <jsp:invoke fragment="extraHeader" />
 </head>

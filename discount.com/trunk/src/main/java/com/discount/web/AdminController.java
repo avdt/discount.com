@@ -63,15 +63,9 @@ public class AdminController {
 			@PathVariable("parentCategoryId") Integer parentCategoryId)
 			throws IllegalStateException, IOException {
 
-		MultipartFile file = category.getFile();
-
 		ProductCategory parentCategory = categoryService
 				.findById(parentCategoryId);
 		category.setParentCategory(parentCategory);
-		if (null != file) {
-			String filePath = fileUploadService.save(file);
-			category.setImage(filePath);
-		}
 
 		categoryService.save(category);
 
@@ -97,22 +91,10 @@ public class AdminController {
 
 	@RequestMapping(value = UrlConstants.UPDATE_CATEGORY, method = RequestMethod.POST)
 	public String updateCategory(
-			@PathVariable("categoryId") Integer categoryId,
-			@ModelAttribute("product") Product product)
+			@ModelAttribute("category") ProductCategory category)
 			throws IllegalStateException, IOException {
 
-		MultipartFile file = product.getFile();
-
-		if (null != file) {
-			String filePath = fileUploadService.save(file);
-			product.setImage(filePath);
-		}
-
-		ProductCategory category = categoryService.findById(categoryId);
-		category.setId(null);
-		product.setCategory(category);
-
-		productService.save(product);
+		categoryService.update(category);
 
 		return "redirect:/admin";
 	}
@@ -132,13 +114,6 @@ public class AdminController {
 	public String saveProduct(@ModelAttribute("product") Product product,
 			@PathVariable("categoryId") Integer categoryId)
 			throws IllegalStateException, IOException {
-
-		MultipartFile file = product.getFile();
-
-		if (null != file) {
-			String filePath = fileUploadService.save(file);
-			product.setImage(filePath);
-		}
 
 		ProductCategory category = categoryService.findById(categoryId);
 		product.setCategory(category);
@@ -173,12 +148,12 @@ public class AdminController {
 		MultipartFile file = product.getFile();
 
 		if (null != file) {
-			String filePath = fileUploadService.save(file);
+			String filePath = fileUploadService.upload(file);
 			product.setImage(filePath);
 		}
 
 		ProductCategory category = categoryService.findById(categoryId);
-//		category.setId(null);
+		// category.setId(null);
 		product.setCategory(category);
 
 		productService.update(product);

@@ -33,9 +33,8 @@
 	    
 	    <hr/>
 	    <!-- ALL CATEGORIES -->
-	    <div id="categories-carousel">
 		    <div class="image_carousel">
-				<div id="foo2">
+				<div id="categories-carousel">
 					<c:forEach items="${categories}" var="category">
 						<div class="span3 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
 							<a href="${pageContext.request.contextPath}/products/${category.id}">
@@ -46,13 +45,10 @@
 					</c:forEach>
 				</div>
 				<div class="clearfix"></div>
-				<a class="carousel-control left" id="foo2_prev" href="#" data-slide="prev">&lsaquo;</a>
-		    	<a class="carousel-control right" id="foo2_next" href="#" data-slide="next">&rsaquo;</a>
-				<div class="pagination" id="foo2_pag"></div>
+				<a class="carousel-control left" id="categories-carousel_prev" href="#" data-slide="prev">&lsaquo;</a>
+		    	<a class="carousel-control right" id="categories-carousel_next" href="#" data-slide="next">&rsaquo;</a>
+				<div class="pagination" id="categories-carousel_pag"></div>
 			</div>
-
-
-	    </div>
 	    
 	</jsp:body>
 </layout:page>

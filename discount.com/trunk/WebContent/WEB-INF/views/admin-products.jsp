@@ -39,7 +39,7 @@
 		        <ul class="thumbnails">
 		        	<c:forEach items="${products}" var="product">
 							
-					    <li class="span4">
+					    <li class="span3">
 						    <div class="thumbnail">
 						    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
 						    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>

@@ -43,7 +43,8 @@ public class ProductCategory {
 	private String image;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "category")
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST }, mappedBy = "category")
 	private List<Product> products;
 
 	@LazyCollection(LazyCollectionOption.FALSE)

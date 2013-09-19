@@ -54,7 +54,7 @@
 					</div>
 				    <a class="btn" href="#" id="add-category-setting"><i class="icon-plus"></i></a>
 				    
-					<input type="submit" value="<spring:message code="label.addcontact"/>" />
+					<input type="submit" value="<spring:message code="general.save"/>" />
 				 </fieldset>
 			</form:form>
 		</div>

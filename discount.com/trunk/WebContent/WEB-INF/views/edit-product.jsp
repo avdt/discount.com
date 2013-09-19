@@ -63,7 +63,7 @@
 					    </form:select>
 		     		</div>
 		     	</div>
-		     	<input type="submit" value="<spring:message code="label.addcontact"/>" />
+		     	<input type="submit" value="<spring:message code="general.save"/>" />
 			</form:form>
 		</div>
 	</jsp:body>

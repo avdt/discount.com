@@ -25,7 +25,8 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 	@Override
 	@Transactional
 	public void update(ProductCategory object) {
-		sessionFactory.getCurrentSession().update(object);
+		sessionFactory.getCurrentSession().merge(object);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override

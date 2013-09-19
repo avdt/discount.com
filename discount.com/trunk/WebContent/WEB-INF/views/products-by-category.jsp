@@ -21,10 +21,10 @@
 		        <ul class="thumbnails">
 		        	<c:forEach items="${productsByCategory}" var="product">
 							
-					    <li class="span4">
+					    <li class="span3">
 						    <div class="thumbnail">
 							    <a href="get/${product.id}">
-								    <img data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
+								    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
 								    <h4>${product.name}</h4>
 							    </a>
 							    <p>${product.category.name}</p>

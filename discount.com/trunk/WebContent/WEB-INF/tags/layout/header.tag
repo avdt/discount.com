@@ -2,12 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="masthead">
-	<h3 class="muted">Alfero</h3>
+	<a href="${pageContext.request.contextPath}/index">
+		<h3 class="muted">Alfero</h3>
+	</a>
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
-					<li class="active"><a href="${pageContext.request.contextPath}/index">Home</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a></li>
 					
 					<!-- ROOT CATEGORIES -->
