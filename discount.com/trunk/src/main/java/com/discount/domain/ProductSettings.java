@@ -22,8 +22,7 @@ public class ProductSettings {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToOne(/* fetch = FetchType.EAGER, */cascade = { CascadeType.MERGE,
-			CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToOne(/* fetch = FetchType.EAGER, */cascade = { CascadeType.ALL })
 	@JoinColumn(name = "product_id")
 	private Product product;
 

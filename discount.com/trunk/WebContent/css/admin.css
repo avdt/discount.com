@@ -1,7 +1,8 @@
 .category-remove-icon {
-	position: relative;
-	bottom: 0;
+  	bottom: 0;
+    float: right;
     left: 216px;
+    position: inherit;
 }
 
 form {

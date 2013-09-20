@@ -21,8 +21,15 @@
 		        <ul class="thumbnails">
 		        	<c:forEach items="${productsByCategory}" var="product">
 							
+							<c:set var="settings">
+								<c:forEach items="${product.settings}" var="setting">
+									    <c:out value="${setting.propertyName}"></c:out>
+									    <c:out value="${setting.propertyValue}"></c:out>
+								</c:forEach>
+							</c:set>
+							
 					    <li class="span3">
-						    <div class="thumbnail">
+						    <div id="product-${product.id}" class="thumbnail product-small" data-content="${settings}" data-placement="right" data-toggle="popover" data-original-title="Popover on right">
 							    <a href="get/${product.id}">
 								    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
 								    <h4>${product.name}</h4>
@@ -30,12 +37,14 @@
 							    <p>${product.category.name}</p>
 							    <p>${product.price}</p>
 							    
-							    <c:forEach items="${product.settings}" var="setting">
-								    <dl class="dl-horizontal">
-									    <dt class="setting-name">${setting.propertyName}</dt>
-									    <dd class="setting-value">${setting.propertyValue}</dd>
-								    </dl>
-								</c:forEach>
+							    <div class="popup-metadata" style="display: none;">
+								    <c:forEach items="${product.settings}" var="setting">
+									    <dl class="dl-horizontal">
+										    <dt class="setting-name">${setting.propertyName}</dt>
+										    <dd class="setting-value">${setting.propertyValue}</dd>
+									    </dl>
+									</c:forEach>
+								</div>
 						    </div>
 					    </li>
 				    

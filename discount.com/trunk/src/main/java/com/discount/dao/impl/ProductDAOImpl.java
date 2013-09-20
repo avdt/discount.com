@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.discount.dao.ProductDAO;
 import com.discount.dao.ProductSettingsDAO;
 import com.discount.domain.Product;
-import com.discount.domain.ProductSettings;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -31,13 +30,13 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public void update(Product product) {
 		// cause of Hibernate bug
-//		List<ProductSettings> settings = product.getSettings();
-//		for (ProductSettings productSettings : settings) {
-//			productSettingsDAO.delete(productSettings);
-//			sessionFactory.getCurrentSession().flush();
-//		}
+		// List<ProductSettings> settings = product.getSettings();
+		// for (ProductSettings productSettings : settings) {
+		// productSettingsDAO.delete(productSettings);
+		// sessionFactory.getCurrentSession().flush();
+		// }
 
-		sessionFactory.getCurrentSession().merge(product);
+		sessionFactory.getCurrentSession().update(product);
 		sessionFactory.getCurrentSession().flush();
 	}
 

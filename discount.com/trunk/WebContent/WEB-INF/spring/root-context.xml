@@ -30,6 +30,5 @@
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" />
 	
-	
 	<import resource="classpath:springmvc-resteasy.xml" />
 </beans>

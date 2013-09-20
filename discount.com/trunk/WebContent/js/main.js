@@ -29,4 +29,25 @@ $(document).ready(function() {
 	});
 
 
+	$('#pop').popover();
+	
+
+	$('.product-small').popover();
+	
+	// tooltip for small products
+	  $('.product-small').qtip({
+		  content: {
+		        text: function(event, api) {
+		            // Retrieve content from custom attribute of the $('.selector') elements.
+		        	var text = $(this).find(".popup-metadata");
+		            return text;
+		        }
+		    },
+		    style: {
+		        tip: {
+		            corner: 'left center'
+		        }
+		    }
+	         });
+	
 });

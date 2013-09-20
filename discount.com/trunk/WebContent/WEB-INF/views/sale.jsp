@@ -43,8 +43,17 @@
 					    </li>
 				    
 				    </c:forEach>
+				    
 			    </ul>
 	    	</div>
 		</div>	 
+		
+		<div>
+			<a id="test-tooltip">Test link</a>
+			<div id="h2-text">
+				<h2>Test popup text</h2>
+			</div>
+		</div>
+		
 	</jsp:body>
 </layout:page>

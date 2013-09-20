@@ -42,8 +42,8 @@ public class ProductCategory {
 	@Column(name = "image", nullable = true)
 	private String image;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+	@LazyCollection(LazyCollectionOption.TRUE)
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE,
 			CascadeType.PERSIST }, mappedBy = "category")
 	private List<Product> products;
 

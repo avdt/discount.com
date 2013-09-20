@@ -25,13 +25,29 @@ public class ProductRestService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("all")
 	public List<Product> getAll() {
-		return productService.findAll();
+		List<Product> products = productService.findAll();
+
+		// FIXME: fix hibernate fetching
+		for (Product product : products) {
+			product.setCategory(null);
+			product.setSettings(null);
+		}
+
+		return products;
 	}
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("get/{id}")
 	public Product get(@PathParam("id") Integer id) {
-		return productService.findById(id);
+
+		Product product = productService.findById(id);
+
+		// FIXME: fix hibernate fetching
+		if (product != null) {
+			product.setCategory(null);
+			product.setSettings(null);
+		}
+		return product;
 	}
 }

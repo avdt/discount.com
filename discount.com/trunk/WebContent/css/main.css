@@ -1,12 +1,21 @@
-.container{
+.container {
 	width: 1250px;
-    min-width: 999px;
+	min-width: 999px;
 }
-.setting-name {text-align: left;}
 
-#right-area {left: 45%;position: absolute;top: 25%;}
+.setting-name {
+	text-align: left;
+}
 
-.home-page-banner{}
+#right-area {
+	left: 45%;
+	position: absolute;
+	top: 25%;
+}
+
+.home-page-banner {
+	
+}
 
 .image_carousel {
 	padding: 15px 0 15px 40px;
@@ -14,70 +23,104 @@
 }
 
 }
-a.prev, a.next {
+a.prev,a.next {
 	width: 45px;
 	height: 50px;
 	display: block;
 	position: absolute;
 	top: 85px;
 }
-a.prev {			left: -22px;
-					background-position: 0 0; }
-a.prev:hover {		background-position: 0 -50px; }
-a.prev.disabled {	background-position: 0 -100px !important;  }
-a.next {			right: -22px;
-					background-position: -50px 0; }
-a.next:hover {		background-position: -50px -50px; }
-a.next.disabled {	background-position: -50px -100px !important;  }
-a.prev.disabled, a.next.disabled {
+
+a.prev {
+	left: -22px;
+	background-position: 0 0;
+}
+
+a.prev:hover {
+	background-position: 0 -50px;
+}
+
+a.prev.disabled {
+	background-position: 0 -100px !important;
+}
+
+a.next {
+	right: -22px;
+	background-position: -50px 0;
+}
+
+a.next:hover {
+	background-position: -50px -50px;
+}
+
+a.next.disabled {
+	background-position: -50px -100px !important;
+}
+
+a.prev.disabled,a.next.disabled {
 	cursor: default;
 }
 
-a.prev span, a.next span {
+a.prev span,a.next span {
 	display: none;
 }
+
 .pagination {
 	text-align: center;
 }
+
 .pagination a {
 	width: 15px;
 	height: 15px;
 	margin: 0 5px 0 0;
 	display: inline-block;
 }
+
 .pagination a.selected {
 	background-position: -25px -300px;
 	cursor: default;
 }
+
 .pagination a span {
 	display: none;
 }
+
 .clearfix {
 	float: none;
 	clear: both;
 }
-#categories-carousel{    
+
+#categories-carousel {
 	width: 1250px;
 }
-.caroufredsel_wrapper{
-    margin: 0px 30px 0px 30px;
+
+.caroufredsel_wrapper {
+	margin: 0px 30px 0px 30px;
 }
 
-.carousel-inner > .item {
+.carousel-inner>.item {
 	margin-left: auto;
-    margin-right: auto;    
-    width: 45em;
+	margin-right: auto;
+	width: 45em;
 }
 
-.carousel-inner > .active.left {
-  left: -80%;
+.carousel-inner>.active.left {
+	left: -80%;
 }
 
-#products .product-img{
-    height: 370px;
-}
+/* #products .product-img {
+	height: 370px;
+} */
 
 .modal-body {
-    height: auto;    
-    max-height: 4000px;
+	height: auto;
+	max-height: 4000px;
+}
+
+.product-small {
+	height: 360px;
+}
+
+.product-img {
+	height: 250px;
 }
