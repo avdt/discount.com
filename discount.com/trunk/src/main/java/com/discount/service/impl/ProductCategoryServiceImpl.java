@@ -70,8 +70,13 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	}
 
 	@Override
-	public ProductCategory findByName(String name) {
-		return this.categoryDAO.findByName(name);
+	public List<ProductCategory> findRootCategories() {
+		return this.categoryDAO.findRootCategories();
+	}
+
+	@Override
+	public List<ProductCategory> findChildCategories() {
+		return this.categoryDAO.findChildCategories();
 	}
 
 }

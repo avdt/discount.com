@@ -21,7 +21,7 @@ import com.discount.service.ProductService;
 
 @Controller
 @RequestMapping(UrlConstants.ADMIN)
-public class AdminController {
+public class AdminController extends BaseController{
 
 	@Autowired
 	private ProductCategoryService categoryService;
@@ -34,6 +34,7 @@ public class AdminController {
 
 	@RequestMapping(UrlConstants.ADMIN)
 	public String getTools(Map<String, Object> map) {
+		putRootCategories(map);
 		map.put("category", new ProductCategory());
 		map.put("user", new User());
 		map.put("product", new Product());
@@ -49,6 +50,8 @@ public class AdminController {
 	public String newCategory(
 			@PathVariable("parentCategoryId") Integer parentCategoryId,
 			Map<String, Object> map) throws IllegalStateException, IOException {
+		putRootCategories(map);
+
 		ProductCategory category = categoryService.findById(parentCategoryId);
 
 		map.put("parentCategory", category);
@@ -83,6 +86,8 @@ public class AdminController {
 	@RequestMapping(UrlConstants.EDIT_CATEGORY)
 	public String editCategory(@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) {
+		putRootCategories(map);
+
 		ProductCategory category = categoryService.findById(categoryId);
 		map.put("category", category);
 
@@ -102,6 +107,8 @@ public class AdminController {
 	@RequestMapping(value = UrlConstants.NEW_PRODUCT, method = RequestMethod.GET)
 	public String newProduct(@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) throws IllegalStateException, IOException {
+		putRootCategories(map);
+
 		ProductCategory category = categoryService.findById(categoryId);
 
 		map.put("selectedCategory", category);

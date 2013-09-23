@@ -13,7 +13,7 @@ import com.discount.service.ProductService;
 
 @Controller
 @RequestMapping(UrlConstants.SALE)
-public class SaleController {
+public class SaleController extends BaseController {
 
 	@Autowired
 	private ProductCategoryService categoryService;
@@ -23,6 +23,8 @@ public class SaleController {
 
 	@RequestMapping(UrlConstants.SALE)
 	public String getInfoAboutUs(Map<String, Object> map) {
+		putRootCategories(map);
+
 		map.put("categories", categoryService.findAll());
 
 		List<Product> saleProducts = productService.findSale();

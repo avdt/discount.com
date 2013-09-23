@@ -12,4 +12,5 @@ public interface GenericDAO<T> {
 	T findById(Integer id);
 
 	List<T> findAll();
+
 }

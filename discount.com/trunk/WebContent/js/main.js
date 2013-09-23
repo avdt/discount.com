@@ -10,7 +10,6 @@ $(document).ready(function() {
 	});
 	
 	$("#categories-carousel").carouFredSel({
-		circular: false,
 		infinite: false,
 		auto 	: false,
 		width	: 960,
@@ -38,16 +37,63 @@ $(document).ready(function() {
 	  $('.product-small').qtip({
 		  content: {
 		        text: function(event, api) {
-		            // Retrieve content from custom attribute of the $('.selector') elements.
-		        	var text = $(this).find(".popup-metadata");
+		        	var text = new Object();
+		        	text = "<div class='product-info'><div id='settings'>";
+		        	var $id = $(this).attr("id");
+		        	text = buildTooltipText($id, text);
+		        	
 		            return text;
 		        }
 		    },
 		    style: {
 		        tip: {
 		            corner: 'left center'
+		        },
+		        classes: 'qtip-green qtip-shadow qtip-rounded'
+		    },
+		    position: {
+		        my: 'center left',
+		        at: 'center right',
+		        adjust: {
+//		            x: 200
 		        }
-		    }
-	         });
+		    },
+		    hide: {
+		        fixed: true, // Let the user mouse into the tip
+		        delay: 500 // Don't hide right away so that they can mouse into it
+		     },
+		     show: {
+		         delay: 500
+		     }
+         });
 	
+	  var buildTooltipText = function(id, text) {
+		  $.ajax({
+    	      url:"/discount/rest/product/get/" + id,
+    	      async: false,  
+    	      success:function(data) {
+    	         var settings = data.settings;
+    	         var settingsNames = "<div class='settings-names-area'>";
+    	         var settingsValues="<div class='setting-values-area'>";
+    	         for (i in settings) {
+    	        	 settingsNames+="<div class='settings-row'><span class='setting-name'>";
+    	        	 settingsNames+=settings[i].propertyName;
+    	        	 settingsNames+="</span></div>";
+    	        	 settingsValues+="<div class='settings-row'><span class='setting-value'>";
+    	        	 settingsValues+=settings[i].propertyValue;
+    	        	 settingsValues+="</span></div>";
+    	         }
+    	         settingsNames+="</div>";
+    	         settingsValues+="</div>";
+    	         
+    	         text+=settingsNames;
+    	         text+=settingsValues;
+    	         text+="<hr/><div class='buy'><button class='btn btn-large btn-primary' type='button'><spring:message code='buy'/></button></div></div>";
+    	      },
+    	      error:function(){
+    	    	  alert("error");
+    	      }
+    	   });
+		  return text;
+	  };
 });

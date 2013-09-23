@@ -19,8 +19,9 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-responsive.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/jquery.qtip.min.css" />" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/header.css" />" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.js" /> "></script>

@@ -124,3 +124,20 @@ a.prev span,a.next span {
 .product-img {
 	height: 250px;
 }
+
+.category-img {
+    height: 250px;
+}
+
+.product-info{height: auto;padding: 10px;width: 300px;}
+	.product-info #settings {width: auto;}
+		.product-info #settings .setting-values-area {margin: 10px;} 
+		.product-info #settings .setting-values-area { position: relative;bottom: 100%;left: 80px;width: 65%;}
+		.product-info #settings .settings-row .setting-name{}
+		.product-info #settings .settings-row .setting-value{}
+	.product-info .buy{float: center;}
+	
+.span3{}
+
+.content {bottom: 45px;position: relative;}
+.breadcrumb{background-color: white;}

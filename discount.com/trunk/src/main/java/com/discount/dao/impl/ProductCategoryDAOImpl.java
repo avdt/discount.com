@@ -50,16 +50,26 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 				.createQuery("from ProductCategory").list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public ProductCategory findByName(String name) {
-		// List<ProductCategory> list = getHibernateTemplate().find(
-		// "from ProductCategory where name=?", name);
-		// return list.get(0);
+	public List<ProductCategory> findRootCategories() {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from ProductCategory c where c.root = " + " :root")
+				.setBoolean("root", true).list();
+	}
 
-		// TODO: body
-
-		return null;
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<ProductCategory> findChildCategories() {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from ProductCategory c where c.root = " + " :root")
+				.setBoolean("root", false).list();
 	}
 
 }

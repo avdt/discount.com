@@ -13,15 +13,17 @@ import com.discount.service.ProductCategoryService;
 
 @Controller
 @RequestMapping(UrlConstants.INDEX)
-public class HomeController {
+public class HomeController extends BaseController {
 
 	@Autowired
 	private ProductCategoryService categoryService;
 
 	@RequestMapping(value = UrlConstants.INDEX, method = RequestMethod.GET)
 	public String home(Map<String, Object> map) {
+		putRootCategories(map);
 
-		List<ProductCategory> categories = categoryService.findAll();
+		List<ProductCategory> categories = categoryService
+				.findChildCategories();
 		map.put("categories", categories);
 		return "index";
 	}

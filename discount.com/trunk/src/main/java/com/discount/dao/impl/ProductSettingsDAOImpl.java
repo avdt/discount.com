@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.ProductSettingsDAO;
 import com.discount.domain.ProductSettings;
@@ -17,21 +18,25 @@ public class ProductSettingsDAOImpl implements ProductSettingsDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public void save(ProductSettings object) {
 		sessionFactory.getCurrentSession().save(object);
 	}
 
 	@Override
+	@Transactional
 	public void update(ProductSettings object) {
 		sessionFactory.getCurrentSession().update(object);
 	}
 
 	@Override
+	@Transactional
 	public void delete(ProductSettings object) {
 		sessionFactory.getCurrentSession().delete(object);
 	}
 
 	@Override
+	@Transactional
 	public ProductSettings findById(Integer id) {
 		return (ProductSettings) sessionFactory.getCurrentSession().get(
 				ProductSettings.class, id);
@@ -39,6 +44,7 @@ public class ProductSettingsDAOImpl implements ProductSettingsDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<ProductSettings> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Client")
 				.list();
@@ -46,6 +52,7 @@ public class ProductSettingsDAOImpl implements ProductSettingsDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<ProductSettings> findByProductId(Integer productId) {
 
 		List<ProductSettings> list = sessionFactory.getCurrentSession()
@@ -56,6 +63,7 @@ public class ProductSettingsDAOImpl implements ProductSettingsDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public ProductSettings findByPropertyName(String propertyName) {
 		List<ProductSettings> list = sessionFactory.getCurrentSession()
 				.createCriteria(ProductSettings.class)

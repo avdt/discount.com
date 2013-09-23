@@ -48,10 +48,41 @@
 	    	</div>
 		</div>	 
 		
-		<div>
-			<a id="test-tooltip">Test link</a>
-			<div id="h2-text">
-				<h2>Test popup text</h2>
+		<div class="product-info">
+			<div id="settings">
+				<div class="settings-names-area">
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					
+			    </div>
+			    <div class="setting-values-area">
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+			    </div>
+			</div>
+			<hr/>
+			<div class="buy">
+				<button class="btn btn-large btn-primary" type="button"><spring:message code="buy"/></button>
 			</div>
 		</div>
 		

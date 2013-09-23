@@ -17,6 +17,7 @@ public class UserRoleDAOImpl implements UserRoleDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public void save(UserRole object) {
 		sessionFactory.getCurrentSession().save(object);
 	}

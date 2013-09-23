@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.discount.domain.Product;
+import com.discount.domain.ProductSettings;
 import com.discount.service.ProductService;
 
 @Controller
@@ -29,8 +30,7 @@ public class ProductRestService {
 
 		// FIXME: fix hibernate fetching
 		for (Product product : products) {
-			product.setCategory(null);
-			product.setSettings(null);
+			convert(product);
 		}
 
 		return products;
@@ -45,9 +45,26 @@ public class ProductRestService {
 
 		// FIXME: fix hibernate fetching
 		if (product != null) {
-			product.setCategory(null);
-			product.setSettings(null);
+			convert(product);
 		}
 		return product;
+	}
+
+	/**
+	 * Removes bidirectional links between objects.
+	 * 
+	 * @param product
+	 */
+	private void convert(Product product) {
+		List<ProductSettings> settings = product.getSettings();
+
+		for (ProductSettings productSettings : settings) {
+			productSettings.setProduct(null);
+		}
+
+		product.getCategory().setProducts(null);
+		product.getCategory().setParentCategory(null);
+		product.getCategory().setChildCategories(null);
+		product.getCategory().setSettings(null);
 	}
 }

@@ -12,6 +12,14 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
+		<div>
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}/index"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="../${product.category.parentCategory.id}">${product.category.parentCategory.name}</a> <span class="divider">/</span></li>
+			    <li><a href="../${product.category.id}">${product.category.name}</a> <span class="divider">/</span></li>
+			    <li class="active">${product.name}</li>
+		    </ul>
+		</div>
 		<div id="product">
 		    <div class="left-area">
 		    <a  href="#full-iamge-modal" role="button" data-toggle="modal">
@@ -54,16 +62,45 @@
 	    
 	    <!-- COMMENTS -->
 	    
-	    <hr/>
-	    <div class="comments">
+	    <div id="comments">
+    		<hr/>
 	    	Comments will be here
 	    </div>
 	    
 	    <!-- SIMILAR PRODUCTS -->
 	    
-	    <hr/>
 	    <div id="similar-products">
-	    
+		    <hr/>
+	    	<div id="similar-product-title">
+	    		<span><spring:message code="product.similarProductsTitle"/></span>
+	    	</div>
+		    <div class="image_carousel">
+				<div id="categories-carousel">
+					<c:forEach items="${productsByCategory}" var="product">
+						    <div id="${product.id}" class="span3 thumbnail product-small">
+							    <a href="${product.id}">
+								    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
+								    <h4>${product.name}</h4>
+							    </a>
+							    <p>${product.category.name}</p>
+							    <p>${product.price}</p>
+							    
+							    <div class="popup-metadata" style="display: none;">
+								    <c:forEach items="${product.settings}" var="setting">
+									    <dl class="dl-horizontal">
+										    <dt class="setting-name">${setting.propertyName}</dt>
+										    <dd class="setting-value">${setting.propertyValue}</dd>
+									    </dl>
+									</c:forEach>
+								</div>
+						    </div>
+					</c:forEach>
+				</div>
+				<div class="clearfix"></div>
+				<a class="carousel-control left" id="categories-carousel_prev" href="#" data-slide="prev">&lsaquo;</a>
+		    	<a class="carousel-control right" id="categories-carousel_next" href="#" data-slide="next">&rsaquo;</a>
+				<div class="pagination" id="categories-carousel_pag"></div>
+			</div>
 	    </div>
 	</jsp:body>
 </layout:page>

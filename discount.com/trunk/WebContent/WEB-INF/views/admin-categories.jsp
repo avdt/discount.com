@@ -44,8 +44,8 @@
 							<div class="thumbnails">
 							<c:forEach items="${categories}" var="category">
 									<div class="span3 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
-										<a class="category-remove-icon" href="admin/category/edit/${category.id}"><i class="icon-pencil" ></i></a>
 						    			<a class="category-remove-icon" href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
+										<a class="category-remove-icon" href="admin/category/edit/${category.id}"><i class="icon-pencil" ></i></a>
 										<a href="#">
 											<img alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:1234/${category.image}">
 											<h2>${category.name}</h2>

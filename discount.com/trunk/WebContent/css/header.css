@@ -1,0 +1,7 @@
+.masthead #head-top {}
+	.masthead #head-top #title {width: 75px;}
+	.masthead #head-top #search {bottom: 40px;left: 25%;position: relative;text-align: center;width: 50%;}
+    	.masthead #head-top #search .form-search {}
+    		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
+
+.masthead .navbar {bottom: 40px;position: relative;}

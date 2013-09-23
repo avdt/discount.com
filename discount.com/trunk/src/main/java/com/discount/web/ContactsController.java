@@ -12,13 +12,15 @@ import com.discount.service.ProductCategoryService;
 
 @Controller
 @RequestMapping(UrlConstants.CONTACTS)
-public class ContactsController {
+public class ContactsController extends BaseController {
 
 	@Autowired
 	private ProductCategoryService categoryService;
 
 	@RequestMapping(UrlConstants.CONTACTS)
 	public String getContacts(Map<String, Object> map) {
+		putRootCategories(map);
+
 		List<ProductCategory> categories = categoryService.findAll();
 		map.put("categories", categories);
 
