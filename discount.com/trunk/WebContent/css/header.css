@@ -4,4 +4,6 @@
     	.masthead #head-top #search .form-search {}
     		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
 
+.masthead #head-top #cart{bottom: 90px;float: right;position: relative;text-align: right;width: 20%;}
+
 .masthead .navbar {bottom: 40px;position: relative;}

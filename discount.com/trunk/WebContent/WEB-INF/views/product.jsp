@@ -37,6 +37,11 @@
 		    	<div id="product-name">
 		    		<h2>${product.name}</h2>
 		    	</div>
+		    	<div id="producer-info">
+		    	<a href="../producer/${product.producer.id}">
+		    		<span>${product.producer.name}</span>
+	    		</a>
+		    	</div>
 		    	<div id="product-price">
 		    		<h2>${product.price}</h2>
 		    	</div>

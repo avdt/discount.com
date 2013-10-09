@@ -90,4 +90,16 @@ public class ProductDAOImpl implements ProductDAO {
 				.setBoolean("sale", true).list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Product> findByProducerId(Integer producerId) {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from Product p where p.producer.id = "
+								+ " :producerId")
+				.setInteger("producerId", producerId).list();
+	}
+
 }

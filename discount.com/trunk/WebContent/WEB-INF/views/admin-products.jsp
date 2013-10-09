@@ -15,14 +15,14 @@
     
 		<div class="tab-pane fade in active" id="create_product">
 		
-	    	<form:form>
+	    	<form:form class="select-category-form">
 			    <div class="dropdown">
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				    	<spring:message code="admin.tab.category.select"/>
 			    		<b class="caret"></b>
 			    	</a>
 				    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				    	<c:forEach items="${categories}" var="category">
+				    	<c:forEach items="${childCategories}" var="category">
 						    <li role="presentation">
 								<a href="${pageContext.request.contextPath}/admin/new-product/${category.id}" tabindex="-1" role="menuitem">${category.name}</a>
 							</li>
@@ -40,7 +40,7 @@
 		        	<c:forEach items="${products}" var="product">
 							
 					    <li class="span3">
-						    <div class="thumbnail product-small">
+						    <div id="${product.id}" class="thumbnail product-small">
 						    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
 						    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
 							    <a href="products/get/${product.id}">

@@ -63,9 +63,57 @@
 					<div class="row">
 					    <span class="setting-name">Розмір</span>
 				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
+					<div class="row">
+					    <span class="setting-name">Розмір</span>
+				    </div>
 					
 			    </div>
 			    <div class="setting-values-area">
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
+				    <div class="row">
+					    <span class="setting-value">30х40х15</span>
+				    </div>
 				    <div class="row">
 					    <span class="setting-value">30х40х15</span>
 				    </div>

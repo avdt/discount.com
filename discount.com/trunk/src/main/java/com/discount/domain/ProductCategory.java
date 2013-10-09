@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -61,6 +62,11 @@ public class ProductCategory {
 
 	@Column(name = "root", nullable = false)
 	private boolean root;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(mappedBy = "categories", cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
+	private List<Producer> producers;
 
 	public Integer getId() {
 		return id;
@@ -146,6 +152,14 @@ public class ProductCategory {
 
 	public void setRoot(boolean root) {
 		this.root = root;
+	}
+
+	public List<Producer> getProducers() {
+		return producers;
+	}
+
+	public void setProducers(List<Producer> producers) {
+		this.producers = producers;
 	}
 
 }

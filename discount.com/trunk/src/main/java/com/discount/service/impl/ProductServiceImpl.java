@@ -84,4 +84,9 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	@Override
+	public List<Product> findByProducerId(Integer producerId) {
+		return this.productDAO.findByProducerId(producerId);
+	}
+
 }

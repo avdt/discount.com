@@ -9,7 +9,7 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
-		<div>
+		<div id="breadcrumb">
 		    <ul class="breadcrumb">
 			    <li><a href="${pageContext.request.contextPath}/index"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
 			    <c:if test="${category.parentCategory!=null}">
@@ -21,18 +21,27 @@
 	    <div id="category-title">
 	    	<div>
 	    		<h3>${category.name}</h3>
-	    		<hr>
 	    	</div>
 	    </div>
-	    <div>
+	    <div id="category-content">
 	    	<c:choose>
+	    	
+	    	
 		    	<c:when test="${!category.childCategories.isEmpty()}">
-				    <div id="child-categories">
-				    	<ul class="thumbnails">
+			    	
+			    	<!-- CATEGORIES -->
+			    	
+					    <div id="child-categories" class="tab-pane fade in active">
+					    	<div>
+					    		<span>
+					    			<spring:message code="general.categories" />
+				    			</span>
+				    		</div>
+					    	<ul class="thumbnails">
 					        	<c:forEach items="${category.childCategories}" var="category">
 										
 								    <li class="span3">
-									    <div id="${category.id}" class="thumbnail product-small">
+									    <div id="${category.id}" class="thumbnail category-small">
 										    <a href="${category.id}">
 											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${category.image}">
 											    <h4>${category.name}</h4>
@@ -42,8 +51,36 @@
 							    
 							    </c:forEach>
 						    </ul>
-				    </div>
+					    </div>
+					    
+					    <hr/>
+					    
+					    <!-- PRODUCERS -->
+					    
+					    <div id="producers">
+					    	<div>
+					    		<span>
+					    			<spring:message code="general.producers" />
+				    			</span>
+					    	</div>
+					    	<ul class="thumbnails">
+					        	<c:forEach items="${category.producers}" var="producer">
+										
+								    <li class="span3">
+									    <div id="${producer.id}" class="thumbnail category-small">
+										    <a href="producer/${producer.id}">
+											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
+											    <h4>${producer.name}</h4>
+										    </a>
+									    </div>
+								    </li>
+							    
+							    </c:forEach>
+						    </ul>
+					    </div>
 		    	</c:when>
+		    	
+		    	
 		    	<c:otherwise>
 			    	<div id="products">
 					    <div class="row-fluid">

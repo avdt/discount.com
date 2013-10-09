@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.discount.domain.Product;
+import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
 
@@ -19,6 +20,8 @@ public class ProductController extends BaseController {
 	private ProductService productService;
 	@Autowired
 	private ProductCategoryService categoryService;
+	@Autowired
+	private ProducerService producerService;
 
 	@RequestMapping(UrlConstants.PRODUCTS)
 	public String getProducts(Map<String, Object> map) {
@@ -39,6 +42,18 @@ public class ProductController extends BaseController {
 				productService.findByCategoryId(categoryId));
 
 		return "products-by-category";
+	}
+
+	@RequestMapping(UrlConstants.GET_PRODUCT_BY_PRODUCER)
+	public String getProductsByProducerId(
+			@PathVariable("producerId") Integer producerId,
+			Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("productsByProducer",
+				productService.findByProducerId(producerId));
+		map.put("producer", producerService.findById(producerId));
+		return "products-by-producer";
 	}
 
 	@RequestMapping(UrlConstants.GET_PRODUCT)

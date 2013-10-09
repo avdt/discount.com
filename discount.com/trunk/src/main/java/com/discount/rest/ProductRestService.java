@@ -66,5 +66,7 @@ public class ProductRestService {
 		product.getCategory().setParentCategory(null);
 		product.getCategory().setChildCategories(null);
 		product.getCategory().setSettings(null);
+
+		product.getProducer().setProducts(null);
 	}
 }

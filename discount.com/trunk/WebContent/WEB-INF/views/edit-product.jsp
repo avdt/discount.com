@@ -22,7 +22,7 @@
 					</div>
 			     	<div>
 						<form:input style="display:none;" path="id" type="text" value="${product.id}"/>
-						<form:input path="image" type="text" value="${product.image}"/>
+						<img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
 						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
 					<div>

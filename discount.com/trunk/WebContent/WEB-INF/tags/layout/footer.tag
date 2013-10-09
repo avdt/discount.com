@@ -1,4 +1,4 @@
 <%@ tag pageEncoding="UTF-8"%>
 <div class="footer">
-	<p>© Company 2013</p>
+	<p>© Alfero 2013</p>
 </div>

@@ -1,10 +1,12 @@
-.category-remove-icon {
-  	bottom: 0;
-    float: right;
-    left: 216px;
-    position: inherit;
-}
+.category-remove-icon {bottom: 0;float: right;left: 216px;position: inherit;}
 
-form {
-    /* margin: 0 0 200px; */
-}
+.select-category-form {margin: 0 0 200px;}
+
+#producers{}
+	#producers #create_producer {}
+		#producers #create_producer .categories {left: 35%;position: relative;width: 25%}
+			#producers #create_producer .categories .category {}
+				#producers #create_producer .categories .category .category-checkbox {bottom: 3px;margin-right: 5px;position: relative;}
+				
+		#producers #create_producer #proerties {position: absolute;top: 60px;}
+		#producers #create_producer #create-producer-btn {}

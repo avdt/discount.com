@@ -7,8 +7,6 @@
 <%@ page import="com.discount.domain.FieldTypes" %>
 <layout:page title="Admin Tools">
 	<jsp:attribute name="extraHeader">
-		<script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
-		<link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
 	
@@ -21,6 +19,7 @@
 			    <li class="active"><a href="#users" data-toggle="tab"><spring:message code="admin.tab.users" /></a></li>
 			    <li><a href="#categories" data-toggle="tab"><spring:message code="admin.tab.categories" /></a></li>
 			    <li><a href="#products" data-toggle="tab"><spring:message code="admin.tab.products" /></a></li>
+			    <li><a href="#producers" data-toggle="tab"><spring:message code="admin.tab.producer" /></a></li>
 	   		</ul>
 	   		
 	   		<div class="tab-content">
@@ -34,6 +33,8 @@
 				<!-- PRODUCTS -->
 				<jsp:include page="admin-products.jsp"/> 
 				
+				<!-- PRODUCERS -->
+				<jsp:include page="admin-producers.jsp"/> 
 			 </div>
 		</div>
 	</jsp:body>

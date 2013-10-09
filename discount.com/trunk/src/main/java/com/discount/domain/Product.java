@@ -39,6 +39,11 @@ public class Product {
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory category;
 
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH }, targetEntity = Producer.class)
+	@JoinColumn(name = "producer_id")
+	private Producer producer;
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(/* fetch = FetchType.EAGER, */cascade = { CascadeType.ALL }, mappedBy = "product")
 	private List<ProductSettings> settings;
@@ -175,6 +180,14 @@ public class Product {
 
 	public void setSale(boolean sale) {
 		this.sale = sale;
+	}
+
+	public Producer getProducer() {
+		return producer;
+	}
+
+	public void setProducer(Producer producer) {
+		this.producer = producer;
 	}
 
 }

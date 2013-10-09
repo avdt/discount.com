@@ -24,6 +24,13 @@ public class UrlConstants {
 	public final static String EDIT_CATEGORY = "/category/edit/{categoryId}";
 	public final static String UPDATE_CATEGORY = "/category/edit/{categoryId}/update";
 
+	public final static String PRODUCERS = "/producers";
+	public final static String NEW_PRODUCER = "/new-producer/{categoryId}";
+	public final static String ADD_PRODUCER = "/new-producer/add";
+	public final static String DELETE_PRODUCER = "/producer/delete/{producerId}";
+	public final static String EDIT_PRODUCER = "/producer/edit/{categoryId}";
+	public final static String UPDATE_PRODUCER = "/producer/edit/{categoryId}/update";
+
 	public final static String PRODUCTS = "/products";
 	public final static String NEW_PRODUCT = "/new-product/{categoryId}";
 	public final static String ADD_PRODUCT = "/new-product/{categoryId}/add";
@@ -32,7 +39,9 @@ public class UrlConstants {
 	public final static String EDIT_PRODUCT = "/product/edit/{productId}";
 	public final static String GET_PRODUCT = "/get/{productId}";
 	public final static String GET_PRODUCT_BY_CATEGORY = "/{categoryId}";
+	public final static String GET_PRODUCT_BY_PRODUCER = "/producer/{producerId}";
 
 	public final static String SALE = "/sale";
 
+	public final static String SEARCH = "/search";
 }

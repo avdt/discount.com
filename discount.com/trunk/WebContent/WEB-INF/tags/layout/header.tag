@@ -1,26 +1,44 @@
 <%@ tag pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="masthead">
+
+	<!-- TOP OF HEADER -->
+
 	<div id="head-top">
+	
 		<div id="title">
 			<a href="${pageContext.request.contextPath}/index">
 				<h3 class="muted">Alfero</h3>
 			</a>
 		</div>
+		
+		<!-- SEARCH -->
+		
 		<div id="search">
-		    <form class="form-search">
-			    <input id="search-input" type="text" class="input-large" placeholder="<spring:message code="general.search" />">
+		    <form:form class="form-search" method="get" action="${pageContext.request.contextPath}/search" commandName="searchResults">
+				<spring:message code="general.search" var="search"/>
+			    <form:input id="search-input" path="keyword" type="text" class="input-large" placeholder="${search}" ></form:input>
 			    <button type="submit" class="btn"><i class="icon-search"></i></button>
-		    </form>
+		    </form:form>
 	    </div>
+	    
+	    <!-- CART -->
+	    
+	    <div id="cart">
+	    	<a href="#" class="btn"><i class="icon-shopping-cart"></i><spring:message code="header.cart" /></a>
+	    </div>
+	    
 	</div>
+	
+	<!-- NAVIGATION -->
+	
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
 					<li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a></li>
-					<c:set var="rootCategoryList" value="${rootCategories}" scope="session" />
 					<!-- ROOT CATEGORIES -->
 					<c:forEach items="${rootCategoryList}" var="category">
 						<li class="dropdown">

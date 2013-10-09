@@ -3,6 +3,7 @@ package com.discount.dao.impl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,10 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 	@Override
 	@Transactional
 	public void save(ProductCategory object) {
-		sessionFactory.getCurrentSession().save(object);
+		Session currentSession = sessionFactory.getCurrentSession();
+		// currentSession.flush();
+		currentSession.save(object);
+		currentSession.flush();
 	}
 
 	@Override

@@ -15,7 +15,7 @@
 		
 		<!-- Create new category -->
 		
-			<form:form>
+			<form:form class="select-category-form">
 			    <div class="dropdown">
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				    	<spring:message code="admin.tab.category.select.parent"/>
@@ -25,7 +25,7 @@
 				    	<li role="presentation">
 								<a href="${pageContext.request.contextPath}/admin/new-category/-1" tabindex="-1" role="menuitem">None</a>
 						</li>
-				    	<c:forEach items="${categories}" var="category">
+				    	<c:forEach items="${rootCategoryList}" var="category">
 						    <li role="presentation">
 								<a href="${pageContext.request.contextPath}/admin/new-category/${category.id}" tabindex="-1" role="menuitem">${category.name}</a>
 							</li>
@@ -38,11 +38,11 @@
 		
 		<!-- All categories -->
 			<c:choose>
-				<c:when test="${!empty categories}">
+				<c:when test="${!empty allCategories}">
 					<div class="bs-docs-grid">
 						<div class="row-fluid show-grid">
 							<div class="thumbnails">
-							<c:forEach items="${categories}" var="category">
+							<c:forEach items="${allCategories}" var="category">
 									<div class="span3 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
 						    			<a class="category-remove-icon" href="admin/category/delete/${category.id}"><i class="icon-remove" ></i></a>
 										<a class="category-remove-icon" href="admin/category/edit/${category.id}"><i class="icon-pencil" ></i></a>
@@ -54,7 +54,6 @@
 							
 							</c:forEach>
 							</div>
-					
 						</div>
 					</div>
 				</c:when>
