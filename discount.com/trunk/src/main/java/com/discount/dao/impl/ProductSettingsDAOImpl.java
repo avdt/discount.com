@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.discount.dao.ProductSettingsDAO;
+import com.alfero.dao.ProductSettingsDAO;
 import com.discount.domain.ProductSettings;
 
 @Repository

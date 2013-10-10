@@ -28,8 +28,8 @@ public class UrlConstants {
 	public final static String NEW_PRODUCER = "/new-producer/{categoryId}";
 	public final static String ADD_PRODUCER = "/new-producer/add";
 	public final static String DELETE_PRODUCER = "/producer/delete/{producerId}";
-	public final static String EDIT_PRODUCER = "/producer/edit/{categoryId}";
-	public final static String UPDATE_PRODUCER = "/producer/edit/{categoryId}/update";
+	public final static String EDIT_PRODUCER = "/producer/edit/{producerId}";
+	public final static String UPDATE_PRODUCER = "/producer/edit/{producerId}/update";
 
 	public final static String PRODUCTS = "/products";
 	public final static String NEW_PRODUCT = "/new-product/{categoryId}";

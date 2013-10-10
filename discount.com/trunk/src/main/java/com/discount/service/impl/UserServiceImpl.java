@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.discount.dao.UserDAO;
+import com.alfero.dao.UserDAO;
 import com.discount.domain.User;
 import com.discount.service.UserService;
 

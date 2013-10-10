@@ -16,7 +16,8 @@
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
-					
+					<div style="display: none;">
+					</div>
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
@@ -26,6 +27,8 @@
 						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
 					<div>
+						<form:select path="category" items="${allCategories}" itemLabel="name" itemValue="id"/>
+						<form:select path="producer" items="${allProducers}" itemLabel="name" itemValue="id"/>
 						<form:textarea path="description"  placeholder="${description}"/>
 					</div>
 					<div>

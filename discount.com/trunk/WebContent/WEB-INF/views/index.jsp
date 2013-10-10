@@ -36,10 +36,10 @@
 	    <div class="image_carousel">
 			<div id="categories-carousel">
 				<c:forEach items="${categories}" var="category">
-					<div class="span3 thumbnail"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
+					<div class="span3 thumbnail category-small"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
 						<a href="${pageContext.request.contextPath}/products/${category.id}">
 							<img class="category-img" alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:1234/${category.image}">
-							<h2>${category.name}</h2>
+							<h4>${category.name}</h4>
 						</a>
 					</div>
 				</c:forEach>

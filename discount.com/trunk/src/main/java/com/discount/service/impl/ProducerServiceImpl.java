@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.discount.dao.ProducerDAO;
-import com.discount.dao.ProductCategoryDAO;
+import com.alfero.dao.ProducerDAO;
+import com.alfero.dao.ProductCategoryDAO;
 import com.discount.domain.Producer;
 import com.discount.domain.ProductCategory;
 import com.discount.service.FileUploadService;
@@ -28,29 +28,37 @@ public class ProducerServiceImpl implements ProducerService {
 
 	@Override
 	public void save(Producer producer) {
-		List<Integer> categoriesIds = producer.getCategoriesIds();
-		List<ProductCategory> categories = new ArrayList<ProductCategory>();
-
-		for (Integer categoryId : categoriesIds) {
-			ProductCategory category = categoryDAO.findById(categoryId);
-			category.getProducers().add(producer);
-			categories.add(category);
-		}
-		producer.setCategories(categories);
+		mapCategoryIdToCategory(producer);
 
 		uploadImage(producer);
 		producerDAO.save(producer);
 	}
 
-	@Override
-	public void update(Producer object) {
-		uploadImage(object);
-		producerDAO.update(object);
+	private void mapCategoryIdToCategory(Producer producer) {
+		List<Integer> categoriesIds = producer.getCategoriesIds();
+		List<ProductCategory> categories = new ArrayList<ProductCategory>();
+
+		if (categoriesIds != null) {
+			for (Integer categoryId : categoriesIds) {
+				ProductCategory category = categoryDAO.findById(categoryId);
+				category.getProducers().add(producer);
+				categories.add(category);
+			}
+		}
+		producer.setCategories(categories);
 	}
 
 	@Override
-	public void delete(Producer object) {
-		producerDAO.delete(object);
+	public void update(Producer producer) {
+		mapCategoryIdToCategory(producer);
+
+		uploadImage(producer);
+		producerDAO.update(producer);
+	}
+
+	@Override
+	public void delete(Producer producer) {
+		producerDAO.delete(producer);
 	}
 
 	@Override

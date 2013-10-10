@@ -10,3 +10,11 @@
 				
 		#producers #create_producer #proerties {position: absolute;top: 60px;}
 		#producers #create_producer #create-producer-btn {}
+
+#edit-product-container {}
+	#edit-product-container .categories {left: 35%;position: relative;top: 25px;width: 25%;}
+		#edit-product-container .categories .category {float: left;margin-right: 10px;}
+			#edit-product-container .categories .category .category-checkbox {bottom: 3px;margin-right: 5px;position: relative;}
+			
+	#edit-product-container #proerties {bottom: 210px;position: relative;width: 30%;}
+	#edit-product-container #create-producer-btn {bottom: 150px;position: relative;}

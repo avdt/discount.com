@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.discount.dao.ProductCategoryDAO;
+import com.alfero.dao.ProductCategoryDAO;
 import com.discount.domain.CategorySettings;
 import com.discount.domain.ProductCategory;
 import com.discount.service.FileUploadService;

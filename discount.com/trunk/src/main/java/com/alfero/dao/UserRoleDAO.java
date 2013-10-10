@@ -1,4 +1,4 @@
-package com.discount.dao;
+package com.alfero.dao;
 
 import com.discount.domain.UserRole;
 

@@ -56,7 +56,7 @@ public class AdminController extends BaseController {
 		map.put("products", productService.findAll());
 		map.put("producers", producerService.findAll());
 
-		return "admin";
+		return "admin/admin";
 	}
 
 	@RequestMapping(value = UrlConstants.NEW_CATEGORY, method = RequestMethod.GET)
@@ -70,7 +70,7 @@ public class AdminController extends BaseController {
 		map.put("parentCategory", category);
 		map.put("category", new ProductCategory());
 
-		return "new-category";
+		return "admin/add/new-category";
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_CATEGORY, method = RequestMethod.POST)
@@ -103,7 +103,7 @@ public class AdminController extends BaseController {
 		ProductCategory category = categoryService.findById(categoryId);
 		map.put("category", category);
 
-		return "edit-category";
+		return "admin/edit/edit-category";
 	}
 
 	@RequestMapping(value = UrlConstants.UPDATE_CATEGORY, method = RequestMethod.POST)
@@ -125,7 +125,7 @@ public class AdminController extends BaseController {
 		map.put("selectedCategory", category);
 		map.put("product", new Product());
 
-		return "new-product";
+		return "admin/add/new-product";
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_PRODUCT, method = RequestMethod.POST)
@@ -155,8 +155,10 @@ public class AdminController extends BaseController {
 
 		Product product = productService.findById(productId);
 		map.put("product", product);
+		map.put("allCategories", categoryService.findAll());
+		map.put("allProducers", producerService.findAll());
 
-		return "edit-product";
+		return "admin/edit/edit-product";
 	}
 
 	@RequestMapping(value = UrlConstants.UPDATE_PRODUCT, method = RequestMethod.POST)
@@ -202,16 +204,23 @@ public class AdminController extends BaseController {
 		putRootCategories(map);
 
 		Producer producer = producerService.findById(producerId);
-		map.put("producer", producer);
 
-		return "edit-producer";
+		List<ProductCategory> categories = producer.getCategories();
+
+		for (ProductCategory category : categories) {
+			producer.getCategoriesIds().add(category.getId());
+		}
+
+		map.put("producer", producer);
+		map.put("allCategories", categoryService.findAll());
+
+		return "admin/edit/edit-producer";
 	}
 
 	@RequestMapping(value = UrlConstants.UPDATE_PRODUCER, method = RequestMethod.POST)
-	public String updateProducer(
-			@ModelAttribute("category") ProductCategory category) {
+	public String updateProducer(@ModelAttribute("producer") Producer producer) {
 
-		categoryService.update(category);
+		producerService.update(producer);
 
 		return "redirect:/admin";
 	}
@@ -219,24 +228,27 @@ public class AdminController extends BaseController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 
-		binder.registerCustomEditor(ProductCategory.class, "categories",
+		binder.registerCustomEditor(ProductCategory.class, "category",
 				new PropertyEditorSupport() {
 					@Override
 					public void setAsText(String text) {
-						// String[] ids = text.split(",");
-						// ProductCategory cities = null;
-						// for (String id : ids) {
-						// if (cities == null)
-						// cities = new ProductCategory();
-						// // City city = cityManager.getCity(new Long(id));
-						// // if (city != null)
-						// // cities.getCities().add(city);
-						//
-						// }
-						// if (cities != null) {
-						// cities.setId(null);
-						// setValue(cities);
-						// }
+						ProductCategory category = categoryService
+								.findById(Integer.valueOf(text));
+						if (category != null) {
+							setValue(category);
+						}
+					}
+				});
+
+		binder.registerCustomEditor(Producer.class, "producer",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+						Producer producer = producerService.findById(Integer
+								.valueOf(text));
+						if (producer != null) {
+							setValue(producer);
+						}
 					}
 				});
 	}

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.discount.dao.ProducerDAO;
+import com.alfero.dao.ProducerDAO;
 import com.discount.domain.Producer;
 
 @Repository
@@ -29,7 +29,7 @@ public class ProducerDAOImpl implements ProducerDAO {
 	@Override
 	@Transactional
 	public void update(Producer object) {
-		sessionFactory.getCurrentSession().merge(object);
+		sessionFactory.getCurrentSession().update(object);
 		sessionFactory.getCurrentSession().flush();
 	}
 

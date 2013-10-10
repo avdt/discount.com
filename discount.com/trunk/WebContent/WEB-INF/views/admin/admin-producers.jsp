@@ -43,11 +43,11 @@
 		        	<c:forEach items="${producers}" var="producer">
 							
 					    <li class="span3">
-						    <div id="${producer.id}" class="thumbnail product-small">
+						    <div id="${producer.id}" class="thumbnail producer-small">
 						    	<a class="category-remove-icon" href="admin/producer/delete/${producer.id}"><i class="icon-remove" ></i></a>
 						    	<a class="category-remove-icon" href="admin/producer/edit/${producer.id}"><i class="icon-pencil" ></i></a>
 							    <a href="producers/get/${producer.id}">
-								    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
+								    <img class="producer-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
 								    <h4>${producer.name}</h4>
 							    </a>
 						    </div>

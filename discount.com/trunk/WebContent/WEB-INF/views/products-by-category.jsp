@@ -67,7 +67,7 @@
 					        	<c:forEach items="${category.producers}" var="producer">
 										
 								    <li class="span3">
-									    <div id="${producer.id}" class="thumbnail category-small">
+									    <div id="${producer.id}" class="thumbnail producer-small">
 										    <a href="producer/${producer.id}">
 											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
 											    <h4>${producer.name}</h4>
