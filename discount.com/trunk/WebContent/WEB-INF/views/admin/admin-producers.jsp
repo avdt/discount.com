@@ -17,6 +17,7 @@
 		
 	    	 <form:form method="post" action="admin/new-producer/add" commandName="producer" enctype="multipart/form-data">
 				<spring:message code="admin.tab.producer.name" var="producerName"/>
+				<spring:message code="admin.tab.products.description" var="producerDescription"/>
 					
 			    <div class="categories">
 			    	<form:checkboxes items="${allCategories}" path="categoriesIds" itemLabel="name" itemValue="id" />
@@ -27,6 +28,9 @@
 					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${producerName}"/>
+					</div>
+					<div>
+						<form:textarea path="description" type="text" placeholder="${producerDescription}"/>
 					</div>
 				</div>
 				<div id="create-producer-btn">
@@ -46,7 +50,7 @@
 						    <div id="${producer.id}" class="thumbnail producer-small">
 						    	<a class="category-remove-icon" href="admin/producer/delete/${producer.id}"><i class="icon-remove" ></i></a>
 						    	<a class="category-remove-icon" href="admin/producer/edit/${producer.id}"><i class="icon-pencil" ></i></a>
-							    <a href="producers/get/${producer.id}">
+							    <a href="products/producer/${producer.id}">
 								    <img class="producer-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
 								    <h4>${producer.name}</h4>
 							    </a>

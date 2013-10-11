@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alfero.dao.ProductSettingsDAO;
+import com.discount.dao.ProductSettingsDAO;
 import com.discount.domain.ProductSettings;
 import com.discount.service.ProductSettingsService;
 

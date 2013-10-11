@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alfero.dao.ProductCategoryDAO;
+import com.discount.dao.ProductCategoryDAO;
 import com.discount.domain.CategorySettings;
 import com.discount.domain.ProductCategory;
 import com.discount.service.FileUploadService;
@@ -46,9 +46,19 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		}
 	}
 
+	private void uploadEditedImage(ProductCategory category) {
+		MultipartFile file = category.getFile();
+		if (file != null) {
+			String filePath = fileUploadService.uploadUpdated(file);
+			if (filePath != null) {
+				category.setImage(filePath);
+			}
+		}
+	}
+
 	@Override
 	public void update(ProductCategory category) {
-		uploadImage(category);
+		uploadEditedImage(category);
 		matchCategorySettings(category);
 
 		this.categoryDAO.update(category);

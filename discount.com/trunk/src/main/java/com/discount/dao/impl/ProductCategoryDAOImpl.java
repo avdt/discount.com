@@ -5,10 +5,11 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alfero.dao.ProductCategoryDAO;
+import com.discount.dao.ProductCategoryDAO;
 import com.discount.domain.ProductCategory;
 
 @Repository
@@ -57,6 +58,7 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@Cacheable(value = "rootCategoryList")
 	public List<ProductCategory> findRootCategories() {
 		return sessionFactory
 				.getCurrentSession()

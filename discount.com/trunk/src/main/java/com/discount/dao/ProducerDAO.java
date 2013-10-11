@@ -1,4 +1,4 @@
-package com.alfero.dao;
+package com.discount.dao;
 
 import java.util.List;
 

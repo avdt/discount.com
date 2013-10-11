@@ -1,5 +1,7 @@
 package com.discount.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +16,9 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "settings", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
-public class ProductSettings {
+public class ProductSettings implements Serializable {
+
+	private static final long serialVersionUID = -6398312199674516179L;
 
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "product_settings_id_seq")

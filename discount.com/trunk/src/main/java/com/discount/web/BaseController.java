@@ -11,7 +11,7 @@ import com.discount.domain.SearchResults;
 import com.discount.service.ProductCategoryService;
 
 @Controller
-public abstract class BaseController {
+public class BaseController {
 
 	@Autowired
 	private ProductCategoryService categoryService;

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alfero.dao.ProductDAO;
+import com.discount.dao.ProductDAO;
 import com.discount.domain.Product;
 import com.discount.domain.ProductSettings;
 import com.discount.service.FileUploadService;
@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void update(Product product) {
-		uploadImage(product);
+		uploadEditedImage(product);
 		matchSettings(product);
 
 		productDAO.update(product);
@@ -81,6 +81,16 @@ public class ProductServiceImpl implements ProductService {
 		if (null != file) {
 			String filePath = fileUploadService.upload(file);
 			product.setImage(filePath);
+		}
+	}
+
+	private void uploadEditedImage(Product product) {
+		MultipartFile file = product.getFile();
+		if (file != null) {
+			String filePath = fileUploadService.uploadUpdated(file);
+			if (filePath != null) {
+				product.setImage(filePath);
+			}
 		}
 	}
 

@@ -11,4 +11,6 @@ public interface FileUploadService {
 	 * @return path to file on server file system
 	 */
 	public String upload(MultipartFile file);
+
+	public String uploadUpdated(MultipartFile file);
 }

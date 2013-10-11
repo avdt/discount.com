@@ -51,6 +51,14 @@
 		    	</div>
 			</div>	   
 	    </div>
-	    
+	    <div>
+	    	<hr/>
+	    	<div>
+    			<h4><spring:message code="producer.about" arguments="${producer.name}"/></h4>
+   			</div>
+   			<div>
+   				<span>${producer.description}</span>
+   			</div>
+	    </div>
 	</jsp:body>
 </layout:page>

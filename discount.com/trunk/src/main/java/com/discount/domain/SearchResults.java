@@ -1,9 +1,11 @@
 package com.discount.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class SearchResults {
+public class SearchResults implements Serializable {
 
+	private static final long serialVersionUID = 1605792191820081618L;
 	private String keyword;
 	private Set<Product> matchedProducts;
 

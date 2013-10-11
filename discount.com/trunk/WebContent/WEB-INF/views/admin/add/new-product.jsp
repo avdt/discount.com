@@ -24,6 +24,9 @@
 						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
 					<div>
+						<form:select path="producer" items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>
+					</div>
+					<div>
 						<form:textarea path="description"  placeholder="${description}"/>
 					</div>
 					<div>

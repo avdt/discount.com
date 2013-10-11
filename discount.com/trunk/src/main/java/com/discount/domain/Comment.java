@@ -1,5 +1,7 @@
 package com.discount.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,12 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "comment", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
-public class Comment {
+public class Comment implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3583731207257019483L;
 
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "comment_id_seq")

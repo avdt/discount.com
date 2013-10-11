@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alfero.dao.ProducerDAO;
-import com.alfero.dao.ProductCategoryDAO;
+import com.discount.dao.ProducerDAO;
+import com.discount.dao.ProductCategoryDAO;
 import com.discount.domain.Producer;
 import com.discount.domain.ProductCategory;
 import com.discount.service.FileUploadService;
@@ -52,7 +52,7 @@ public class ProducerServiceImpl implements ProducerService {
 	public void update(Producer producer) {
 		mapCategoryIdToCategory(producer);
 
-		uploadImage(producer);
+		uploadEditedImage(producer);
 		producerDAO.update(producer);
 	}
 
@@ -78,9 +78,19 @@ public class ProducerServiceImpl implements ProducerService {
 
 	private void uploadImage(Producer producer) {
 		MultipartFile file = producer.getFile();
-		if (null != file) {
+		if (file != null) {
 			String filePath = fileUploadService.upload(file);
 			producer.setImage(filePath);
+		}
+	}
+
+	private void uploadEditedImage(Producer producer) {
+		MultipartFile file = producer.getFile();
+		if (file != null) {
+			String filePath = fileUploadService.uploadUpdated(file);
+			if (filePath != null) {
+				producer.setImage(filePath);
+			}
 		}
 	}
 

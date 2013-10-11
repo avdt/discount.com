@@ -1,5 +1,6 @@
 package com.discount.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,12 @@ import org.springframework.web.multipart.MultipartFile;
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "name") })
 @org.hibernate.annotations.Entity(dynamicUpdate = true)
-public class Product {
+public class Product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2895026279131045571L;
 
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "product_id_seq")
@@ -55,7 +61,7 @@ public class Product {
 	private String description;
 
 	@Column(name = "price")
-	private Integer price;
+	private Integer price = 0;
 
 	@Column(name = "discount_price")
 	private Integer discountPrice;

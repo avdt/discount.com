@@ -1,5 +1,6 @@
 package com.discount.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,7 +28,9 @@ import org.springframework.web.multipart.MultipartFile;
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "name") })
 @org.hibernate.annotations.Entity(dynamicUpdate = true)
-public class ProductCategory {
+public class ProductCategory implements Serializable {
+	private static final long serialVersionUID = -678219134500046757L;
+
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "product_category_id_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")

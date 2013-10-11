@@ -1,3 +1,7 @@
+<%@tag import="com.discount.dao.impl.ProductCategoryDAOImpl"%>
+<%@tag import="com.discount.service.impl.ProductCategoryServiceImpl"%>
+<%@tag import="java.util.HashMap"%>
+<%@tag import="com.discount.web.BaseController"%>
 <%@ tag pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -7,7 +11,6 @@
 	<!-- TOP OF HEADER -->
 
 	<div id="head-top">
-	
 		<div id="title">
 			<a href="${pageContext.request.contextPath}/index">
 				<h3 class="muted">Alfero</h3>

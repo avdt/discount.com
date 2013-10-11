@@ -1,5 +1,6 @@
 package com.discount.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "producer", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "name") })
-public class Producer {
+public class Producer implements Serializable {
+
+	private static final long serialVersionUID = 6956294878514743510L;
 
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "producer_id_seq")
@@ -42,6 +45,9 @@ public class Producer {
 
 	@Column
 	private String image = "images/default.jpg";
+
+	@Column
+	private String description;
 
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE,
@@ -119,6 +125,14 @@ public class Producer {
 
 	public void setCategoriesIds(List<Integer> categoriesIds) {
 		this.categoriesIds = categoriesIds;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

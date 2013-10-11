@@ -1,5 +1,6 @@
 package com.discount.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,7 +18,10 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "role", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "id"),
 		@UniqueConstraint(columnNames = "role") })
-public class UserRole {
+public class UserRole implements Serializable {
+
+	private static final long serialVersionUID = 9132208605802998639L;
+
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "user_role_id_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
