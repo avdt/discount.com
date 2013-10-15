@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.discount.domain.ProductCategory;
+import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 
 @Controller
@@ -18,6 +19,9 @@ public class HomeController extends BaseController {
 	@Autowired
 	private ProductCategoryService categoryService;
 
+	@Autowired
+	private ProducerService producerService;
+
 	@RequestMapping(value = UrlConstants.INDEX, method = RequestMethod.GET)
 	public String home(Map<String, Object> map) {
 		putRootCategories(map);
@@ -25,6 +29,8 @@ public class HomeController extends BaseController {
 		List<ProductCategory> categories = categoryService
 				.findChildCategories();
 		map.put("categories", categories);
+		map.put("allProducers", producerService.findAll());
+
 		return "index";
 	}
 

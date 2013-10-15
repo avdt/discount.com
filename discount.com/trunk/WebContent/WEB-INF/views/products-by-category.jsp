@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <layout:page title="${category.name}">
 	<jsp:attribute name="extraHeader">
@@ -25,13 +26,11 @@
 	    </div>
 	    <div id="category-content">
 	    	<c:choose>
-	    	
-	    	
 		    	<c:when test="${!category.childCategories.isEmpty()}">
 			    	
 			    	<!-- CATEGORIES -->
 			    	
-					    <div id="child-categories" class="tab-pane fade in active">
+					    <div id="child-categories">
 					    	<div>
 					    		<span>
 					    			<spring:message code="general.categories" />
@@ -39,16 +38,7 @@
 				    		</div>
 					    	<ul class="thumbnails">
 					        	<c:forEach items="${category.childCategories}" var="category">
-										
-								    <li class="span3">
-									    <div id="${category.id}" class="thumbnail category-small">
-										    <a href="${category.id}">
-											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${category.image}">
-											    <h4>${category.name}</h4>
-										    </a>
-									    </div>
-								    </li>
-							    
+									<model:category category="${category}" url=""></model:category>
 							    </c:forEach>
 						    </ul>
 					    </div>
@@ -63,52 +53,19 @@
 					    			<spring:message code="general.producers" />
 				    			</span>
 					    	</div>
-					    	<ul class="thumbnails">
-					        	<c:forEach items="${category.producers}" var="producer">
-										
-								    <li class="span3">
-									    <div id="${producer.id}" class="thumbnail producer-small">
-										    <a href="producer/${producer.id}">
-											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
-											    <h4>${producer.name}</h4>
-										    </a>
-									    </div>
-								    </li>
-							    
-							    </c:forEach>
-						    </ul>
+				        	<c:forEach items="${category.producers}" var="producer">
+								<model:producer producer="${producer}" url="producer/"></model:producer>
+						    </c:forEach>
 					    </div>
 		    	</c:when>
 		    	
 		    	
 		    	<c:otherwise>
 			    	<div id="products">
-					    <div class="row-fluid">
-					        <ul class="thumbnails">
-					        	<c:forEach items="${productsByCategory}" var="product">
-										
-								    <li class="span3">
-									    <div id="${product.id}" class="thumbnail product-small">
-										    <a href="get/${product.id}">
-											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
-											    <h4>${product.name}</h4>
-										    </a>
-										    <p>${product.category.name}</p>
-										    <p>${product.price}</p>
-										    
-										    <div class="popup-metadata" style="display: none;">
-											    <c:forEach items="${product.settings}" var="setting">
-												    <dl class="dl-horizontal">
-													    <dt class="setting-name">${setting.propertyName}</dt>
-													    <dd class="setting-value">${setting.propertyValue}</dd>
-												    </dl>
-												</c:forEach>
-											</div>
-									    </div>
-								    </li>
-							    
-							    </c:forEach>
-						    </ul>
+					    <div>
+				        	<c:forEach items="${productsByCategory}" var="product">
+								<model:product product="${product}" url="get/"></model:product>	
+						    </c:forEach>
 				    	</div>
 					</div>	   
 		    	</c:otherwise>

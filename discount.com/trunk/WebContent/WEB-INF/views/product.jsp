@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <layout:page title="${product.name}">
@@ -82,23 +83,7 @@
 		    <div class="image_carousel">
 				<div id="categories-carousel">
 					<c:forEach items="${productsByCategory}" var="product">
-						    <div id="${product.id}" class="span3 thumbnail product-small">
-							    <a href="${product.id}">
-								    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
-								    <h4>${product.name}</h4>
-							    </a>
-							    <p>${product.category.name}</p>
-							    <p>${product.price}</p>
-							    
-							    <div class="popup-metadata" style="display: none;">
-								    <c:forEach items="${product.settings}" var="setting">
-									    <dl class="dl-horizontal">
-										    <dt class="setting-name">${setting.propertyName}</dt>
-										    <dd class="setting-value">${setting.propertyValue}</dd>
-									    </dl>
-									</c:forEach>
-								</div>
-						    </div>
+						<model:product product="${product}" url=""></model:product>
 					</c:forEach>
 				</div>
 				<div class="clearfix"></div>
