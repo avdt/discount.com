@@ -23,7 +23,7 @@
 	    </div>
 	    <div id="category-content">
 	    	<div id="products">
-			    <div class="row-fluid">
+			    <div>
 			        <ul class="thumbnails">
 			        	<c:forEach items="${productsByProducer}" var="product">
 							<model:product product="${product}" url="../get/"></model:product>		

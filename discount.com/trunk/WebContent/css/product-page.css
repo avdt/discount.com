@@ -1,7 +1,9 @@
-.left-area {}
+.left-area {width: 35%;}
 	.left-area .product-img {}
 	.left-area .modal-close {margin-right: 10px;margin-top: 5px;}
-
+	.left-area #sale-container {}
+		.left-area #sale-container .sale-img {bottom: 230px;height: 150px;left: 220px;position: relative;z-index: -1;}
+		.left-area #sale-container .sale-value {bottom: 75px;color: #FF0000;font-size: 35px;left: 100px;position: relative;} 
 .right-area {bottom: 230px;left: 35%;position: relative;width: 65%;}
 	.right-area #product-price {color: #E74B30;left: 1%;position: relative;}
 	.right-area #settings .setting-name {text-align: left;}

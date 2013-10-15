@@ -60,7 +60,7 @@ a.prev span,a.next span {display: none;}
 .category-small {height: 200px;text-align: center;margin-bottom: 10px;}
 	.category-small:hover {border: 1px solid #FFFFFF;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;border-radius: 4px 4px 4px 4px;}
 	 a:hover {text-decoration: none;}
-.product-img {max-height: 250px;}
+.product-img {height: 220px;}
 .sale-img {float: left;height: 80px;}
 .producer-img {max-height: 85px;max-width: 200px;}
 

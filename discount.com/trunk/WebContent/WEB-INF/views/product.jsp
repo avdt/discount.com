@@ -23,16 +23,22 @@
 		</div>
 		<div id="product">
 		    <div class="left-area">
-		    <a  href="#full-iamge-modal" role="button" data-toggle="modal">
-		    	<img src="http://${pageContext.request.serverName}:1234/${product.image}" class="img-polaroid product-img">
-	    	</a>
-	    	<!-- Modal -->
-			<div id="full-iamge-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
-				<div class="modal-body">
-					<img src="http://${pageContext.request.serverName}:1234/${product.image}" class="img-rounded">
+			    <a  href="#full-iamge-modal" role="button" data-toggle="modal">
+			    	<img src="http://${pageContext.request.serverName}:1234/${product.image}" class="img-polaroid product-img">
+		    	</a>
+		    	<!-- Modal -->
+				<div id="full-iamge-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
+					<div class="modal-body">
+						<img src="http://${pageContext.request.serverName}:1234/${product.image}" class="img-rounded">
+					</div>
 				</div>
-			</div>
+				<c:if test="${product.sale}">
+					<div id="sale-container">
+					    <img class="sale-img" alt="" src="http://${pageContext.request.serverName}:1234/images/sale2.jpg">
+						<span class="sale-value">-${product.discount}%</span>
+					</div>
+			    </c:if>
 		    </div>
 		    <div class=right-area>
 		    	<div id="product-name">
