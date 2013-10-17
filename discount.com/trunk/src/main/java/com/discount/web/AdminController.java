@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.discount.domain.Producer;
 import com.discount.domain.Product;
 import com.discount.domain.ProductCategory;
+import com.discount.domain.Range;
 import com.discount.domain.User;
 import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
+import com.discount.service.RangeService;
 
 @Controller
 @RequestMapping(UrlConstants.ADMIN)
@@ -33,6 +35,9 @@ public class AdminController extends BaseController {
 
 	@Autowired
 	private ProducerService producerService;
+
+	@Autowired
+	private RangeService rangeService;
 
 	@RequestMapping(UrlConstants.ADMIN)
 	public String getTools(Map<String, Object> map) {
@@ -168,8 +173,6 @@ public class AdminController extends BaseController {
 		return "redirect:/admin";
 	}
 
-	// //////////////////////////////////////////////////////
-
 	@RequestMapping(value = UrlConstants.ADD_PRODUCER, method = RequestMethod.POST)
 	public String saveProducer(@ModelAttribute("producer") Producer producer) {
 
@@ -201,6 +204,7 @@ public class AdminController extends BaseController {
 
 		map.put("producer", producer);
 		map.put("allCategories", categoryService.findAll());
+		map.put("range", new Range());
 
 		return "admin/edit/edit-producer";
 	}
@@ -209,6 +213,38 @@ public class AdminController extends BaseController {
 	public String updateProducer(@ModelAttribute("producer") Producer producer) {
 
 		producerService.update(producer);
+
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = UrlConstants.NEW_RANGE, method = RequestMethod.GET)
+	public String newRange(@PathVariable("producerId") Integer producerId,
+			Map<String, Object> map) {
+		putRootCategories(map);
+
+		Producer producer = producerService.findById(producerId);
+
+		map.put("producer", producer);
+		map.put("range", new Range());
+
+		return "admin/add/new-range";
+	}
+
+	@RequestMapping(value = UrlConstants.ADD_RANGE, method = RequestMethod.POST)
+	public String saveRange(@ModelAttribute("range") Range range,
+			@PathVariable("producerId") Integer producerId) {
+
+		Producer producer = producerService.findById(producerId);
+		range.setProducer(producer);
+		rangeService.save(range);
+
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(UrlConstants.DELETE_RANGE)
+	public String deleteRange(@PathVariable("rangeId") Integer rangeId) {
+
+		rangeService.delete(rangeService.findById(rangeId));
 
 		return "redirect:/admin";
 	}
@@ -239,5 +275,19 @@ public class AdminController extends BaseController {
 						}
 					}
 				});
+
+		binder.registerCustomEditor(Range.class, "rangeNames",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+
+						Producer producer = producerService.findById(Integer
+								.valueOf(text));
+						if (producer != null) {
+							setValue(producer);
+						}
+					}
+				});
+
 	}
 }

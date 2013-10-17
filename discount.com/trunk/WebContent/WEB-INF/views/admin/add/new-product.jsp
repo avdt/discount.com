@@ -16,12 +16,16 @@
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
+					<spring:message code="product.range" var="range"/>
 					
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${productName}"/>
+					</div>
+			     	<div>
+						<form:input path="range" type="text" placeholder="${range}"/>
 					</div>
 					<div>
 						<form:select path="producer" items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>

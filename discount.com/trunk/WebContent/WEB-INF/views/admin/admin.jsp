@@ -20,6 +20,7 @@
 			    <li><a href="#categories" data-toggle="tab"><spring:message code="admin.tab.categories" /></a></li>
 			    <li><a href="#products" data-toggle="tab"><spring:message code="admin.tab.products" /></a></li>
 			    <li><a href="#producers" data-toggle="tab"><spring:message code="admin.tab.producer" /></a></li>
+			    <li><a href="#ranges" data-toggle="tab"><spring:message code="admin.tab.ranges" /></a></li>
 	   		</ul>
 	   		
 	   		<div class="tab-content">
@@ -35,6 +36,9 @@
 				
 				<!-- PRODUCERS -->
 				<jsp:include page="admin-producers.jsp"/> 
+				
+				<!-- RANGES -->
+				<jsp:include page="admin-ranges.jsp"/> 
 			 </div>
 		</div>
 	</jsp:body>

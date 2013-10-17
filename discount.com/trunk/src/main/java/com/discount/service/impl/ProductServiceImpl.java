@@ -54,12 +54,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product findByName(String name) {
-		return this.productDAO.findByName(name);
+		return productDAO.findByName(name);
 	}
 
 	@Override
 	public List<Product> findByCategoryId(Integer productCategoryId) {
-		return this.productDAO.findByCategoryId(productCategoryId);
+		return productDAO.findByCategoryId(productCategoryId);
 	}
 
 	@Override
@@ -96,7 +96,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> findByProducerId(Integer producerId) {
-		return this.productDAO.findByProducerId(producerId);
+		return productDAO.findByProducerId(producerId);
+	}
+
+	@Override
+	public List<Product> findByRange(String range) {
+		return productDAO.findByRange(range);
 	}
 
 }

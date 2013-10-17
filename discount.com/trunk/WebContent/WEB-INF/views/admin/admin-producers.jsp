@@ -52,7 +52,6 @@
 						    	<a class="category-remove-icon" href="admin/producer/edit/${producer.id}"><i class="icon-pencil" ></i></a>
 							    <a href="products/producer/${producer.id}">
 								    <img class="producer-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
-								    <h4>${producer.name}</h4>
 							    </a>
 						    </div>
 					    </li>

@@ -16,5 +16,10 @@
 		#edit-product-container .categories .category {float: left;margin-right: 10px;}
 			#edit-product-container .categories .category .category-checkbox {bottom: 3px;margin-right: 5px;position: relative;}
 			
-	#edit-product-container #proerties {bottom: 210px;position: relative;width: 30%;}
-	#edit-product-container #create-producer-btn {bottom: 150px;position: relative;}
+	#edit-product-container #proerties {bottom: 450px;position: relative;width: 30%;}
+	#edit-product-container #create-producer-btn {bottom: 400px;position: relative;}
+	
+	#edit-product-container #ranges-container {bottom: 322px;left: 75%;position: relative;width: 25%;}
+		#edit-product-container #ranges-container .range {}
+		#edit-product-container #ranges-container .new-range-btn {margin-left: 5px;position: absolute;}
+.tab-content {overflow: hidden;}

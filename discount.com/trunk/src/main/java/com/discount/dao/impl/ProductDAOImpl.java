@@ -25,13 +25,6 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	@Transactional
 	public void update(Product product) {
-		// cause of Hibernate bug
-		// List<ProductSettings> settings = product.getSettings();
-		// for (ProductSettings productSettings : settings) {
-		// productSettingsDAO.delete(productSettings);
-		// sessionFactory.getCurrentSession().flush();
-		// }
-
 		sessionFactory.getCurrentSession().update(product);
 		sessionFactory.getCurrentSession().flush();
 	}
@@ -100,6 +93,15 @@ public class ProductDAOImpl implements ProductDAO {
 						"from Product p where p.producer.id = "
 								+ " :producerId")
 				.setInteger("producerId", producerId).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Product> findByRange(String range) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Product p where p.range.name = " + " :range")
+				.setString("range", range).list();
 	}
 
 }

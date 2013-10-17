@@ -80,23 +80,24 @@
 	    </div>
 	    
 	    <!-- SIMILAR PRODUCTS -->
-	    
-	    <div id="similar-products">
-		    <hr/>
-	    	<div id="similar-product-title">
-	    		<span><spring:message code="product.similarProductsTitle"/></span>
-	    	</div>
-		    <div class="image_carousel">
-				<div id="categories-carousel">
-					<c:forEach items="${productsByCategory}" var="product">
-						<model:product product="${product}" url=""></model:product>
-					</c:forEach>
+	    <c:if test="${!productsByRange.isEmpty()}">
+		    <div id="similar-products">
+			    <hr/>
+		    	<div id="similar-product-title">
+		    		<span><spring:message code="product.similarProductsTitle"/></span>
+		    	</div>
+			    <div class="image_carousel">
+					<div id="categories-carousel">
+						<c:forEach items="${productsByRange}" var="product">
+							<model:product product="${product}" url=""></model:product>
+						</c:forEach>
+					</div>
+					<div class="clearfix"></div>
+					<a class="carousel-control left" id="categories-carousel_prev" href="#" data-slide="prev">&lsaquo;</a>
+			    	<a class="carousel-control right" id="categories-carousel_next" href="#" data-slide="next">&rsaquo;</a>
+					<div class="pagination" id="categories-carousel_pag"></div>
 				</div>
-				<div class="clearfix"></div>
-				<a class="carousel-control left" id="categories-carousel_prev" href="#" data-slide="prev">&lsaquo;</a>
-		    	<a class="carousel-control right" id="categories-carousel_next" href="#" data-slide="next">&rsaquo;</a>
-				<div class="pagination" id="categories-carousel_pag"></div>
-			</div>
-	    </div>
+		    </div>
+	    </c:if>
 	</jsp:body>
 </layout:page>

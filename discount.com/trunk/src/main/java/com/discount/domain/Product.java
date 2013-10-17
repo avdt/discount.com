@@ -29,9 +29,6 @@ import org.springframework.web.multipart.MultipartFile;
 @org.hibernate.annotations.Entity(dynamicUpdate = true)
 public class Product implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2895026279131045571L;
 
 	@Id
@@ -51,7 +48,7 @@ public class Product implements Serializable {
 	private Producer producer;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(/* fetch = FetchType.EAGER, */cascade = { CascadeType.ALL }, mappedBy = "product")
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "product")
 	private List<ProductSettings> settings;
 
 	@Column(name = "name")
@@ -77,6 +74,11 @@ public class Product implements Serializable {
 
 	@Column(name = "sale")
 	private boolean sale;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH }, targetEntity = Range.class)
+	@JoinColumn(name = "range_id")
+	private Range range;
 
 	public Integer getId() {
 		return id;
@@ -194,6 +196,14 @@ public class Product implements Serializable {
 
 	public void setProducer(Producer producer) {
 		this.producer = producer;
+	}
+
+	public Range getRange() {
+		return range;
+	}
+
+	public void setRange(Range range) {
+		this.range = range;
 	}
 
 }

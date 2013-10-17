@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.discount.domain.Product;
+import com.discount.domain.Range;
 import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
@@ -63,9 +64,11 @@ public class ProductController extends BaseController {
 
 		Product product = productService.findById(productId);
 		map.put("product", product);
-		map.put("productsByCategory",
-				productService.findByCategoryId(product.getCategory().getId()));
-
+		Range range = product.getRange();
+		if (range != null) {
+			map.put("productsByRange",
+					productService.findByRange(range.getName()));
+		}
 		return "product";
 	}
 

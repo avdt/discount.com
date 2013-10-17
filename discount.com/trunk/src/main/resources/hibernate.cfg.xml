@@ -14,5 +14,6 @@
 		<mapping class="com.discount.domain.Comment" />
 		<mapping class="com.discount.domain.Producer" />
 		<mapping class="com.discount.domain.ProducerCategories" />
+		<mapping class="com.discount.domain.Range" />
 	</session-factory>
 </hibernate-configuration>

@@ -35,11 +35,11 @@
 	    <!-- ALL PRODUCTS -->
 	    
 	    <div class="tab-pane fade" id="all_products">
-		    <div class="row-fluid">
-		        <ul class="thumbnails">
+		    <div>
+		        <ul>
 		        	<c:forEach items="${products}" var="product">
 							
-					    <li class="span3">
+					    <div class="span3">
 						    <div id="${product.id}" class="thumbnail product-small">
 						    	<div class="action-icons">
 							    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
@@ -56,7 +56,7 @@
 								    <p>${product.price}</p>
 							    </div>
 						    </div>
-					    </li>
+					    </div>
 				    
 				    </c:forEach>
 			    </ul>

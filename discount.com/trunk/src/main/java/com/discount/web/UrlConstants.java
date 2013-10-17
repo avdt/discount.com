@@ -41,6 +41,10 @@ public class UrlConstants {
 	public final static String GET_PRODUCT_BY_CATEGORY = "/{categoryId}";
 	public final static String GET_PRODUCT_BY_PRODUCER = "/producer/{producerId}";
 
+	public final static String NEW_RANGE = "/new-range/{producerId}";
+	public final static String ADD_RANGE = "/new-range/{producerId}/add";
+	public final static String DELETE_RANGE = "/range/delete/{rangeId}";
+
 	public final static String SALE = "/sale";
 
 	public final static String SEARCH = "/search";

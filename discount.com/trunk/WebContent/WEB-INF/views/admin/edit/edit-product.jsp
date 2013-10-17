@@ -16,37 +16,37 @@
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
-					<div style="display: none;">
-					</div>
+					<spring:message code="product.range" var="range"/>
+					
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
 						<form:input style="display:none;" path="id" type="text" value="${product.id}"/>
+					</div>
+					<div>
 						<img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
+					</div>
+					<div>
 						<form:input path="image"/>
-						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
-					<div>
-						<form:select path="category" items="${allCategories}" itemLabel="name" itemValue="id"/>
-						<form:select path="producer" items="${allProducers}" itemLabel="name" itemValue="id"/>
-						<form:textarea path="description"  placeholder="${description}"/>
-					</div>
-					<div>
-						<form:input path="price" type="text" placeholder="${price}"/>
-					</div>
-					<div>
-				     	<c:forEach items="${product.category.settings}" var="setting" varStatus="status">
-				     		<div>
-								<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
-								<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
-								<!--<form:input style="display:none;" path="settings[${status.count-1}].id" type="text" value="${setting.id}"/>-->
-							</div>
-				     	</c:forEach>
-			     	</div>
 		     	</div>
 		     	
 		     	<div id="right-area">
+		     		
+					<form:input path="name" type="text" placeholder="${productName}"/>
+					<form:select path="range" items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
+					<form:select path="category" items="${allCategories}" itemLabel="name" itemValue="id"/>
+					<form:select path="producer" items="${allProducers}" itemLabel="name" itemValue="id"/>
+					<form:input path="price" type="text" placeholder="${price}"/>
+					<form:textarea path="description"  placeholder="${description}"/>
+			     	<c:forEach items="${product.category.settings}" var="setting" varStatus="status">
+			     		<div>
+							<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
+							<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
+						</div>
+			     	</c:forEach>
+		     	
 		     		<label>
 			     		<form:input path="sale" type="checkbox" value="true"/>
 			     		<spring:message code="sale"/>

@@ -54,6 +54,14 @@ public class Producer implements Serializable {
 			CascadeType.PERSIST }, mappedBy = "producer")
 	private List<Product> products;
 
+	// @LazyCollection(LazyCollectionOption.TRUE)
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST }, mappedBy = "producer")
+	private List<Range> ranges;
+
+	@Transient
+	private List<String> rangeNames;
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH, CascadeType.REMOVE })
@@ -133,6 +141,22 @@ public class Producer implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Range> getRanges() {
+		return ranges;
+	}
+
+	public void setRanges(List<Range> ranges) {
+		this.ranges = ranges;
+	}
+
+	public List<String> getRangeNames() {
+		return rangeNames;
+	}
+
+	public void setRangeNames(List<String> rangeNames) {
+		this.rangeNames = rangeNames;
 	}
 
 }

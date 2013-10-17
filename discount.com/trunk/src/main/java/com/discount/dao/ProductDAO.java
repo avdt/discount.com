@@ -12,4 +12,6 @@ public interface ProductDAO extends GenericDAO<Product> {
 	List<Product> findSale();
 
 	List<Product> findByProducerId(Integer producerId);
+
+	List<Product> findByRange(String range);
 }
