@@ -4,7 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<layout:page title="${producer.name}">
+<layout:page title="${range.name}">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
@@ -13,6 +13,9 @@
 		<div id="breadcrumb">
 		    <ul class="breadcrumb">
 			    <li><a href="${pageContext.request.contextPath}/index"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <c:if test="${producer.category.parentCategory!=null}">
+			    	<li><a href="${category.parentCategory.id}">${category.parentCategory.name}</a> <span class="divider">/</span></li>
+			    </c:if>
 			    <li class="active">${producer.name}</li>
 		    </ul>
 		</div>		
@@ -22,44 +25,16 @@
 	    	</div>
 	    </div>
 	    
-	    <!-- RANGES -->
-	    
-	    <div id="ranges">
-	        <div class="thumbnails">
-		    	<div class="span3">
-					<c:forEach items="${producer.ranges}" var="range">
-						<div id="${range.id}" class="thumbnail category-small">
-							<a href="range/${range.id}">
-								<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${range.image}">
-								<h4>${range.name}</h4>
-							</a>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-	    </div>
-	    
-	    <!-- PRODUCTS -->
+	    <!-- PRODUCTS BY RANGE-->
 	    
 	    <div id="category-content">
-	    	<hr/>
-	    	<spring:message code="products.byProducer" arguments="${producer.name}"/>
 	    	<div id="products">
 		        <div class="thumbnails">
-		        	<c:forEach items="${productsByProducer}" var="product">
+		        	<c:forEach items="${productsByRange}" var="product">
 						<model:product product="${product}" url="../get/"></model:product>		
 				    </c:forEach>
 			    </div>
 			</div>	   
-	    </div>
-	    <div>
-	    	<hr/>
-	    	<div>
-    			<h4><spring:message code="producer.about" arguments="${producer.name}"/></h4>
-   			</div>
-   			<div>
-   				<span>${producer.description}</span>
-   			</div>
 	    </div>
 	</jsp:body>
 </layout:page>

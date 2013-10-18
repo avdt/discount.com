@@ -35,7 +35,7 @@
 	    <!-- ALL RANGES -->
 	    
 	    <div class="tab-pane fade" id="all_ranges">
-		   <!--  <div>
+		     <div>
 		        <ul>
 		        	<c:forEach items="${ranges}" var="range">
 							
@@ -55,7 +55,7 @@
 				    
 				    </c:forEach>
 			    </ul>
-     -->
+     
 	    	</div>
 	    </div>
 	</div>

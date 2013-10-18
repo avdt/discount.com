@@ -100,7 +100,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findByRange(String range) {
+	public List<Product> findByRange(int range) {
 		return productDAO.findByRange(range);
 	}
 

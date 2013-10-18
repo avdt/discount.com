@@ -55,6 +55,7 @@ public class AdminController extends BaseController {
 		map.put("allCategories", allCategories);
 		map.put("products", productService.findAll());
 		map.put("producers", producerService.findAll());
+		map.put("ranges", rangeService.findAll());
 
 		return "admin/admin";
 	}
@@ -237,6 +238,26 @@ public class AdminController extends BaseController {
 		Producer producer = producerService.findById(producerId);
 		range.setProducer(producer);
 		rangeService.save(range);
+
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(UrlConstants.EDIT_RANGE)
+	public String editRange(@PathVariable("rangeId") Integer rangeId,
+			Map<String, Object> map) {
+		putRootCategories(map);
+
+		Range range = rangeService.findById(rangeId);
+		map.put("range", range);
+		map.put("allProducers", producerService.findAll());
+
+		return "admin/edit/edit-range";
+	}
+
+	@RequestMapping(value = UrlConstants.UPDATE_RANGE, method = RequestMethod.POST)
+	public String updateRange(@ModelAttribute("range") Range range) {
+
+		rangeService.update(range);
 
 		return "redirect:/admin";
 	}

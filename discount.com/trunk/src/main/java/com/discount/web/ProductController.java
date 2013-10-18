@@ -1,5 +1,6 @@
 package com.discount.web;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.discount.domain.Range;
 import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
+import com.discount.service.RangeService;
 
 @Controller
 @RequestMapping(UrlConstants.PRODUCTS)
@@ -23,6 +25,8 @@ public class ProductController extends BaseController {
 	private ProductCategoryService categoryService;
 	@Autowired
 	private ProducerService producerService;
+	@Autowired
+	private RangeService rangeService;
 
 	@RequestMapping(UrlConstants.PRODUCTS)
 	public String getProducts(Map<String, Object> map) {
@@ -33,7 +37,7 @@ public class ProductController extends BaseController {
 	}
 
 	@RequestMapping(UrlConstants.GET_PRODUCT_BY_CATEGORY)
-	public String getProductsByCategoryId(
+	public String getProductsByCategory(
 			@PathVariable("categoryId") Integer categoryId,
 			Map<String, Object> map) {
 		putRootCategories(map);
@@ -43,6 +47,19 @@ public class ProductController extends BaseController {
 				productService.findByCategoryId(categoryId));
 
 		return "products-by-category";
+	}
+
+	@RequestMapping(UrlConstants.GET_PRODUCT_BY_RANGE)
+	public String getProductsByRange(@PathVariable("rangeId") Integer rangeId,
+			Map<String, Object> map) {
+		putRootCategories(map);
+
+		Range range = rangeService.findById(rangeId);
+		List<Product> productsByRange = productService.findByRange(rangeId);
+		map.put("range", range);
+		map.put("productsByRange", productsByRange);
+
+		return "products-by-range";
 	}
 
 	@RequestMapping(UrlConstants.GET_PRODUCT_BY_PRODUCER)
@@ -67,9 +84,25 @@ public class ProductController extends BaseController {
 		Range range = product.getRange();
 		if (range != null) {
 			map.put("productsByRange",
-					productService.findByRange(range.getName()));
+					productService.findByRange(range.getId()));
 		}
 		return "product";
+	}
+
+	@RequestMapping(UrlConstants.GET_PRODUCT_POPUP_INFO)
+	public String getProductPopupInfo(
+			@PathVariable("productId") Integer productId,
+			Map<String, Object> map) {
+		putRootCategories(map);
+
+		Product product = productService.findById(productId);
+		map.put("product", product);
+		Range range = product.getRange();
+		if (range != null) {
+			map.put("productsByRange",
+					productService.findByRange(range.getId()));
+		}
+		return "small-product-popup";
 	}
 
 }

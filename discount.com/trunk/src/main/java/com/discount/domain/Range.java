@@ -44,6 +44,9 @@ public class Range {
 			CascadeType.PERSIST }, mappedBy = "range")
 	private List<Product> products;
 
+	@Column(name = "image")
+	private String image;
+
 	public Integer getId() {
 		return id;
 	}
@@ -74,5 +77,13 @@ public class Range {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

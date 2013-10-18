@@ -98,10 +98,10 @@ public class ProductDAOImpl implements ProductDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Product> findByRange(String range) {
+	public List<Product> findByRange(int rangeId) {
 		return sessionFactory.getCurrentSession()
-				.createQuery("from Product p where p.range.name = " + " :range")
-				.setString("range", range).list();
+				.createQuery("from Product p where p.range.id = " + " :range")
+				.setInteger("range", rangeId).list();
 	}
 
 }

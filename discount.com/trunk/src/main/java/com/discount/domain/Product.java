@@ -75,7 +75,7 @@ public class Product implements Serializable {
 	@Column(name = "sale")
 	private boolean sale;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE,
 			CascadeType.REFRESH }, targetEntity = Range.class)
 	@JoinColumn(name = "range_id")
 	private Range range;

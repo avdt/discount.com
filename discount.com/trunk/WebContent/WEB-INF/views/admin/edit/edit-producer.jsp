@@ -37,7 +37,7 @@
 					<c:forEach items="${producer.ranges}" var="range" varStatus="status">
 						<div class="range">
 							<span>${range.name}</span>
-							<a class="range-remove-icon" href="/admin/range/delete/${range.id}"><i class="icon-remove" ></i></a>
+							<a class="range-remove-icon" href="../../range/delete/${range.id}"><i class="icon-remove" ></i></a>
 						</div>
 			     	</c:forEach>			    	
 			    </div>

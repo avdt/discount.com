@@ -38,11 +38,15 @@ public class UrlConstants {
 	public final static String DELETE_PRODUCT = "/product/delete/{productId}";
 	public final static String EDIT_PRODUCT = "/product/edit/{productId}";
 	public final static String GET_PRODUCT = "/get/{productId}";
+	public final static String GET_PRODUCT_POPUP_INFO = "/popup/{productId}";
 	public final static String GET_PRODUCT_BY_CATEGORY = "/{categoryId}";
 	public final static String GET_PRODUCT_BY_PRODUCER = "/producer/{producerId}";
+	public final static String GET_PRODUCT_BY_RANGE = "/producer/range/{rangeId}";
 
 	public final static String NEW_RANGE = "/new-range/{producerId}";
 	public final static String ADD_RANGE = "/new-range/{producerId}/add";
+	public final static String EDIT_RANGE = "/range/edit/{rangeId}";
+	public final static String UPDATE_RANGE = "/range/update";
 	public final static String DELETE_RANGE = "/range/delete/{rangeId}";
 
 	public final static String SALE = "/sale";

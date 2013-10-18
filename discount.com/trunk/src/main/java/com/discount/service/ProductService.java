@@ -13,5 +13,5 @@ public interface ProductService extends GenericService<Product> {
 
 	List<Product> findByProducerId(Integer producerId);
 
-	List<Product> findByRange(String range);
+	List<Product> findByRange(int range);
 }
