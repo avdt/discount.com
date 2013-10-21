@@ -9,7 +9,7 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
-		<div id="producers">
+		<div id="producers-list">
 			<c:forEach items="${allProducers}" var="producer">
 				<model:producer producer="${producer}" url="products/producer/"></model:producer>
 		    </c:forEach>

@@ -83,8 +83,9 @@ public class ProductController extends BaseController {
 		map.put("product", product);
 		Range range = product.getRange();
 		if (range != null) {
-			map.put("productsByRange",
-					productService.findByRange(range.getId()));
+			List<Product> productByRange = productService.findByRange(range
+					.getId());
+			map.put("productsByRange", productByRange);
 		}
 		return "product";
 	}

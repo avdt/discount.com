@@ -24,11 +24,11 @@
 			     	<div>
 						<form:input path="name" type="text" placeholder="${productName}"/>
 					</div>
-			     	<div>
-						<form:input path="range" type="text" placeholder="${range}"/>
-					</div>
 					<div>
 						<form:select path="producer" items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>
+					</div>
+			     	<div class="ranges">
+						<form:select path="range" items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
 					</div>
 					<div>
 						<form:textarea path="description"  placeholder="${description}"/>

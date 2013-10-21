@@ -22,4 +22,8 @@
 	#edit-product-container #ranges-container {bottom: 322px;left: 75%;position: relative;width: 25%;}
 		#edit-product-container #ranges-container .range {}
 		#edit-product-container #ranges-container .new-range-btn {margin-left: 5px;position: absolute;}
+
+#new-product-container {}
+	/* #new-product-container #left-area .ranges #range {display: none; */}
+
 .tab-content {overflow: hidden;}

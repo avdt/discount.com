@@ -47,7 +47,7 @@
 					    
 					    <!-- PRODUCERS -->
 					    
-					    <div id="producers">
+					    <div id="producers-list">
 					    	<div>
 					    		<span>
 					    			<spring:message code="general.producers" />

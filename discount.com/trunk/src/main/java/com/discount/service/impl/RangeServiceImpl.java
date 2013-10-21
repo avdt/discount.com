@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.discount.dao.impl.RangeDAO;
+import com.discount.dao.RangeDAO;
 import com.discount.domain.Range;
 import com.discount.service.RangeService;
 
@@ -38,6 +38,11 @@ public class RangeServiceImpl implements RangeService {
 	@Override
 	public List<Range> findAll() {
 		return rangeDAO.findAll();
+	}
+
+	@Override
+	public List<Range> findByProducer(int producerId) {
+		return rangeDAO.findByProducer(producerId);
 	}
 
 }

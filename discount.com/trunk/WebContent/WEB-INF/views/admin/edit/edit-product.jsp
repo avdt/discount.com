@@ -36,8 +36,8 @@
 		     		
 					<form:input path="name" type="text" placeholder="${productName}"/>
 					<form:select path="range" items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
-					<form:select path="category" items="${allCategories}" itemLabel="name" itemValue="id"/>
-					<form:select path="producer" items="${allProducers}" itemLabel="name" itemValue="id"/>
+					<form:select path="category" items="${product.producer.categories}" itemLabel="name" itemValue="id"/>
+					<form:select path="producer.id" items="${allProducers}" itemLabel="name" itemValue="id"/>
 					<form:input path="price" type="text" placeholder="${price}"/>
 					<form:textarea path="description"  placeholder="${description}"/>
 			     	<c:forEach items="${product.category.settings}" var="setting" varStatus="status">

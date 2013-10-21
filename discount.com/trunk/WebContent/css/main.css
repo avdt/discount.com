@@ -84,8 +84,7 @@ a.prev span,a.next span {display: none;}
 #category-content #products{}
 
 .footer{position: fixed;bottom: 0px;}
-.footer:hover{background-color: green;}
 
-#producers {padding-bottom: 100px;}
+#producers-list {display: inline-table;padding-bottom: 20px;}
 
 .row-fluid [class*="span"]:first-child {margin-left: 21px;}

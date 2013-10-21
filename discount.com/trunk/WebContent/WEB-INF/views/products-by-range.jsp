@@ -16,7 +16,8 @@
 			    <c:if test="${producer.category.parentCategory!=null}">
 			    	<li><a href="${category.parentCategory.id}">${category.parentCategory.name}</a> <span class="divider">/</span></li>
 			    </c:if>
-			    <li class="active">${producer.name}</li>
+			    <li><a href="../${range.producer.id}">${range.producer.name}</a> <span class="divider">/</span></li>
+			    <li class="active">${range.name}</li>
 		    </ul>
 		</div>		
 	    <div id="category-title">

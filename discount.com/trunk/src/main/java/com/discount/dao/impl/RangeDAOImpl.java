@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.discount.dao.RangeDAO;
 import com.discount.domain.Range;
 
 @Repository
@@ -46,6 +47,17 @@ public class RangeDAOImpl implements RangeDAO {
 	public List<Range> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Range")
 				.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Range> findByProducer(int producerId) {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from Range r where r.producer.id = " + " :producerId")
+				.setInteger("producerId", producerId).list();
 	}
 
 }

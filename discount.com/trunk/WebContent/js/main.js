@@ -69,27 +69,9 @@ $(document).ready(function() {
 	
 	  var buildTooltipText = function(id, text) {
 		  $.ajax({
-//    	      url:"/discount/rest/product/get/" + id,
 			  url:"/discount/products/popup/" + id,
     	      async: false,  
     	      success:function(data) {
-//    	         var settings = data.settings;
-//    	         var settingsNames = "<div class='settings-names-area'>";
-//    	         var settingsValues="<div class='setting-values-area'>";
-//    	         for (i in settings) {
-//    	        	 settingsNames+="<div class='settings-row'><span class='setting-name'>";
-//    	        	 settingsNames+=settings[i].propertyName;
-//    	        	 settingsNames+="</span></div>";
-//    	        	 settingsValues+="<div class='settings-row'><span class='setting-value'>";
-//    	        	 settingsValues+=settings[i].propertyValue;
-//    	        	 settingsValues+="</span></div>";
-//    	         }
-//    	         settingsNames+="</div>";
-//    	         settingsValues+="</div>";
-//    	         
-//    	         text+=settingsNames;
-//    	         text+=settingsValues;
-//    	         text+="<hr/><div class='buy'><button class='btn btn-large btn-primary' type='button'><spring:message code='buy'/></button></div></div>";
     	    	  text=data;
     	      },
     	      error:function(){

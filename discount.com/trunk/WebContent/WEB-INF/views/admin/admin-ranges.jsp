@@ -24,7 +24,7 @@
 				    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				    	<c:forEach items="${producers}" var="producer">
 						    <li role="presentation">
-								<a href="${pageContext.request.contextPath}/admin/${producer.id}/new-range" tabindex="-1" role="menuitem">${producer.name}</a>
+								<a href="${pageContext.request.contextPath}/admin/new-range/${producer.id}" tabindex="-1" role="menuitem">${producer.name}</a>
 							</li>
 						</c:forEach>
 				    </ul>

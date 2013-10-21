@@ -11,7 +11,8 @@
     </jsp:attribute>
 	<jsp:body>
 		<div id="new-product-container">
-		    <form:form method="post" action="/${producer.id}/add" commandName="range" enctype="multipart/form-data">
+		    <form:form method="post" action="${producer.id}/add" commandName="range" enctype="multipart/form-data">
+				<spring:message code="product.range" var="range"/>
 				<div id=left-area>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${range}"/>

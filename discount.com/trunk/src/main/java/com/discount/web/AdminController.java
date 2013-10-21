@@ -55,7 +55,8 @@ public class AdminController extends BaseController {
 		map.put("allCategories", allCategories);
 		map.put("products", productService.findAll());
 		map.put("producers", producerService.findAll());
-		map.put("ranges", rangeService.findAll());
+		List<Range> ranges = rangeService.findAll();
+		map.put("ranges", ranges);
 
 		return "admin/admin";
 	}
@@ -306,6 +307,19 @@ public class AdminController extends BaseController {
 								.valueOf(text));
 						if (producer != null) {
 							setValue(producer);
+						}
+					}
+				});
+
+		binder.registerCustomEditor(Range.class, "range",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+
+						Range range = rangeService.findById(Integer
+								.valueOf(text));
+						if (range != null) {
+							setValue(range);
 						}
 					}
 				});

@@ -32,4 +32,30 @@ $(document).ready(function() {
 		
 		})
 		.trigger('change');
+	
+	$("#producer").change(function()
+    {
+		var $rangeSelect = $("#new-product-container #left-area .ranges #range");
+		var producerId = $("#producer option:selected").val();
+		
+		$rangeSelect.find('option').remove();
+		$rangeSelect.show("slow");
+		
+		$.ajax({
+			  url:"/discount/rest/range/get/" + producerId,
+  	      async: false,  
+  	      success:function(data) {
+  	    	  
+  	    	$.each(data, function(index, item) {
+  	    		$rangeSelect.append(new Option(item.name, item.id));
+  	    	});
+  	    	  
+  	      },
+  	      error:function(){
+  	    	  alert("error");
+  	      }
+  	   });
+    });
+	
+//	$("#new-product-container #left-area .ranges #range").hide();
 });
