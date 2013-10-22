@@ -45,7 +45,7 @@
 					<!-- ROOT CATEGORIES -->
 					<c:forEach items="${rootCategoryList}" var="category">
 						<li class="dropdown">
-							<a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="${pageContext.request.contextPath}/boilers">
+							<a id="drop1" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" href="${pageContext.request.contextPath}/products/${category.id}">
 								<label>${category.name}</label>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="drop1" role="menu">

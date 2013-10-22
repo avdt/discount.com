@@ -23,19 +23,19 @@
 	    </div>
 	    
 	    <!-- RANGES -->
-	    
+
 	    <div id="ranges">
 	        <div class="thumbnails">
-		    	<div class="span3">
-					<c:forEach items="${producer.ranges}" var="range">
+				<c:forEach items="${producer.ranges}" var="range">
+	    			<div class="span3">
 						<div id="${range.id}" class="thumbnail category-small">
 							<a href="range/${range.id}">
 								<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${range.image}">
 								<h4>${range.name}</h4>
 							</a>
 						</div>
-					</c:forEach>
-				</div>
+					</div>
+				</c:forEach>
 			</div>
 	    </div>
 	    

@@ -11,7 +11,7 @@
 	</ul>
 	<div class="tab-content">
   		
-		<!-- CREATE PRODUCT -->
+		<!-- CREATE RANGE -->
     
 		<div class="tab-pane fade in active" id="create_range">
 		
@@ -47,6 +47,7 @@
 						    	</div>
 						    	<div class="small-img-container">
 								    <a href="ranges/get/${range.id}">
+									    <img class="range-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${range.image}">
 									    <h4>${range.name}</h4>
 								    </a>
 							    </div>

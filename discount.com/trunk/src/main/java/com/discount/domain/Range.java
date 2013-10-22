@@ -14,10 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "range", uniqueConstraints = {
@@ -46,6 +48,9 @@ public class Range {
 
 	@Column(name = "image")
 	private String image;
+
+	@Transient
+	private MultipartFile file;
 
 	public Integer getId() {
 		return id;
@@ -85,5 +90,13 @@ public class Range {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 }

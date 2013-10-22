@@ -22,7 +22,7 @@
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
-						<form:input style="display:none;" path="id" type="text" value="${product.id}"/>
+						<form:hidden path="id" type="text" value="${product.id}"/>
 					</div>
 					<div>
 						<img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
@@ -43,7 +43,7 @@
 			     	<c:forEach items="${product.category.settings}" var="setting" varStatus="status">
 			     		<div>
 							<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
-							<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
+							<form:hidden path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
 						</div>
 			     	</c:forEach>
 		     	

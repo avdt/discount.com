@@ -88,3 +88,7 @@ a.prev span,a.next span {display: none;}
 #producers-list {display: inline-table;padding-bottom: 20px;}
 
 .row-fluid [class*="span"]:first-child {margin-left: 21px;}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
+
+.dropdown-menu {top: 95%;}

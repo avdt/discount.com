@@ -32,7 +32,7 @@
 	    	<div id="products">
 		        <div class="thumbnails">
 		        	<c:forEach items="${productsByRange}" var="product">
-						<model:product product="${product}" url="../get/"></model:product>		
+						<model:product product="${product}" url="../../get/"></model:product>		
 				    </c:forEach>
 			    </div>
 			</div>	   

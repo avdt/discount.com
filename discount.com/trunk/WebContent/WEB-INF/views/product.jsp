@@ -50,7 +50,7 @@
 	    		</a>
 		    	</div>
 		    	<div id="product-price">
-		    		<h2>${product.price}</h2>
+		    		<h2>${product.price} <spring:message code="product.currency"/></h2>
 		    	</div>
 		    	<div id="buy">
 		    		 <button class="btn btn-large btn-primary" type="button"><spring:message code="buy"/></button>

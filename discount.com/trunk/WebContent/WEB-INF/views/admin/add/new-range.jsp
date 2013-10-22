@@ -14,6 +14,9 @@
 		    <form:form method="post" action="${producer.id}/add" commandName="range" enctype="multipart/form-data">
 				<spring:message code="product.range" var="range"/>
 				<div id=left-area>
+					<div>
+						<form:input path="file" type="file" id="upload" name="upload"/>
+					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${range}"/>
 					</div>

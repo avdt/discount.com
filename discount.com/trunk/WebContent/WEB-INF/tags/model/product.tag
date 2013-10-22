@@ -22,7 +22,7 @@
 				<h4>${product.name}</h4>
 		    </a>
 		    <p>${product.category.name}</p>
-		    <p>${product.price}</p>
+		    <p>${product.price} <spring:message code="product.currency"/></p>
 	    </div>
 	    <div class="popup-metadata" style="display: none;">
 	    	<div>

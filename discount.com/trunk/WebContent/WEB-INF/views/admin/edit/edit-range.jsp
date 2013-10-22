@@ -16,7 +16,13 @@
 				<div id=left-area>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${range}"/>
-						<form:select path="producer" items="${allProducers}" itemLabel="name" itemValue="id"/>
+						<form:select path="producer.id" items="${allProducers}" itemLabel="name" itemValue="id"/>
+					</div>
+					<div>
+						<form:input path="file" type="file" id="upload" name="upload"/>
+					</div>
+					<div>
+						<form:input path="image"/>
 					</div>
 		     	</div>
 		     	<input type="submit" value="<spring:message code="general.save"/>" />
