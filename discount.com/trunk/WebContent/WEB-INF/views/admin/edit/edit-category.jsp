@@ -16,6 +16,7 @@
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
+					<spring:message code="admin.tab.category.root" var="root"/>
 					
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
@@ -24,6 +25,7 @@
 						<form:input style="display:none;" path="id" type="text" value="${category.id}"/>
 						<form:input path="image" type="text" value="${category.image}"/>
 						<form:input path="name" type="text" placeholder="${productName}"/>
+						<form:checkbox path="root" value="root" label="${root}"/>
 					</div>
 					<div>
 				     	<c:forEach items="${category.settings}" var="setting" varStatus="status">

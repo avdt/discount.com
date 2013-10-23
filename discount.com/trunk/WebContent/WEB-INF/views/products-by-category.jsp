@@ -31,11 +31,6 @@
 			    	<!-- CATEGORIES -->
 			    	
 					    <div id="child-categories">
-					    	<div>
-					    		<span>
-					    			<spring:message code="general.categories" />
-				    			</span>
-				    		</div>
 					    	<ul class="thumbnails">
 					        	<c:forEach items="${category.childCategories}" var="category">
 									<model:category category="${category}" url=""></model:category>

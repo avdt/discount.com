@@ -4,6 +4,12 @@
     	.masthead #head-top #search .form-search {}
     		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
 
-.masthead #head-top #cart{bottom: 90px;float: right;position: relative;text-align: right;width: 20%;}
-
+	.masthead #head-top #cart{bottom: 90px;float: right;position: relative;text-align: right;width: 20%;}
+	.masthead #head-top #admin {}
 .masthead .navbar {bottom: 40px;position: relative;}
+	.masthead .navbar .navbar-inner .container .nav .dropdown {height: 56px;text-align: center;vertical-align: middle;width: 129px;}
+	   .masthead .navbar .navbar-inner .container .nav .dropdown label {font-weight: bold;}
+	   
+.grtmenu {background-color: #FAFAFA;background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);background-repeat: repeat-x;border: 1px solid #D4D4D4;border-radius: 0 0 4px 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);padding: 10px;display: block;bottom:0;text-align: center;}
+	.grtmenu #container {margin-left: auto;margin-right: auto;width: 960px;}
+		.grtmenu #container .login {bottom: 20px;float: right;position: relative;}

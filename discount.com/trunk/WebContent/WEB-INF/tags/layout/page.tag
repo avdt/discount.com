@@ -33,13 +33,14 @@
 <jsp:invoke fragment="extraHeader" />
 </head>
 <body>
+	<layout:grt-header/>
 	<div class="container">
 		<layout:header />
 		<div class="content">
 			<jsp:doBody />
 		</div>
-		<layout:footer />
 	</div>
+	<layout:footer />
 	<jsp:invoke fragment="extraBottom" />
 </body>
 </html>

@@ -32,16 +32,17 @@
 	    <div id="cart">
 	    	<a href="#" class="btn"><i class="icon-shopping-cart"></i><spring:message code="header.cart" /></a>
 	    </div>
-	    
 	</div>
 	
 	<!-- NAVIGATION -->
 	
 	<div class="navbar">
+		<div id="admin">
+	    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
+    	</div>
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
-					<li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a></li>
 					<!-- ROOT CATEGORIES -->
 					<c:forEach items="${rootCategoryList}" var="category">
 						<li class="dropdown">
@@ -57,11 +58,6 @@
 							</ul>
 						</li>
 					</c:forEach>
-					
-					<li><a href="${pageContext.request.contextPath}/about"><spring:message code="header.aboutUs" /></a></li>
-					<li><a href="${pageContext.request.contextPath}/contacts"><spring:message code="header.contacts" /></a></li>
-					<li><a href="${pageContext.request.contextPath}/sale"><spring:message code="header.sale" /></a></li>
-					
 				</ul>
 			</div>
 		</div>

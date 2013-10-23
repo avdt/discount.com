@@ -28,18 +28,31 @@
 		</div>
 		
 		<div id="right-area">
-		    <form:form method="post" action="${parentCategory.id}/add" commandName="category" enctype="multipart/form-data">
+			<c:set var="parentCategoryId">
+				<c:choose>
+					<c:when test="${parentCategory!=null}">
+						<c:out value="${parentCategory.id}"></c:out>
+					</c:when>
+					<c:otherwise>
+						<c:out value="-1"></c:out>
+					</c:otherwise>
+				</c:choose>
+			</c:set>
+		    <form:form method="post" action="${parentCategoryId}/add" commandName="category" enctype="multipart/form-data">
 				<fieldset>
 					<spring:message code="admin.tab.category.name" var="categoryName"/>
 					<spring:message code="admin.tab.category.property" var="property"/>
 					<spring:message code="admin.tab.category.property.unit" var="unit"/>
-					
+					<spring:message code="admin.tab.category.root" var="root"/>
 					
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 					<div>
 						<form:input path="name" type="text" placeholder="${categoryName}"/>
+					</div>
+					<div>
+						<form:checkbox path="root" value="root" label="${root}"/>
 					</div>
 					<div class="category-settings-container">
 						<div class="category-setting">

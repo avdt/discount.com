@@ -83,7 +83,10 @@ a.prev span,a.next span {display: none;}
 #category-content {position: relative;}
 #category-content #products{}
 
-.footer{position: fixed;bottom: 0px;}
+.footer{background-color: #FAFAFA;background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);background-repeat: repeat-x;border: 1px solid #D4D4D4;border-radius: 4px 4px 4px 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);min-height: 40px;height: 55px;padding-left: 20px;padding-right: 20px;display: block;bottom:0;text-align: center;padding-top: 30px;}
+	.footer .urls-container {text-align: center;}
+	.footer .urls-container a{bottom: 15px;margin: 10px;position: relative;color:#777777;}
+	.footer .copyright {}
 
 #producers-list {display: inline-table;padding-bottom: 20px;}
 
