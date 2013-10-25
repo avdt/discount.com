@@ -26,6 +26,7 @@
 						<form:input path="image" type="text" value="${category.image}"/>
 						<form:input path="name" type="text" placeholder="${productName}"/>
 						<form:checkbox path="root" value="root" label="${root}"/>
+						<form:select path="parentCategory" items="${allCategories}" itemLabel="name" itemValue="id"/>
 					</div>
 					<div>
 				     	<c:forEach items="${category.settings}" var="setting" varStatus="status">

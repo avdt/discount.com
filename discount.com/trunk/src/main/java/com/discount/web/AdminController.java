@@ -104,6 +104,7 @@ public class AdminController extends BaseController {
 
 		ProductCategory category = categoryService.findById(categoryId);
 		map.put("category", category);
+		map.put("allCategories", categoryService.findAll());
 
 		return "admin/edit/edit-category";
 	}
@@ -320,6 +321,18 @@ public class AdminController extends BaseController {
 								.valueOf(text));
 						if (range != null) {
 							setValue(range);
+						}
+					}
+				});
+
+		binder.registerCustomEditor(ProductCategory.class, "parentCategory",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+						ProductCategory category = categoryService
+								.findById(Integer.valueOf(text));
+						if (category != null) {
+							setValue(category);
 						}
 					}
 				});

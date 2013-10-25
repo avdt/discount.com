@@ -19,10 +19,8 @@
 			    <li class="active">${category.name}</li>
 		    </ul>
 		</div>		
-	    <div id="category-title">
-	    	<div>
-	    		<h3>${category.name}</h3>
-	    	</div>
+	    <div id="category-title" class="block-title">
+    		<h3>${category.name}</h3>
 	    </div>
 	    <div id="category-content">
 	    	<c:choose>
@@ -43,10 +41,10 @@
 					    <!-- PRODUCERS -->
 					    
 					    <div id="producers-list">
-					    	<div>
-					    		<span>
+					    	<div class="block-title">
+					    		<h3 class="block-title">
 					    			<spring:message code="general.producers" />
-				    			</span>
+				    			</h3>
 					    	</div>
 				        	<c:forEach items="${category.producers}" var="producer">
 								<model:producer producer="${producer}" url="producer/"></model:producer>

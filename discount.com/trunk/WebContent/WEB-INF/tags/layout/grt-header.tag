@@ -9,14 +9,14 @@
 <div class="grtmenu">
 	<div id="container">
 		<div class="">
-			<a href="#"><spring:message code="header.action"/></a> |
-			<a href="#"><spring:message code="header.markdown"/></a> |
-			<a href="#"><spring:message code="header.delivery"/></a>
+			<a class="special-offer common-url" href="#"><spring:message code="header.action"/></a> |
+			<a class="special-offer common-url" href="#"><spring:message code="header.markdown"/></a> |
+			<a class="common-url" href="#"><spring:message code="header.delivery"/></a>
 		</div>
 		<div class="login">
-			<a href="#"><spring:message code="header.registration"/></a>
+			<a class="common-url" href="#"><spring:message code="header.registration"/></a>
 			
-			<a href="#"><spring:message code="header.login"/></a>
+			<a class="common-url" href="#"><spring:message code="header.login"/></a>
 		</div>
 	</div>
 </div>

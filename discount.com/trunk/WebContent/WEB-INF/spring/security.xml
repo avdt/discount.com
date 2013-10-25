@@ -23,7 +23,6 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
 	</http>
- 
 
 	<authentication-manager>
 		<authentication-provider>
