@@ -1,52 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-<title>Login Page</title>
-<style>
-.errorblock {
-	color: #ff0000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
-</head>
-<body onload='document.f.j_username.focus();'>
-	<h3>Login with Username and Password (Custom Page)</h3>
-
-	<c:if test="${not empty error}">
-		<div class="errorblock">
-			Your login attempt was not successful, try again.<br /> Caused :
-			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+<%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<layout:page title="Admin Tools">
+	<jsp:attribute name="extraHeader">
+    </jsp:attribute>
+	<jsp:attribute name="extraBottom">
+    </jsp:attribute>
+	<jsp:body>
+	    <c:set var="pageTitle" value="Please Login" scope="request" />
+<c:url value="/login" var="loginUrl" />
+<form action="${loginUrl}" method="post">
+	<c:if test="${param.error != null}">
+		<div class="alert alert-error">
+			Failed to login.
+			<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+				Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.	message}" />
+			</c:if>
 		</div>
 	</c:if>
-
-	<form name='f' action="<c:url value='j_spring_security_check' />"
-		method='POST'>
-
-		<table>
-			<tr>
-				<td>User:</td>
-				<td><input type='text' name='j_username' value=''>
-				</td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type='password' name='j_password' />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-					value="submit" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="reset" type="reset" />
-				</td>
-			</tr>
-		</table>
-
-	</form>
-</body>
-</html>
+	<c:if test="${param.logout != null}">
+		<div class="alert alert-success">You have been logged out.</div>
+	</c:if>
+	<label for="username">Username</label> <input type="text" id="username"
+		name="username" /> <label for="password">Password</label> <input
+		type="password" id="password" name="password" />
+	<div class="form-actions">
+		<input id="submit" class="btn" name="submit" type="submit"
+			value="Login" />
+	</div>
+</form>
+	</jsp:body>
+</layout:page>

@@ -12,7 +12,7 @@
 
 	<div id="head-top">
 		<div id="title">
-			<a href="${pageContext.request.contextPath}/index">
+			<a href="${pageContext.request.contextPath}">
 				<h3 class="muted">Alfero</h3>
 			</a>
 		</div>

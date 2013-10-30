@@ -55,13 +55,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	@Transactional
 	public User findByLogin(String login) {
-		// List<User> list = getHibernateTemplate().find(
-		// "from User where login=?", login);
-		// return list.get(0);
-
-		// TODO: body
-
-		return null;
+		return (User) sessionFactory.getCurrentSession()
+				.createQuery("from User u where u.login = :login")
+				.setString("login", login).list().get(0);
 	}
 
 	@SuppressWarnings("unchecked")

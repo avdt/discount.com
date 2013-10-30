@@ -9,9 +9,10 @@ public class UrlConstants {
 	public final static String CLIENT = "/client";
 	public final static String ADD = "/add";
 	public final static String DELETE_CLIENT = "/delete/{clientId}";
+	public final static String HOME = "/";
 	public final static String INDEX = "/index";
 
-	public final static String LOGIN = "/login";
+	public final static String LOGIN = "/login/form";
 	public final static String LOGIN_FAILED = "/loginfailed";
 	public final static String LOGOUT = "/logout";
 
@@ -51,5 +52,11 @@ public class UrlConstants {
 
 	public final static String SALE = "/sale";
 
+	public final static String DEFAULT = "/default";
+
 	public final static String SEARCH = "/search";
+	
+	public final static String REGISTRATION = "/registration";
+	public final static String SAVE_USER = "/save";
+	
 }

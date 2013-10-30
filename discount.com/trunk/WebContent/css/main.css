@@ -99,3 +99,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
 .dropdown-menu {top: 95%;}
 
 .block-title {text-align: center;}
+
+#register-user-container {margin-left: auto;margin-right: auto;text-align: center;width: 30%;}
+
+#register-btn {left: 73px;position: relative;}

@@ -13,7 +13,7 @@ import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 
 @Controller
-@RequestMapping(UrlConstants.INDEX)
+@RequestMapping(UrlConstants.HOME)
 public class HomeController extends BaseController {
 
 	@Autowired
@@ -22,20 +22,14 @@ public class HomeController extends BaseController {
 	@Autowired
 	private ProducerService producerService;
 
-	@RequestMapping(value = UrlConstants.INDEX, method = RequestMethod.GET)
-	public String home(Map<String, Object> map) {
+	@RequestMapping(value = UrlConstants.HOME, method = RequestMethod.GET)
+	public String home2(Map<String, Object> map) {
 		putRootCategories(map);
 
 		List<ProductCategory> categories = categoryService
 				.findChildCategories();
 		map.put("categories", categories);
 		map.put("allProducers", producerService.findAll());
-
-		return "index";
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home2() {
 
 		return "index";
 	}

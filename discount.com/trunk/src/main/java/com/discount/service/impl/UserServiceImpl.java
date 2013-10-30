@@ -3,6 +3,10 @@ package com.discount.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import com.discount.dao.UserDAO;
@@ -14,9 +18,17 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	private UserDetailsManager userDetailsManager;
 
 	@Override
 	public void save(User user) {
+		List<GrantedAuthority> authorities = AuthorityUtils
+				.createAuthorityList("ROLE_USER");
+		UserDetails userDetails = new org.springframework.security.core.userdetails.User(
+				user.getLogin(), user.getPassword(), authorities);
+		userDetailsManager.createUser(userDetails);
+
 		this.userDAO.save(user);
 	}
 

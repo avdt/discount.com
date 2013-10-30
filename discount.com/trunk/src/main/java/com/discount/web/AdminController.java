@@ -4,6 +4,8 @@ import java.beans.PropertyEditorSupport;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -38,6 +40,14 @@ public class AdminController extends BaseController {
 
 	@Autowired
 	private RangeService rangeService;
+
+	@RequestMapping("/default")
+	public String defaultAfterLogin(HttpServletRequest request) {
+		if (request.isUserInRole("ROLE_ADMIN")) {
+			return "redirect:" + UrlConstants.ADMIN;
+		}
+		return "redirect:/";
+	}
 
 	@RequestMapping(UrlConstants.ADMIN)
 	public String getTools(Map<String, Object> map) {
