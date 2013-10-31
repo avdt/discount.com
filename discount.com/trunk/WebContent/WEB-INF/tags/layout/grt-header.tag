@@ -19,11 +19,11 @@
 			<sec:authorize access="authenticated" var="authenticated"/>
 			<c:choose>
 				<c:when test="${authenticated}">
-				<div>
-					<sec:authentication property="name" />
-					<c:url var="logoutUrl" value="/logout"/>
-					<a class="common-url" href="${logoutUrl}"><spring:message code="header.logout"/></a>
-				</div>
+					<div>
+						<sec:authentication property="name" />
+						<c:url var="logoutUrl" value="/logout"/>
+						<a class="common-url" href="${logoutUrl}"><spring:message code="header.logout"/></a>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<div>

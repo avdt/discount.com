@@ -7,31 +7,20 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 	<http pattern="/resources/**" security="none" />
 	<http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/"
-                access="permitAll"/>
-        <intercept-url pattern="/login/*"
-                access="permitAll"/>
-        <intercept-url pattern="/logout"
-                access="permitAll"/>
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="permitAll"/>
-		
-		<form-login login-page="/login/form"
-                login-processing-url="/login"
-                username-parameter="username"
-                password-parameter="password"
-                authentication-failure-url="/login/form?error"
-                default-target-url="/default"/>
-        <logout logout-url="/logout"
-                logout-success-url="/login/form?logout"/>
-		
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/login/*" access="permitAll" />
+		<intercept-url pattern="/logout" access="permitAll" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="permitAll" />
+
+		<form-login login-page="/login/form" login-processing-url="/login"
+			username-parameter="username" password-parameter="password"
+			authentication-failure-url="/login/form?error" default-target-url="/default" />
+		<logout logout-url="/logout" logout-success-url="/login/form?logout" />
+
 	</http>
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="user1@example.com" password="user1" authorities="ROLE_USER" />
-				<user name="admin1@example.com" password="admin1" authorities="ROLE_USER,ROLE_ADMIN" />
-			</user-service>
-		</authentication-provider>
+		<authentication-provider user-service-ref="customUserDetailsService" />
 	</authentication-manager>
+	
 </bean:beans>
