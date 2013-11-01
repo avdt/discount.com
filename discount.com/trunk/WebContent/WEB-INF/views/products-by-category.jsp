@@ -64,8 +64,5 @@
 		    	</c:otherwise>
 	    	</c:choose>
 	    </div>
-	    
-		 
-	    
 	</jsp:body>
 </layout:page>
