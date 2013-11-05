@@ -93,6 +93,10 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
+	public String getName() {
+		return getFirstName() + " " + getLastName();
+	}
+
 	public String getEmail() {
 		return email;
 	}

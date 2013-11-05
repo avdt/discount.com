@@ -25,6 +25,8 @@
 	<label for="username">Username</label> <input type="text" id="username"
 		name="username" /> <label for="password">Password</label> <input
 		type="password" id="password" name="password" />
+		<label for="remember">Remember Me?</label>
+		<input type="checkbox" id="remember" name="_spring_security_remember_me" value="true"/>
 	<div class="form-actions">
 		<input id="submit" class="btn" name="submit" type="submit"
 			value="Login" />

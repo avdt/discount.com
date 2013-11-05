@@ -41,7 +41,7 @@ public class UserContexImpl implements UserContext {
 
 	@Override
 	public void setCurrentUser(User user) {
-		Collection<GrantedAuthority> authorities = UserAuthorityUtils
+		Collection<? extends GrantedAuthority> authorities = UserAuthorityUtils
 				.createAuthorities(user);
 		Authentication authentication = new UsernamePasswordAuthenticationToken(
 				user, user.getPassword(), authorities);

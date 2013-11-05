@@ -20,7 +20,7 @@
 			<c:choose>
 				<c:when test="${authenticated}">
 					<div>
-						<sec:authentication property="name" />
+						<sec:authentication property="principal.name" />
 						<c:url var="logoutUrl" value="/logout"/>
 						<a class="common-url" href="${logoutUrl}"><spring:message code="header.logout"/></a>
 					</div>

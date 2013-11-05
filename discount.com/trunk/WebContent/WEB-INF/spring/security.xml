@@ -13,6 +13,8 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
+		<remember-me key="alfero" />
+
 		<form-login login-page="/login/form" login-processing-url="/login"
 			username-parameter="username" password-parameter="password"
 			authentication-failure-url="/login/form?error" default-target-url="/default" />
@@ -20,7 +22,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	</http>
 	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailsService" />
+		<authentication-provider ref="userAuthenticationProvider" />
 	</authentication-manager>
-	
+
 </bean:beans>

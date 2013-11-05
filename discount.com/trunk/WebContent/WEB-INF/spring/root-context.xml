@@ -23,6 +23,7 @@
 	<context:component-scan base-package="com.discount.service" />
 	<context:component-scan base-package="com.discount.services.impl" />
 	<context:component-scan base-package="com.discount.rest" />
+	<context:component-scan base-package="com.discount.authentication" />
 	
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
