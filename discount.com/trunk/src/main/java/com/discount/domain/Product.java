@@ -80,6 +80,10 @@ public class Product implements Serializable {
 	@JoinColumn(name = "range_id")
 	private Range range;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "product")
+	private List<Review> comments;
+
 	public Integer getId() {
 		return id;
 	}
@@ -204,6 +208,14 @@ public class Product implements Serializable {
 
 	public void setRange(Range range) {
 		this.range = range;
+	}
+
+	public List<Review> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Review> comments) {
+		this.comments = comments;
 	}
 
 }

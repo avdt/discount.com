@@ -1,5 +1,6 @@
 package com.discount.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.discount.domain.Review;
 import com.discount.domain.Product;
 import com.discount.domain.Range;
 import com.discount.service.ProducerService;
@@ -78,13 +80,14 @@ public class ProductController extends BaseController {
 	public String getProductById(@PathVariable("productId") Integer productId,
 			Map<String, Object> map) {
 		putRootCategories(map);
+		map.put("comment", new Review());
 
 		Product product = productService.findById(productId);
 		map.put("product", product);
 		Range range = product.getRange();
+		List<Product> productByRange = new ArrayList<Product>();
 		if (range != null) {
-			List<Product> productByRange = productService.findByRange(range
-					.getId());
+			productByRange = productService.findByRange(range.getId());
 			map.put("productsByRange", productByRange);
 		}
 		return "product";

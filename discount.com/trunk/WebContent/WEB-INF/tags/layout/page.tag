@@ -29,7 +29,6 @@
 <script type="text/javascript" src="<c:url value="/js/jquery.qtip.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
-<!-- Process the given input fragment -->
 <jsp:invoke fragment="extraHeader" />
 </head>
 <body>

@@ -11,7 +11,7 @@
 		<mapping class="com.discount.domain.ProductCategory" />
 		<mapping class="com.discount.domain.User" />
 		<mapping class="com.discount.domain.UserRole" />
-		<mapping class="com.discount.domain.Comment" />
+		<mapping class="com.discount.domain.Review" />
 		<mapping class="com.discount.domain.Producer" />
 		<mapping class="com.discount.domain.ProducerCategories" />
 		<mapping class="com.discount.domain.Range" />

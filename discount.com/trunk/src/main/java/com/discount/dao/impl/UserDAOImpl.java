@@ -52,13 +52,19 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public User findByLogin(String login) {
+		User user = null;
+
 		List<User> users = sessionFactory.getCurrentSession()
 				.createQuery("from User u where u.login = :login")
 				.setString("login", login).list();
-		return (User) users.get(0);
+		if (!users.isEmpty()) {
+			user = (User) users.get(0);
+		}
+		return user;
 	}
 
 	@SuppressWarnings("unchecked")

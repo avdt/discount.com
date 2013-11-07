@@ -26,7 +26,7 @@ public class ProductSettings implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToOne(/* fetch = FetchType.EAGER, */cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "product_id")
 	private Product product;
 

@@ -58,5 +58,7 @@ public class UrlConstants {
 	
 	public final static String REGISTRATION = "/registration";
 	public final static String SAVE_USER = "/save";
-	
+
+	public final static String COMMENT = "/products/get";
+	public final static String ADD_COMMENT = "/{productId}/add-comment";
 }

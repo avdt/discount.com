@@ -8,8 +8,18 @@
 	.right-area #product-price {color: #E74B30;left: 1%;position: relative;}
 	.right-area #settings .setting-name {text-align: left;}
 	.right-area #buy {bottom: 55px;left: 15%;position: static;}
-#comments {position: relative;bottom: 200px;}
     
-#similar-products {position: relative;bottom: 200px;}
+#similar-products {}
 	#similar-products #similar-product-title{font: 24px black;}
 #product{}
+#reviews {}
+	#reviews .title{font-size: 24px;padding-bottom: 20px;}
+	#reviews .review {display: table;margin-bottom: 10px;}
+		#reviews #add-review {margin-bottom: 10px;}
+		#reviews .review .title {padding-bottom: 0;}
+		#reviews .review .title .owner-name {color: #FFA500;font-size: 20px;}
+		#reviews .review .title .review-date {font-size: 14px;}
+		#reviews .review .content {bottom: 0;position: relative;overflow: hidden}
+	#reviews #new-review {display: table-caption;overflow: hidden;}
+		#reviews #new-review #ownerName {}
+		#reviews #new-review #new-review-btn {}

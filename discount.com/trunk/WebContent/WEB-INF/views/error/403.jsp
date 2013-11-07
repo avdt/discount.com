@@ -2,14 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
-<layout:page title="About Us">
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<spring:message code="error.accessDenied" var="title"/>
+<layout:page title="${title}">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
 	    <div>
-	    	Oops. Access is denied.
+	    	<spring:message code="error.accessDenied"/>
 	    </div>
 	</jsp:body>
 </layout:page>

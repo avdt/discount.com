@@ -1,23 +1,25 @@
 package com.discount.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "comment", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
-public class Comment implements Serializable {
+public class Review implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3583731207257019483L;
 
 	@Id
@@ -26,14 +28,18 @@ public class Comment implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@Column(name = "userId", unique = false, nullable = false, length = 100)
-	private Integer userId;
+	@Column(name = "owner_name")
+	private String ownerName;
 
-	@Column(name = "productId", unique = false, nullable = false, length = 100)
-	private Integer productId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "product_id")
+	private Product product;
 
 	@Column(name = "content", unique = false, nullable = false, length = 1000)
 	private String content;
+
+	@Column
+	private Date date;
 
 	public String getContent() {
 		return content;
@@ -41,14 +47,6 @@ public class Comment implements Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 
 	public Integer getId() {
@@ -59,11 +57,28 @@ public class Comment implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getProductId() {
-		return productId;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setDate(Date date) {
+		this.date = date;
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
 }

@@ -10,10 +10,10 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/login/*" access="permitAll" />
 		<intercept-url pattern="/logout" access="permitAll" />
-		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN') and fullyAuthenticated" />
 		<intercept-url pattern="/**" access="permitAll" />
 
-		<remember-me key="alfero" />
+		<remember-me key="alfero" token-validity-seconds="9999999" />
 
 		<form-login login-page="/login/form" login-processing-url="/login"
 			username-parameter="username" password-parameter="password"

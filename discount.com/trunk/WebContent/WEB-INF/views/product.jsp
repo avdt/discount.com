@@ -4,11 +4,13 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <layout:page title="${product.name}">
 	<jsp:attribute name="extraHeader">
-		<link rel="stylesheet" type="text/css"
-			href="<c:url value="/css/product-page.css" />" />
+		<link rel="stylesheet" type="text/css" href="<c:url value="/css/product-page.css" />" />
+		<script type="text/javascript" src="<c:url value="/js/product-page.js" /> "></script>
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
@@ -55,28 +57,72 @@
 		    	<div id="buy">
 		    		 <button class="btn btn-large btn-primary" type="button"><spring:message code="buy"/></button>
 		    	</div>
-		    	<div>
-		    		${product.description}
-		    	</div>
-		    	
-		    	<div id="settings">
-			    	<dl class="dl-horizontal">
-			    		<c:forEach items="${product.settings}" var="setting">
-												
-							<dt class="setting-name">${setting.propertyName}</dt>
-							<dd class="setting-value">${setting.propertyValue}</dd>
-						
-						</c:forEach>
-					</dl>
-				</div>
 		    </div>
 	    </div>
 	    
-	    <!-- COMMENTS -->
-	    
-	    <div id="comments">
-    		<hr/>
-	    	Comments will be here
+	    <div>
+		    <ul class="nav nav-tabs" id="categoryTab">
+			    <li class="active"><a href="#description" data-toggle="tab"><spring:message code="products.description" /></a></li>
+			    <li><a href="#reviews" data-toggle="tab"><spring:message code="product.reviews" /></a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="description">
+				
+					<div>
+			    		${product.description}
+			    	</div>
+			    	
+			    	<div id="settings">
+				    	<dl class="dl-horizontal">
+				    		<c:forEach items="${product.settings}" var="setting">
+													
+								<dt class="setting-name">${setting.propertyName}</dt>
+								<dd class="setting-value">${setting.propertyValue}</dd>
+							
+							</c:forEach>
+						</dl>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="reviews">
+					<div>
+						<c:forEach items="${product.comments}" var="comment">
+							<div class="review">
+								<div class="title">
+									<span class="owner-name">${comment.ownerName}</span>
+									<span class="review-date">${comment.date}</span>
+								</div>
+								<div class="content">
+									<span>${comment.content}</span>
+								</div>
+							</div>				
+						</c:forEach>
+						<div id="add-review">
+							<a href="#reviews" onclick="showNewReviewForm(); return false;"><spring:message code="product.addReview"/></a>
+						</div>
+						
+						<div id="new-review" style="display: none;">
+							<form:form method="post" action="${product.id}/add-comment" commandName="comment" >
+								
+								<spring:message code="general.name" var="name"/>
+							
+								<form:textarea path="content"/>
+								<sec:authorize access="authenticated" var="authenticated"/>
+								<c:choose>
+									<c:when test="${authenticated}">
+										<sec:authentication property="principal.name" var="ownerName" />
+										<form:hidden path="ownerName" value="${ownerName}"/>
+									</c:when>
+									<c:otherwise>
+										<form:input path="ownerName" placeholder="${name}"/>
+									</c:otherwise>
+								</c:choose>
+					
+								<input id="new-review-btn" type="submit" value="<spring:message code="product.addReview"/>" />
+							</form:form>
+						</div>
+					</div>	
+				</div>
+			</div>
 	    </div>
 	    
 	    <!-- SIMILAR PRODUCTS -->

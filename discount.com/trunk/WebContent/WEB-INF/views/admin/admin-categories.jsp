@@ -9,8 +9,8 @@
 	<ul class="nav nav-tabs" id="categoryTab">
 	    <li class="active"><a href="#create_category" data-toggle="tab"><spring:message code="admin.tab.category.create" /></a></li>
 	    <li><a href="#all_categories" data-toggle="tab"><spring:message code="admin.tab.category.all" /></a></li>
-  		</ul>
-  		<div class="tab-content">
+	</ul>
+	<div class="tab-content">
 		<div class="tab-pane fade in active" id="create_category">
 		
 		<!-- Create new category -->
@@ -36,7 +36,7 @@
 		</div>
 		<div class="tab-pane fade" id="all_categories">
 		
-		<!-- All categories -->
+			<!-- All categories -->
 			<c:choose>
 				<c:when test="${!empty allCategories}">
 					<div class="bs-docs-grid">
