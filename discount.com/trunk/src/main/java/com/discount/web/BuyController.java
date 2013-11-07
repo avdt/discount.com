@@ -18,7 +18,7 @@ import com.discount.service.BuyService;
 import com.discount.service.ProductService;
 
 @Controller
-@RequestMapping(value = UrlConstants.PRODUCTS)
+@RequestMapping(value = UrlConstants.CART)
 public class BuyController extends BaseController {
 
 	@Autowired
@@ -42,6 +42,12 @@ public class BuyController extends BaseController {
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
+	}
+
+	@RequestMapping(value = UrlConstants.CART_POPUP, method = RequestMethod.GET)
+	public String getCart() {
+
+		return "cart";
 	}
 
 }

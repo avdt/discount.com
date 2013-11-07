@@ -47,13 +47,17 @@
 								<c:set var="productCountText" value="${multiProductCount}"></c:set>
 							</c:otherwise>
 						</c:choose>
-						<div>
-							<span>${productCountText}</span>
+						<div id="cart-info">
+							<div id="product-count">
+								<a href="${pageContext.request.contextPath}/cart">${productCountText}</a>
+							</div>
+							<div>
+								<span><spring:message code="header.cart.totalPrice" arguments="${cart.totalPrice}"/></span>
+							</div>
 						</div>
-						<div>
-							<span><spring:message code="header.cart.totalPrice" arguments="${cart.totalPrice}"/></span>
-					    	<a id="checkout" href="#" class="btn"><i class="icon-shopping-cart"></i><spring:message code="header.cart.checkout" /></a>
-						</div>
+					    <div>	
+					    	<a id="checkout" href="#" class="btn"><spring:message code="header.cart.checkout" /></a>
+				    	</div>
 		    		</div>
 				</c:when>
 				<c:otherwise>

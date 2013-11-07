@@ -32,7 +32,7 @@
 			    <div class="row-fluid">
 			        <ul class="thumbnails">
 			        	<c:forEach items="${searchResults.matchedProducts}" var="product">
-								<model:product product="${product}" url="get/"></model:product>	
+								<model:product product="${product}" url="products/get/"></model:product>	
 					    </c:forEach>
 				    </ul>
 		    	</div>

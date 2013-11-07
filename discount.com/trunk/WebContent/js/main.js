@@ -40,7 +40,7 @@ $(document).ready(function() {
 		        	var text = new Object();
 		        	text = "<div class='product-info'><div id='settings'>";
 		        	var $id = $(this).attr("id");
-		        	text = buildTooltipText($id, text);
+		        	text = buildProductTooltipText($id, text);
 		        	
 		            return text;
 		        }
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		     }
          });
 	
-	  var buildTooltipText = function(id, text) {
+	  var buildProductTooltipText = function(id, text) {
 		  $.ajax({
 			  url:"/discount/products/popup/" + id,
     	      async: false,  
@@ -81,4 +81,50 @@ $(document).ready(function() {
 		  return text;
 	  };
 	  
+	  // tooltip for cart
+	  $('#cart-info #product-count').qtip({
+		  content: {
+		        text: function(event, api) {
+		        	var text = new Object();
+		        	text = buildCartTooltipText(text);
+		        	
+		            return text;
+		        }
+		    },
+		    style: {
+		        tip: {
+		            corner: 'top right'
+		        },
+		        classes: 'qtip-bootstrap qtip-shadow qtip-rounded'
+		    },
+		    position: {
+		        my: 'top right',
+		        at: 'bottom left',
+		        adjust: {
+		        	shift:true
+		        }
+		    },
+		    hide: {
+		        fixed: true, // Let the user mouse into the tip
+		        delay: 500 // Don't hide right away so that they can mouse into it
+		     },
+		     show: {
+		         delay: 500
+		     }
+         });
+	  
+
+	  var buildCartTooltipText = function(text) {
+		  $.ajax({
+			  url:"/discount/cart/popup/",
+    	      async: false,  
+    	      success:function(data) {
+    	    	  text=data;
+    	      },
+    	      error:function(){
+    	    	  alert("error");
+    	      }
+    	   });
+		  return text;
+	  };
 });

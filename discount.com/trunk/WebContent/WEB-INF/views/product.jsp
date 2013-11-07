@@ -43,7 +43,7 @@
 			    </c:if>
 		    </div>
 		    <div class=right-area>
-		    	<form:form method="GET" action="${product.id}/add-to-cart" command="product">
+		    	<form:form method="GET" action="../../cart/${product.id}/add" command="product">
 		    
 			    	<div id="product-name">
 			    		<h2>${product.name}</h2>

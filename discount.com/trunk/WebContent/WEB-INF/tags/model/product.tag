@@ -24,19 +24,5 @@
 		    <p>${product.category.name}</p>
 		    <p>${product.price} <spring:message code="product.currency"/></p>
 	    </div>
-	    <div class="popup-metadata" style="display: none;">
-	    	<div>
-	    		${product.category.name}
-	    	</div>
-	    	<div>
-	    		${product.description}
-	    	</div>
-		    <c:forEach items="${product.settings}" var="setting">
-			    <dl class="dl-horizontal">
-				    <dt class="setting-name">${setting.propertyName}</dt>
-				    <dd class="setting-value">${setting.propertyValue}</dd>
-			    </dl>
-			</c:forEach>
-		</div>
     </div>
 </div>
