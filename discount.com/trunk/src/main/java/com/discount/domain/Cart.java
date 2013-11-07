@@ -8,6 +8,32 @@ public class Cart {
 
 	private List<Product> products;
 
+	public void addProduct(Product product) {
+		products.add(product);
+	}
+
+	public void deleteProduct(Product product) {
+		products.remove(product);
+	}
+
+	public int getSize() {
+		return products.size();
+	}
+
+	public boolean isEmpty() {
+		return products.isEmpty();
+	}
+
+	public int getTotalPrice() {
+		int totalPrice = 0;
+
+		for (Product product : products) {
+			totalPrice += product.getPrice();
+		}
+
+		return totalPrice;
+	}
+
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -23,4 +49,5 @@ public class Cart {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 }

@@ -43,20 +43,23 @@
 			    </c:if>
 		    </div>
 		    <div class=right-area>
-		    	<div id="product-name">
-		    		<h2>${product.name}</h2>
-		    	</div>
-		    	<div id="producer-info">
-		    	<a href="../producer/${product.producer.id}">
-		    		<span>${product.producer.name}</span>
-	    		</a>
-		    	</div>
-		    	<div id="product-price">
-		    		<h2>${product.price} <spring:message code="product.currency"/></h2>
-		    	</div>
-		    	<div id="buy">
-		    		 <button class="btn btn-large btn-primary" type="button"><spring:message code="buy"/></button>
-		    	</div>
+		    	<form:form method="GET" action="${product.id}/add-to-cart" command="product">
+		    
+			    	<div id="product-name">
+			    		<h2>${product.name}</h2>
+			    	</div>
+			    	<div id="producer-info">
+			    	<a href="../producer/${product.producer.id}">
+			    		<span>${product.producer.name}</span>
+		    		</a>
+			    	</div>
+			    	<div id="product-price">
+			    		<h2>${product.price} <spring:message code="product.currency"/></h2>
+			    	</div>
+			    	<div id="buy">
+			    		 <button class="btn btn-large btn-primary" type="submit"><spring:message code="buy"/></button>
+			    	</div>
+		    	</form:form>
 		    </div>
 	    </div>
 	    

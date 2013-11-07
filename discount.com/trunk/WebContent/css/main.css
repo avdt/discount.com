@@ -76,7 +76,7 @@ a.prev span,a.next span {display: none;}
 	
 .span3{width: 213px;}
 
-.content {bottom: 45px;position: relative;}
+.content {bottom: 100px;position: relative;}
 .breadcrumb{background-color: white;}
 
 #search-results .title {font-size: 18px;}

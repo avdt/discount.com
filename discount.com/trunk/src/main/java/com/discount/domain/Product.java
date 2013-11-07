@@ -82,7 +82,7 @@ public class Product implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "product")
-	private List<Review> comments;
+	private List<Review> review;
 
 	public Integer getId() {
 		return id;
@@ -211,11 +211,11 @@ public class Product implements Serializable {
 	}
 
 	public List<Review> getComments() {
-		return comments;
+		return review;
 	}
 
 	public void setComments(List<Review> comments) {
-		this.comments = comments;
+		this.review = comments;
 	}
 
 }

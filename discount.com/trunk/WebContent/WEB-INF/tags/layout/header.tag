@@ -30,16 +30,46 @@
 	    <!-- CART -->
 	    
 	    <div id="cart">
-	    	<a href="#" class="btn"><i class="icon-shopping-cart"></i><spring:message code="header.cart" /></a>
+			<c:choose>
+				<c:when test="${cart!=null}">
+					<div>
+						<spring:message code="header.cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
+						<spring:message code="header.cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
+						<spring:message code="header.cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
+						<c:choose>
+							<c:when test="${cart.size==1}">
+								<c:set var="productCountText" value="${singleProductCount}"></c:set>
+							</c:when>
+							<c:when test="${cart.size>1 && cart.size<5}">
+								<c:set var="productCountText" value="${fewProductsCount}"></c:set>
+							</c:when>
+							<c:otherwise>
+								<c:set var="productCountText" value="${multiProductCount}"></c:set>
+							</c:otherwise>
+						</c:choose>
+						<div>
+							<span>${productCountText}</span>
+						</div>
+						<div>
+							<span><spring:message code="header.cart.totalPrice" arguments="${cart.totalPrice}"/></span>
+					    	<a id="checkout" href="#" class="btn"><i class="icon-shopping-cart"></i><spring:message code="header.cart.checkout" /></a>
+						</div>
+		    		</div>
+				</c:when>
+				<c:otherwise>
+					<span><spring:message code="header.cart.empty" /></span>
+				</c:otherwise>
+			</c:choose>
+
 	    </div>
+		<div id="admin">
+	    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
+    	</div>
 	</div>
 	
 	<!-- NAVIGATION -->
 	
 	<div class="navbar">
-		<div id="admin">
-	    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
-    	</div>
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">

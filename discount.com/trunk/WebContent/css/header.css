@@ -4,9 +4,10 @@
     	.masthead #head-top #search .form-search {}
     		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
 
-	.masthead #head-top #cart{bottom: 90px;float: right;position: relative;text-align: right;width: 20%;}
-	.masthead #head-top #admin {}
-.masthead .navbar {bottom: 40px;position: relative;}
+	.masthead #head-top #cart {bottom: 90px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
+		.masthead #head-top #cart #checkout {}
+	.masthead #head-top #admin {width: 15%;bottom: 115px;position: relative;}
+.masthead .navbar {bottom: 110px;position: relative;}
 	.masthead .navbar .navbar-inner .container .nav .dropdown {height: 56px;text-align: center;vertical-align: middle;width: 129px;}
 	   .masthead .navbar .navbar-inner .container .nav .dropdown label {font-weight: bold;}
 	   
