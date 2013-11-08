@@ -18,4 +18,4 @@
 		
 
 /* style for cart width */		
-.cart_width {width: auto;}
+.cart_width {max-width: 750px;min-width: 700px;}

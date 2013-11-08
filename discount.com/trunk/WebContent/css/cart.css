@@ -1,4 +1,4 @@
-#cart {width: 750px;min-width: 0px;position: relative;left:50px;}
+#cart {width: 750px;min-width: 0px;}
 
 .cart-product {height: 130px;width: 700px;margin: 10px;position: relative;}
 	.cart-product .product-url-container {}
