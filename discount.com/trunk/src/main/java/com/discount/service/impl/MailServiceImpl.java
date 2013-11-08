@@ -11,6 +11,7 @@ import com.discount.service.MailService;
 @Service("mailService")
 public class MailServiceImpl implements MailService {
 
+	// @Autowired
 	private MailSender mailSender;
 
 	@Override

@@ -4,7 +4,7 @@
     	.masthead #head-top #search .form-search {}
     		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
 
-	.masthead #head-top #cart {bottom: 90px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
+	.masthead #head-top #cart {bottom: 110px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
 		.masthead #head-top #cart #checkout {}
 	.masthead #head-top #admin {width: 15%;bottom: 115px;position: relative;}
 .masthead .navbar {bottom: 110px;position: relative;}
@@ -15,3 +15,7 @@
 	.grtmenu #container {margin-left: auto;margin-right: auto;width: 960px;}
 		.grtmenu #container .login {bottom: 20px;float: right;position: relative;}
 		.grtmenu #container .special-offer {color: #FBAB00;}
+		
+
+/* style for cart width */		
+.cart_width {width: auto;}

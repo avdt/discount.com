@@ -95,7 +95,7 @@ $(document).ready(function() {
 		        tip: {
 		            corner: 'top right'
 		        },
-		        classes: 'qtip-bootstrap qtip-shadow qtip-rounded'
+		        classes: 'qtip-bootstrap qtip-shadow qtip-rounded cart_width'
 		    },
 		    position: {
 		        my: 'top right',

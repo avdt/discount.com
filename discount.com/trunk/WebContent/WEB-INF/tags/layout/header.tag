@@ -31,7 +31,7 @@
 	    
 	    <div id="cart">
 			<c:choose>
-				<c:when test="${cart!=null}">
+				<c:when test="${!cart.isEmpty() && cart!=null}">
 					<div>
 						<spring:message code="header.cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
 						<spring:message code="header.cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>

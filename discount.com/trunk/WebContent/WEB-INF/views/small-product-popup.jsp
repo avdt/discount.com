@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-    	<form:form method="GET" action="../cart/${product.id}/add" command="product">
+    	<form:form method="GET" action="${pageContext.request.contextPath}/cart/${product.id}/add" command="product">
 			<div>
 				<span>${product.name}</span>
 			</div>

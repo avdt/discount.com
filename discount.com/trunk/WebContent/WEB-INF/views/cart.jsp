@@ -6,13 +6,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap-responsive.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/smartspinner/smartspinner.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" /> " />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value="/js/libs/smartspinner/smartspinner.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
+
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="products" class="thumbnails">
+	<div id="cart" class="thumbnails">
 	    <div>
         	<c:forEach items="${cart.products}" var="product">
-				<model:product product="${product}" url="get/"></model:product>	
+				<model:cart-product product="${product}" url="../products/get/"></model:cart-product>	
 		    </c:forEach>
     	</div>
 	</div>

@@ -33,4 +33,10 @@ public class BuyServiceImpl implements BuyService {
 		return cart;
 	}
 
+	@Override
+	public void removeFromCart(Integer productId, Cart cart) {
+		Product product = productService.findById(productId);
+		cart.deleteProduct(product);
+	}
+
 }

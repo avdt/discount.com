@@ -126,6 +126,7 @@ public class Product implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
+		// FIXME: update this method with new fields.
 		boolean result = false;
 		Product product;
 		if (obj instanceof Product) {
@@ -133,13 +134,9 @@ public class Product implements Serializable {
 
 			if (this.getName().equals(product.getName())
 					&& this.getDiscount().equals(product.getDiscount())
-					&& this.getDiscountPrice().equals(
-							product.getDiscountPrice())
 					&& this.getId().equals(product.getId())
 					&& this.getPrice().equals(product.getPrice())
-					&& this.getDescription().equals(product.getDescription())
-					&& this.getCategory().equals(product.getCategory())
-					&& this.getSettings().equals(product.getSettings())) {
+					&& this.getDescription().equals(product.getDescription())) {
 				result = true;
 			}
 		}
