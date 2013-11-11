@@ -21,7 +21,11 @@ public class Cart {
 	}
 
 	public boolean isEmpty() {
-		return products.isEmpty();
+		boolean result = true;
+		if (products != null) {
+			result = products.isEmpty();
+		}
+		return result;
 	}
 
 	public int getTotalPrice() {

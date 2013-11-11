@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/header.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" />" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
@@ -30,6 +31,7 @@
 <script type="text/javascript" src="<c:url value="/js/libs/smartspinner/smartspinner.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
 <jsp:invoke fragment="extraHeader" />
 </head>
 <body>

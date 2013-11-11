@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.discount.domain.Review;
 import com.discount.domain.Product;
-import com.discount.service.MailService;
+import com.discount.domain.Review;
 import com.discount.service.NotificationService;
 import com.discount.service.ProductService;
 
@@ -23,9 +22,6 @@ public class ReviewController {
 
 	@Autowired
 	private ProductService productService;
-
-	@Autowired
-	private MailService mailService;
 
 	@Autowired
 	private NotificationService notificationService;
@@ -43,7 +39,7 @@ public class ReviewController {
 		productService.update(product);
 
 		notificationService.sendReviewNotification(review, product);
-		
+
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
 	}

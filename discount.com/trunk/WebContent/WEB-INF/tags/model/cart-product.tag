@@ -4,11 +4,10 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@ attribute name="product" required="true" type="com.discount.domain.Product" %>
-<%@ attribute name="url" required="true"%>
  
    <div id="${product.id}" class="thumbnail cart-product">
    	<div class="product-url-container">
-	    <a href="${url}${product.id}">
+	    <a href="${pageContext.request.contextPath}/products/get/${product.id}">
 		    <img class="cart-product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
 		    <c:if test="${product.sale}">
 			    <img class="sale-img" alt="" src="http://${pageContext.request.serverName}:1234/images/sale2.jpg">
@@ -17,7 +16,7 @@
 	    </a>
     </div>
     <div class="cart-product-metadata">
-	    <a href="${url}${product.id}">
+	    <a href="${pageContext.request.contextPath}/products/get/${product.id}">
 			<h4>${product.name}</h4>
 	    </a>
 	    <p>${product.category.name}</p>

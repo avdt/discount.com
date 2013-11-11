@@ -24,8 +24,11 @@
 	<div id="cart" class="thumbnails">
 	    <div>
         	<c:forEach items="${cart.products}" var="product">
-				<model:cart-product product="${product}" url="../products/get/"></model:cart-product>	
+				<model:cart-product product="${product}"></model:cart-product>	
 		    </c:forEach>
+    	</div>
+    	<div id="total-price">
+    		<span>${cart.totalPrice}</span>
     	</div>
 	</div>
 </body>

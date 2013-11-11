@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class BuyController extends BaseController {
 
 		cart = buyService.addToCart(productId, cart);
 
-		session.setAttribute("cart", cart);
+		setCart(session, cart);
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
@@ -47,11 +48,11 @@ public class BuyController extends BaseController {
 		putRootCategories(map);
 
 		HttpSession session = request.getSession();
-		Cart cart = (Cart) session.getAttribute("cart");
+		Cart cart = getCart(request);
 
 		buyService.removeFromCart(productId, cart);
 
-		session.setAttribute("cart", cart);
+		setCart(session, cart);
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
@@ -63,4 +64,26 @@ public class BuyController extends BaseController {
 		return "cart";
 	}
 
+	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.GET)
+	public String getCheckout(Map<String, Object> map) {
+
+		putRootCategories(map);
+
+		return "checkout";
+	}
+
+	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.POST)
+	public String checkout(@ModelAttribute("cart") Cart cart) {
+
+		return "redirect:/admin";
+	}
+
+	private Cart getCart(HttpServletRequest request) {
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		return cart;
+	}
+
+	private void setCart(HttpSession session, Cart cart) {
+		session.setAttribute("cart", cart);
+	}
 }
