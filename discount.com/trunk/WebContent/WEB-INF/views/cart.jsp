@@ -12,9 +12,10 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/smartspinner/smartspinner.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/jquery-ui/jquery-ui-1.10.3.custom.css" />" />
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="<c:url value="/js/libs/smartspinner/smartspinner.js" /> "></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
 

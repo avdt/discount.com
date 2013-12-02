@@ -23,8 +23,9 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/header.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/jquery-ui/jquery-ui-1.10.3.custom.css" />" />
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value="/js/libs/jquery/jquery-1.10.2.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/libs/caroufredsel/jquery.carouFredSel-6.2.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/qtip/jquery.qtip.min.js"/>"></script>
@@ -32,6 +33,8 @@
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/jquery-ui/jquery-1.9.1.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/jquery-ui/jquery-ui-1.10.3.custom.js" /> "></script>
 <jsp:invoke fragment="extraHeader" />
 </head>
 <body>

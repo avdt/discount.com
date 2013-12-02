@@ -24,7 +24,7 @@
     </div>
     <div class="total-product-info">
 	    <div class="cart-product-counter">
-	    	<input type="text" id="spn" class="smartspinner"/>
+	    	<input type="text" id="${product.id}" class="spinner" value="1"/>
 	    </div>
 	    <div id="${product.id}-total-price"  class="total-product-price cart-product-price">
 		    <span id="${product.id}-value" class="value">${product.price}</span>

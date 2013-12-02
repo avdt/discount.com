@@ -72,7 +72,6 @@ public class ProductRestService {
 		product.getProducer().setCategories(null);
 		product.getProducer().setRanges(null);
 
-//		product.getRange().setProducts(null);
-//		product.getRange().setProducer(null);
+		product.getRange().setProducts(null);
 	}
 }
