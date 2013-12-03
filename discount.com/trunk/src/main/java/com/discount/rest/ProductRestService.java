@@ -1,5 +1,6 @@
 package com.discount.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.discount.domain.Product;
-import com.discount.domain.ProductSettings;
+import com.discount.domain.ShortProduct;
 import com.discount.service.ProductService;
 
 @Controller
@@ -25,53 +26,53 @@ public class ProductRestService {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("all")
-	public List<Product> getAll() {
+	public List<ShortProduct> getAll() {
 		List<Product> products = productService.findAll();
+		List<ShortProduct> shortProducts = new ArrayList<ShortProduct>();
 
-		// FIXME: fix hibernate fetching
 		for (Product product : products) {
-			convert(product);
+			ShortProduct shortProduct = convert(product);
+			shortProducts.add(shortProduct);
 		}
 
-		return products;
+		return shortProducts;
 	}
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("get/{id}")
-	public Product get(@PathParam("id") Integer id) {
-
+	public ShortProduct get(@PathParam("id") Integer id) {
 		Product product = productService.findById(id);
+		ShortProduct shortProduct = null;
 
-		// FIXME: fix hibernate fetching
 		if (product != null) {
-			convert(product);
+			shortProduct = convert(product);
 		}
-		return product;
+		return shortProduct;
 	}
 
 	/**
-	 * Removes bidirectional links between objects.
+	 * Convert to simple object without bidirectional relationships.
 	 * 
 	 * @param product
 	 */
-	private void convert(Product product) {
-		List<ProductSettings> settings = product.getSettings();
+	private ShortProduct convert(Product product) {
+		ShortProduct shortProduct = new ShortProduct();
 
-		for (ProductSettings productSettings : settings) {
-			productSettings.setProduct(null);
+		shortProduct.setCategory(product.getCategory().getName());
+		shortProduct.setDescription(product.getDescription());
+		Integer discountPrice = product.getDiscountPrice();
+		if (discountPrice != null) {
+			shortProduct.setDiscountPrice(discountPrice);
 		}
+		shortProduct.setId(product.getId());
+		shortProduct.setImage(product.getImage());
+		shortProduct.setName(product.getName());
+		shortProduct.setPrice(product.getPrice());
+		shortProduct.setProducer(product.getProducer().getName());
+		shortProduct.setRange(product.getRange().getName());
+		shortProduct.setSale(product.isSale());
 
-		product.getCategory().setProducts(null);
-		product.getCategory().setParentCategory(null);
-		product.getCategory().setChildCategories(null);
-		product.getCategory().setSettings(null);
-		product.getCategory().setProducers(null);
-
-		product.getProducer().setProducts(null);
-		product.getProducer().setCategories(null);
-		product.getProducer().setRanges(null);
-
-		product.getRange().setProducts(null);
+		return shortProduct;
 	}
 }

@@ -3,11 +3,12 @@ $(document).ready(function() {
 	$( ".spinner" ).spinner({ 
 		min: 1, 
 		change: function( event, ui ) {change();},
-		spin: function( event, ui ) {calculatePrice(event, ui);}
+		spin: function( event, ui ) {calculatePrice(event, ui);},
+		stop: function( event, ui ) {getCartSummary();}
 	});
 	
 	function change() {
-		alert(1);
+//		alert(1);
 		// do post call to update cart object
 		
 		// $.ajax({
@@ -31,10 +32,40 @@ $(document).ready(function() {
 		var productPrice = getProductPrice(productId);
 		
 		$product.text(productPrice * productCount);
+		
+	}
+	
+	function getCartSummary(){
+		getTotalProductsCount();
+		getTotalPrice();
+	}
+	
+	function getTotalProductsCount() {
+		var $spinners = $(".spinner");
+		var totalProductCount = 0;
+		
+		$.each($spinners, function(index, item) {
+			var price = parseInt(item.value);
+			totalProductCount += price;
+	    });
+		
+		var $totalcount=$("#total-count");
+	    $totalcount.text(totalProductCount);
+	}
+	
+	function getTotalPrice() {
+		var totalProductsprice = 0;
+		var $productPrices =  $(".total-product-price .value");
+
+		$productPrices.each(function(index, elem){
+			totalProductsprice += parseInt($(this).text());
+		});
+		
+		$("#total-price").text(totalProductsprice);
 	}
 	
 	function getProductPrice(productId) {
-		var productPrice;
+		var productPrice = 0;
 		
 		 $.ajax({
 			  url:"/discount/rest/product/get/" + productId,
@@ -46,7 +77,7 @@ $(document).ready(function() {
    	    	  alert("error");
    	      }
    	   });
-		  return productPrice;
+		 return productPrice;
 	}
 
 });

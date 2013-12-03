@@ -1,7 +1,7 @@
 package com.discount.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +25,8 @@ public class BuyServiceImpl implements BuyService {
 			cart.addProduct(product);
 		} else {
 			cart = new Cart();
-			List<Product> products = new ArrayList<Product>();
-			products.add(product);
+			Map<Product, Integer> products = new HashMap<Product, Integer>();
+			products.put(product, 1);
 			cart.setProducts(products);
 		}
 

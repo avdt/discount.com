@@ -1,15 +1,23 @@
 package com.discount.domain;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Cart {
 
 	private User user;
 
-	private List<Product> products;
+	private Map<Product, Integer> products;
 
 	public void addProduct(Product product) {
-		products.add(product);
+		if (products.containsKey(product)) {
+			Integer amount = products.get(product);
+			amount++;
+			products.put(product, amount);
+		} else {
+			products.put(product, 1);
+		}
 	}
 
 	public void deleteProduct(Product product) {
@@ -17,7 +25,12 @@ public class Cart {
 	}
 
 	public int getSize() {
-		return products.size();
+		int size = 0;
+		Collection<Integer> productsAmounts = products.values();
+		for (Integer productAmount : productsAmounts) {
+			size += productAmount;
+		}
+		return size;
 	}
 
 	public boolean isEmpty() {
@@ -31,18 +44,18 @@ public class Cart {
 	public int getTotalPrice() {
 		int totalPrice = 0;
 
-		for (Product product : products) {
-			totalPrice += product.getPrice();
+		for (Entry<Product, Integer> product : products.entrySet()) {
+			totalPrice += product.getKey().getPrice() * product.getValue();
 		}
 
 		return totalPrice;
 	}
 
-	public List<Product> getProducts() {
+	public Map<Product, Integer> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(Map<Product, Integer> products) {
 		this.products = products;
 	}
 

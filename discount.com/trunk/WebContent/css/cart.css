@@ -8,6 +8,7 @@
 		.cart-product .total-product-info {display: inline-flex;position: absolute;right: 80px;top: 57px;}
 			.cart-product .total-product-info .remove-cart-product {left: 55px;position: relative;}
 			.cart-product .total-product-info .cart-product-counter {margin-right: 50px;}
+				.cart-product .total-product-info .cart-product-counter .spinner {width: 20px;}
 			.cart-product .total-product-info .total-product-price {text-align: center;width: 100px;}
 			
 .smartspinner {text-align: left;}

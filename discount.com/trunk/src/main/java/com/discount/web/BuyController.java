@@ -32,7 +32,7 @@ public class BuyController extends BaseController {
 		putRootCategories(map);
 
 		HttpSession session = request.getSession();
-		Cart cart = (Cart) session.getAttribute("cart");
+		Cart cart = getCart(request);
 
 		cart = buyService.addToCart(productId, cart);
 

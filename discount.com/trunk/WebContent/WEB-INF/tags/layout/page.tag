@@ -33,8 +33,7 @@
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/js/libs/jquery-ui/jquery-1.9.1.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/js/libs/jquery-ui/jquery-ui-1.10.3.custom.js" /> "></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <jsp:invoke fragment="extraHeader" />
 </head>
 <body>

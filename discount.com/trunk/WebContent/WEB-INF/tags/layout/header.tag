@@ -33,9 +33,9 @@
 			<c:choose>
 				<c:when test="${!cart.isEmpty() && cart!=null}">
 					<div>
-						<spring:message code="header.cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
-						<spring:message code="header.cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
-						<spring:message code="header.cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
+						<spring:message code="cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
+						<spring:message code="cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
+						<spring:message code="cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
 						<c:choose>
 							<c:when test="${cart.size==1}">
 								<c:set var="productCountText" value="${singleProductCount}"></c:set>
@@ -52,7 +52,7 @@
 								<a href="${pageContext.request.contextPath}/cart">${productCountText}</a>
 							</div>
 							<div>
-								<span><spring:message code="header.cart.totalPrice" arguments="${cart.totalPrice}"/></span>
+								<span><spring:message code="cart.totalPrice" arguments="${cart.totalPrice}"/></span>
 							</div>
 						</div>
 					    <div>	

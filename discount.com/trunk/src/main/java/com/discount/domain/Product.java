@@ -143,6 +143,11 @@ public class Product implements Serializable {
 		return result;
 	}
 
+	@Override
+	public int hashCode() {
+		return this.id;
+	}
+
 	public String getDescription() {
 		return description;
 	}
