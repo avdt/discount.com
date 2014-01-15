@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/smartspinner/smartspinner.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/jquery-ui/jquery-ui-1.10.3.custom.css" />" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
@@ -20,7 +21,7 @@
 <script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
 
-<title>Cart</title>
+<title><spring:message code="header.cart"/></title>
 </head>
 <body>
 	<div id="cart" class="thumbnails">
@@ -35,22 +36,29 @@
 				<spring:message code="cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
 				<spring:message code="cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
 				<c:choose>
-					<c:when test="${cart.size==1}">
-						<c:set var="productCountText" value="${singleProductCount}"></c:set>
-					</c:when>
-					<c:when test="${cart.size>1 && cart.size<5}">
-						<c:set var="productCountText" value="${fewProductsCount}"></c:set>
-					</c:when>
-					<c:otherwise>
-						<c:set var="productCountText" value="${multiProductCount}"></c:set>
-					</c:otherwise>
-				</c:choose>
-				<span><spring:message code="cart.in"/></span>
-				<span id="total-count">${cart.size}</span>
-				<span>${productCountText}</span>
-				<span><spring:message code="cart.on"/></span>
-				<span id="total-price">${cart.totalPrice}</span>
-	    		<span><spring:message code="product.currency"/></span>
+					<c:when test="${cart!=null && cart.size!=0}">
+						<c:choose>
+							<c:when test="${cart.size==1}">
+								<c:set var="productCountText" value="${singleProductCount}"></c:set>
+							</c:when>
+							<c:when test="${cart.size>1 && cart.size<5}">
+								<c:set var="productCountText" value="${fewProductsCount}"></c:set>
+							</c:when>
+							<c:otherwise>
+								<c:set var="productCountText" value="${multiProductCount}"></c:set>
+							</c:otherwise>
+						</c:choose>
+						<span><spring:message code="cart.in"/></span>
+						<span class="total-count">${cart.size}</span>
+						<span>${productCountText}</span>
+						<span><spring:message code="cart.on"/></span>
+						<span class="total-price">${cart.totalPrice}</span>
+			    		<span><spring:message code="product.currency"/></span>
+		    		</c:when>
+		    		<c:otherwise>
+						<span><spring:message code="cart.empty"/></span>
+		    		</c:otherwise>
+	    		</c:choose>
 	    	</div>
     	</div>
 	</div>

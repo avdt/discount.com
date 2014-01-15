@@ -20,6 +20,10 @@ public class Cart {
 		}
 	}
 
+	public void update(Product product, int amount) {
+		products.put(product, amount);
+	}
+
 	public void deleteProduct(Product product) {
 		products.remove(product);
 	}

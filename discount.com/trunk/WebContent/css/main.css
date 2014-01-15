@@ -57,7 +57,7 @@ a.prev span,a.next span {display: none;}
 .producer-small {border: 1px solid #FFFFFF;box-shadow: 0 0;height: 85px;text-align: center;}
 .producer-small:hover{border: 1px solid #FFFFFF;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;border-radius: 4px 4px 4px 4px;}
 
-.category-small {height: 200px;text-align: center;margin-bottom: 10px;}
+.category-small {height: 200px;text-align: center;margin-bottom: 10px;position: relative;top: 5px;}
 	.category-small:hover {border: 1px solid #FFFFFF;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;border-radius: 4px 4px 4px 4px;}
 	 a:hover {text-decoration: none;}
 .product-img {max-height: 200px;max-width: 207px;}

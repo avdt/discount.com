@@ -8,7 +8,7 @@
  
  	<c:set var="prod" value="${product.key}"></c:set>
  
-   <div id="${prod.id}" class="thumbnail cart-product">
+   <div id="${prod.id}" class="cart-product">
    	<div class="product-url-container">
 	    <a href="${pageContext.request.contextPath}/products/get/${prod.id}">
 		    <img class="cart-product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${prod.image}">
@@ -38,3 +38,4 @@
 	    </div>
     </div>
    </div>
+    <hr/>

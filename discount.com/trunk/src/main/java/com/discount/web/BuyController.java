@@ -59,23 +59,41 @@ public class BuyController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.CART_POPUP, method = RequestMethod.GET)
-	public String getCart() {
-
+	public String getCartPopup() {
 		return "cart";
+	}
+
+	@RequestMapping(value = UrlConstants.CART, method = RequestMethod.GET)
+	public String getCartPage(Map<String, Object> map) {
+		putRootCategories(map);
+		return "cart-page";
 	}
 
 	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.GET)
 	public String getCheckout(Map<String, Object> map) {
-
 		putRootCategories(map);
-
+		//TODO:
+		
 		return "checkout";
 	}
 
 	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.POST)
 	public String checkout(@ModelAttribute("cart") Cart cart) {
-
 		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = UrlConstants.CLEAR_CART, method = RequestMethod.GET)
+	public String clearCart(Map<String, Object> map, HttpServletRequest request) {
+		putRootCategories(map);
+
+		HttpSession session = request.getSession();
+		Cart cart = getCart(request);
+
+		buyService.clearCart(cart);
+		setCart(session, cart);
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 
 	private Cart getCart(HttpServletRequest request) {

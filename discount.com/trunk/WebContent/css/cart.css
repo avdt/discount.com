@@ -1,14 +1,25 @@
-#cart {width: 750px;min-width: 0px;}
+#cart-content {display: table;margin-left: auto;margin-right: auto;}
 
-.cart-product {height: 130px;width: 700px;margin: 10px;position: relative;}
-	.cart-product .product-url-container {}
-		.cart-product .product-url-container .cart-product-img{max-height: 120px;max-width: 80px;}
-		.cart-product .cart-product-metadata {bottom: 30px;left: 115px;position: absolute;}
-			.cart-product .cart-product-price {font-size: 20px;}
-		.cart-product .total-product-info {display: inline-flex;position: absolute;right: 80px;top: 57px;}
-			.cart-product .total-product-info .remove-cart-product {left: 55px;position: relative;}
-			.cart-product .total-product-info .cart-product-counter {margin-right: 50px;}
-				.cart-product .total-product-info .cart-product-counter .spinner {width: 20px;}
-			.cart-product .total-product-info .total-product-price {text-align: center;width: 100px;}
-			
+#cart {width: 750px;min-width: 0px;}
+	#cart #cart-products{margin-left:15px;}
+	#cart #cart-summary {left: 50px;position: relative;}
+	.cart-product {height: 100px;width: 700px;margin: 10px;position: relative;}
+		.cart-product .product-url-container {}
+			.cart-product .product-url-container .cart-product-img{max-height: 120px;max-width: 80px;}
+			.cart-product .cart-product-metadata {bottom: 5px;left: 115px;position: absolute;}
+				.cart-product .cart-product-price {font-size: 20px;}
+			.cart-product .total-product-info {display: inline-flex;position: absolute;right: 80px;top: 25px;}
+				.cart-product .total-product-info .remove-cart-product {left: 55px;position: relative;top: 15px;}
+				.cart-product .total-product-info .cart-product-counter {margin-right: 50px;}
+					.cart-product .total-product-info .cart-product-counter .spinner {width: 20px;}
+				.cart-product .total-product-info .total-product-price {text-align: center;width: 100px;position: relative;top: 15px;}
+				
 .smartspinner {text-align: left;}
+#cart-summary {display: inline-flex;left: 20%;padding: 20px;position: relative;width: 60%;}
+#payment-container {border: 1px solid #CCCCCC;border-radius: 4px;padding: 5px 14px 10px 15px;width: 270px;margin-right: 10px;}
+	#payment-container #payment {}
+#delivery-container {border: 1px solid #CCCCCC;border-radius: 4px;padding: 5px 14px 10px 15px;width: 270px;}
+	#delivery-container #delivery {}
+#cart-actions {}
+
+hr {margin: 0px;}

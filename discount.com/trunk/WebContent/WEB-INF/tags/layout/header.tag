@@ -29,41 +29,49 @@
 	    
 	    <!-- CART -->
 	    
-	    <div id="cart">
-			<c:choose>
-				<c:when test="${!cart.isEmpty() && cart!=null}">
-					<div>
-						<spring:message code="cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
-						<spring:message code="cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
-						<spring:message code="cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
-						<c:choose>
-							<c:when test="${cart.size==1}">
-								<c:set var="productCountText" value="${singleProductCount}"></c:set>
-							</c:when>
-							<c:when test="${cart.size>1 && cart.size<5}">
-								<c:set var="productCountText" value="${fewProductsCount}"></c:set>
-							</c:when>
-							<c:otherwise>
-								<c:set var="productCountText" value="${multiProductCount}"></c:set>
-							</c:otherwise>
-						</c:choose>
-						<div id="cart-info">
-							<div id="product-count">
-								<a href="${pageContext.request.contextPath}/cart">${productCountText}</a>
-							</div>
+	    <div id="cart-container">
+			<div id="cart">
+				<c:choose>
+					<c:when test="${!cart.isEmpty() && cart!=null}">
 							<div>
-								<span><spring:message code="cart.totalPrice" arguments="${cart.totalPrice}"/></span>
+					    		<spring:message code="cart.singleProductCount" arguments="${cart.size}" var="singleProductCount" />
+								<spring:message code="cart.fewProductsCount" arguments="${cart.size}" var="fewProductsCount"/>
+								<spring:message code="cart.multiProductCount" arguments="${cart.size}" var="multiProductCount"/>
+								<c:choose>
+									<c:when test="${cart.size==1}">
+										<c:set var="productCountText" value="${singleProductCount}"></c:set>
+									</c:when>
+									<c:when test="${cart.size>1 && cart.size<5}">
+										<c:set var="productCountText" value="${fewProductsCount}"></c:set>
+									</c:when>
+									<c:otherwise>
+										<c:set var="productCountText" value="${multiProductCount}"></c:set>
+									</c:otherwise>
+								</c:choose>
+					    	</div>
+							
+							<div id="cart-info">
+								<div id="product-count">
+									<a href="${pageContext.request.contextPath}/cart">
+										<span><spring:message code="cart.in"/></span>
+										<span class="total-count">${cart.size}</span>
+										<span>${productCountText}</span>
+										<br>
+										<span><spring:message code="cart.on"/></span>
+										<span class="total-price">${cart.totalPrice}</span>
+							    		<span><spring:message code="product.currency"/></span>
+									</a>
+								</div>
 							</div>
-						</div>
-					    <div>	
-					    	<a id="checkout" href="${pageContext.request.contextPath}/cart/checkout" class="btn"><spring:message code="header.cart.checkout" /></a>
-				    	</div>
-		    		</div>
-				</c:when>
-				<c:otherwise>
-					<span><spring:message code="header.cart.empty" /></span>
-				</c:otherwise>
-			</c:choose>
+						    <div>	
+						    	<a id="checkout" href="${pageContext.request.contextPath}/cart" class="btn"><spring:message code="cart.checkout" /></a>
+					    	</div>
+					</c:when>
+					<c:otherwise>
+						<span><spring:message code="cart.empty" /></span>
+					</c:otherwise>
+				</c:choose>
+    		</div>
 
 	    </div>
 		<div id="admin">

@@ -8,14 +8,18 @@ import org.springframework.stereotype.Service;
 
 import com.discount.domain.Cart;
 import com.discount.domain.Product;
+import com.discount.domain.User;
 import com.discount.service.BuyService;
 import com.discount.service.ProductService;
+import com.discount.service.UserContext;
 
 @Service("buyService")
 public class BuyServiceImpl implements BuyService {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private UserContext userContext;
 
 	@Override
 	public Cart addToCart(Integer productId, Cart cart) {
@@ -25,6 +29,9 @@ public class BuyServiceImpl implements BuyService {
 			cart.addProduct(product);
 		} else {
 			cart = new Cart();
+			User currentUser = userContext.getCurrentUser();
+			cart.setUser(currentUser);
+
 			Map<Product, Integer> products = new HashMap<Product, Integer>();
 			products.put(product, 1);
 			cart.setProducts(products);
@@ -37,6 +44,11 @@ public class BuyServiceImpl implements BuyService {
 	public void removeFromCart(Integer productId, Cart cart) {
 		Product product = productService.findById(productId);
 		cart.deleteProduct(product);
+	}
+
+	@Override
+	public void clearCart(Cart cart) {
+		cart.getProducts().clear();
 	}
 
 }

@@ -67,4 +67,5 @@ public class UrlConstants {
 	public final static String REMOVE_FROM_CART = "/{productId}/remove";
 	public final static String CART_POPUP = "/popup";
 	public final static String CHECKOUT = "/checkout";
+	public final static String CLEAR_CART = "/clear";
 }
