@@ -24,12 +24,13 @@ public class BuyServiceImpl implements BuyService {
 	@Override
 	public Cart addToCart(Integer productId, Cart cart) {
 		Product product = productService.findById(productId);
+		User currentUser = userContext.getCurrentUser();
 
 		if (cart != null) {
 			cart.addProduct(product);
+			cart.setUser(currentUser);
 		} else {
 			cart = new Cart();
-			User currentUser = userContext.getCurrentUser();
 			cart.setUser(currentUser);
 
 			Map<Product, Integer> products = new HashMap<Product, Integer>();

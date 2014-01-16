@@ -18,11 +18,7 @@
 	    <c:choose>
 			<c:when test="${authenticated}">
 				<div>
-					<sec:authentication property="principal.name" />
-					<c:forEach items="${cart.products}" var="product">
-					<model:cart-product product="${product}"></model:cart-product>
-	    			</c:forEach>
-					
+					<model:cart-approve-form user="${user}"></model:cart-approve-form>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -33,8 +29,7 @@
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane fade in active" id="new-user">
-							New user
-					    	
+							<model:cart-approve-form user="${user}"></model:cart-approve-form>
 						</div>
 						<div class="tab-pane fade" id="existing-user">
 							Existing user

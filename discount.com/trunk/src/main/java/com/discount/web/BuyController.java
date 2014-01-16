@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.discount.domain.Cart;
+import com.discount.domain.User;
 import com.discount.service.BuyService;
 import com.discount.service.ProductService;
 
@@ -70,16 +71,28 @@ public class BuyController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.GET)
-	public String getCheckout(Map<String, Object> map) {
+	public String getCheckout(Map<String, Object> map,
+			HttpServletRequest request) {
 		putRootCategories(map);
-		//TODO:
-		
+		Cart cart = getCart(request);
+		User user = cart.getUser();
+		if (user == null) {
+			map.put("user", new User());
+		} else {
+			map.put("user", user);
+		}
+
 		return "checkout";
 	}
 
 	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.POST)
-	public String checkout(@ModelAttribute("cart") Cart cart) {
-		return "redirect:/admin";
+	public String checkout(@ModelAttribute("user") User user,
+			HttpServletRequest request) {
+		// TODO: send email with an order to distributor
+
+		buyService.clearCart(getCart(request));
+
+		return "redirect:" + UrlConstants.HOME;
 	}
 
 	@RequestMapping(value = UrlConstants.CLEAR_CART, method = RequestMethod.GET)

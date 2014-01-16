@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.LazyCollection;
@@ -45,11 +46,20 @@ public class User implements Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 
+	@Transient
+	private String fullName;
+
 	@Column(name = "email")
 	private String email;
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
+
+	@Column(name = "city")
+	private String city;
+
+	@Column(name = "address")
+	private String address;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(cascade = CascadeType.MERGE)
@@ -146,6 +156,30 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return getLogin();
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 }

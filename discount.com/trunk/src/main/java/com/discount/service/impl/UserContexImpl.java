@@ -27,14 +27,17 @@ public class UserContexImpl implements UserContext {
 
 	@Override
 	public User getCurrentUser() {
-		User user;
+		User user = null;
 
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication authentication = context.getAuthentication();
 		if (authentication == null) {
 			user = null;
 		} else {
-			user = (User) authentication.getPrincipal();
+			Object principal = authentication.getPrincipal();
+			if (!principal.equals("anonymousUser")) {
+				user = (User) principal;
+			}
 		}
 		return user;
 	}
