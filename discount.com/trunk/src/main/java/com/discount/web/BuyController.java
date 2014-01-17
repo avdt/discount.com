@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.discount.domain.Cart;
 import com.discount.domain.User;
 import com.discount.service.BuyService;
+import com.discount.service.NotificationService;
 import com.discount.service.ProductService;
 
 @Controller
@@ -26,6 +27,9 @@ public class BuyController extends BaseController {
 
 	@Autowired
 	private BuyService buyService;
+
+	@Autowired
+	private NotificationService notificationService;
 
 	@RequestMapping(value = UrlConstants.ADD_TO_CART, method = RequestMethod.GET)
 	public String addToCart(@PathVariable("productId") Integer productId,
@@ -75,22 +79,25 @@ public class BuyController extends BaseController {
 			HttpServletRequest request) {
 		putRootCategories(map);
 		Cart cart = getCart(request);
-		User user = cart.getUser();
-		if (user == null) {
-			map.put("user", new User());
-		} else {
-			map.put("user", user);
+		if (cart != null) {
+			User user = cart.getUser();
+			if (user == null) {
+				map.put("user", new User());
+			} else {
+				map.put("user", user);
+			}
 		}
-
 		return "checkout";
 	}
 
 	@RequestMapping(value = UrlConstants.CHECKOUT, method = RequestMethod.POST)
 	public String checkout(@ModelAttribute("user") User user,
 			HttpServletRequest request) {
-		// TODO: send email with an order to distributor
+		Cart cart = getCart(request);
+		cart.setUser(user);
+		notificationService.sendOrderNotification(cart);
 
-		buyService.clearCart(getCart(request));
+		buyService.clearCart(cart);
 
 		return "redirect:" + UrlConstants.HOME;
 	}

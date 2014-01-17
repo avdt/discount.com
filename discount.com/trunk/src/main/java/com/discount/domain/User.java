@@ -175,7 +175,7 @@ public class User implements Serializable {
 	}
 
 	public String getFullName() {
-		return fullName;
+		return fullName != null ? fullName : (firstName + " " + lastName);
 	}
 
 	public void setFullName(String fullName) {
