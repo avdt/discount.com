@@ -39,7 +39,7 @@ public class OrderToExelExportService implements OrderExportService {
 		for (Entry<Product, Integer> entry : productsentrySet) {
 			Product product = entry.getKey();
 
-			HSSFRow row = sheet.createRow(rowCounter++);
+			HSSFRow row = sheet.createRow(++rowCounter);
 			row.createCell(0).setCellValue(product.getProducer().getName());
 			row.createCell(1).setCellValue(product.getName());
 			row.createCell(2).setCellValue(product.getRange().getName());
