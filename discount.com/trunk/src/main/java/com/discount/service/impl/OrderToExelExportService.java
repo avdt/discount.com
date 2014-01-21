@@ -29,9 +29,10 @@ public class OrderToExelExportService implements OrderExportService {
 		HSSFRow rowhead = sheet.createRow(rowCounter);
 		rowhead.createCell(0).setCellValue("Producer");
 		rowhead.createCell(1).setCellValue("Product name");
-		rowhead.createCell(1).setCellValue("Range");
-		rowhead.createCell(2).setCellValue("Product category");
-		rowhead.createCell(3).setCellValue("Price");
+		rowhead.createCell(2).setCellValue("Range");
+		rowhead.createCell(3).setCellValue("Product category");
+		rowhead.createCell(4).setCellValue("Price");
+		rowhead.createCell(5).setCellValue("Count");
 
 		Set<Entry<Product, Integer>> productsentrySet = cart.getProducts()
 				.entrySet();
@@ -45,8 +46,12 @@ public class OrderToExelExportService implements OrderExportService {
 			row.createCell(2).setCellValue(product.getRange().getName());
 			row.createCell(3).setCellValue(product.getCategory().getName());
 			row.createCell(4).setCellValue(product.getPrice());
+			row.createCell(5).setCellValue(entry.getValue());
 		}
 
+		HSSFRow totalPriceRow = sheet.createRow(rowCounter + 2);
+		totalPriceRow.createCell(0).setCellValue(
+				"Total price: " + cart.getTotalPrice());
 		FileOutputStream fileOut;
 		try {
 			fileOut = new FileOutputStream(filename);

@@ -29,12 +29,12 @@
 	    <!-- PRODUCTS BY RANGE-->
 	    
 	    <div id="category-content">
-	    	<div id="products">
-		        <div class="thumbnails">
+			<div id="products">
+			    <div>
 		        	<c:forEach items="${productsByRange}" var="product">
-						<model:product product="${product}" url="../../get/"></model:product>		
+						<model:product product="${product}" url="../../get/"></model:product>	
 				    </c:forEach>
-			    </div>
+		    	</div>
 			</div>	   
 	    </div>
 	</jsp:body>

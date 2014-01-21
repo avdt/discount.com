@@ -29,7 +29,7 @@
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane fade in active" id="new-user">
-							<model:cart-approve-form user="${user}"></model:cart-approve-form>
+							<model:cart-approve-form user="${null}"></model:cart-approve-form>
 						</div>
 						<div class="tab-pane fade" id="existing-user">
 							Existing user

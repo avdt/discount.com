@@ -12,7 +12,7 @@
 		
      	<div>
      		<label for="fullName">Full Name</label>
-			<form:input path="fullName" type="text" value="${user.firstName} ${user.lastName}"/>
+			<form:input path="fullName" type="text" value="${user.fullName}"/>
      		<label for="email">Email</label>
 			<form:input path="email" type="text" value="${user.email}"/>
      		<label for="phoneNumber">Phone number</label>

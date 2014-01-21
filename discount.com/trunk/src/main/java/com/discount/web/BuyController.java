@@ -82,10 +82,11 @@ public class BuyController extends BaseController {
 		if (cart != null) {
 			User user = cart.getUser();
 			if (user == null) {
-				map.put("user", new User());
-			} else {
-				map.put("user", user);
+				user = new User();
+//				map.put("user", new User());
+				//			} else {
 			}
+			map.put("user", user);
 		}
 		return "checkout";
 	}

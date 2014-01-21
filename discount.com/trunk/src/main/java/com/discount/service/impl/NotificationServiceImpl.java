@@ -1,9 +1,6 @@
 package com.discount.service.impl;
 
 import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -50,21 +47,6 @@ public class NotificationServiceImpl implements NotificationService {
 				+ " зробив замовлення.";
 		StringBuffer message = new StringBuffer();
 
-		Map<Product, Integer> products = cart.getProducts();
-		Set<Entry<Product, Integer>> productsSet = products.entrySet();
-		message.append("Список товарів:\n");
-		message.append("Кількість\tНазва\t\tЦіна\n");
-		for (Entry<Product, Integer> product : productsSet) {
-			message.append(product.getValue());
-			message.append("\t");
-			message.append(product.getKey().getName());
-			message.append("\t\t");
-			message.append(product.getKey().getPrice());
-			message.append("\n");
-		}
-		message.append("\n");
-		message.append("Total price");
-		message.append(cart.getTotalPrice());
 		String from = "system@alfero.com";
 		String to = "andriyvintoniv@ukr.net";
 

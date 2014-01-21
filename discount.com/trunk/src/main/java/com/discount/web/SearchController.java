@@ -17,6 +17,8 @@ import com.discount.service.SearchService;
 @Controller
 public class SearchController extends BaseController {
 
+	private static final int MIN_KEYWORD_LENGTH = 2;
+
 	@Autowired
 	private SearchService searchService;
 
@@ -32,9 +34,11 @@ public class SearchController extends BaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Set<Product> searchResultsSet = searchService.search(searchResults
-				.getKeyword());
-		searchResults.setMatchedProducts(searchResultsSet);
+		if (searchResults.getKeyword().length() >= MIN_KEYWORD_LENGTH) {
+			Set<Product> searchResultsSet = searchService.search(searchResults
+					.getKeyword());
+			searchResults.setMatchedProducts(searchResultsSet);
+		}
 		map.put("searchResults", searchResults);
 		return "search";
 	}

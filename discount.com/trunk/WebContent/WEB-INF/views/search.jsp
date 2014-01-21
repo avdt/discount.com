@@ -4,7 +4,9 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<layout:page title="Admin Tools">
+
+<spring:message code="search.for" arguments="${searchResults.keyword}" var="title"/>
+<layout:page title="${title}">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
@@ -25,18 +27,21 @@
 					<c:when test="${searchResults.matchedProducts.size()>=5}">
 						<span><spring:message code="search.foundResultNumer" arguments="${searchResults.matchedProducts.size()}" /></span>
 					</c:when>
+					<c:when test="${searchResults.matchedProducts==null}">
+						<span><spring:message code="search.keywordToSmall"/></span>
+					</c:when>
 				</c:choose>
 				<hr/>
 			</div>
-		    <div id="products">
-			    <div class="row-fluid">
-			        <ul class="thumbnails">
+			<c:if test="${searchResults.matchedProducts!=null}">
+				<div id="products">
+				    <div>
 			        	<c:forEach items="${searchResults.matchedProducts}" var="product">
-								<model:product product="${product}" url="products/get/"></model:product>	
+							<model:product product="${product}" url="get/"></model:product>	
 					    </c:forEach>
-				    </ul>
-		    	</div>
-			</div>
+			    	</div>
+				</div>	 
+			</c:if>
 		</div>
 	</jsp:body>
 </layout:page>

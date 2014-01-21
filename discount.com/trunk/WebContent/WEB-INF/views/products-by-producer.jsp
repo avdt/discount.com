@@ -44,13 +44,13 @@
 	    <div id="category-content">
 	    	<hr/>
 	    	<spring:message code="products.byProducer" arguments="${producer.name}"/>
-	    	<div id="products">
-		        <div class="thumbnails">
+			<div id="products">
+			    <div>
 		        	<c:forEach items="${productsByProducer}" var="product">
-						<model:product product="${product}" url="../get/"></model:product>		
+						<model:product product="${product}" url="../get/"></model:product>	
 				    </c:forEach>
-			    </div>
-			</div>	   
+		    	</div>
+			</div>	 
 	    </div>
 	    <div>
 	    	<hr/>
