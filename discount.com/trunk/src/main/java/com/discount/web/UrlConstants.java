@@ -4,7 +4,15 @@ public class UrlConstants {
 
 	public final static String CONTACTS = "/contacts";
 	public final static String ABOUT = "/about";
+
 	public final static String ADMIN = "/admin";
+	public final static String ADMIN_USERS = "/users";
+	public final static String ADMIN_CATEGORIES = "/categories";
+	public final static String ADMIN_PRODUCTS = "/products";
+	public final static String ADMIN_PRODUCERS = "/producers";
+	public final static String ADMIN_RANGES = "/ranges";
+	public final static String ADMIN_STATIC_PAGES = "/static-pages";
+
 	public final static String BOILERS = "/boilers";
 	public final static String CLIENT = "/client";
 	public final static String ADD = "/add";
@@ -68,4 +76,9 @@ public class UrlConstants {
 	public final static String CART_POPUP = "/popup";
 	public final static String CHECKOUT = "/checkout";
 	public final static String CLEAR_CART = "/clear";
+
+	public final static String CONTENT = "/content";
+	public final static String NEW_STATIC_PAGE = "/add-static-page";
+	public final static String SAVE_STATIC_PAGE = NEW_STATIC_PAGE + "/save";
+
 }

@@ -7,13 +7,14 @@
 	.masthead #head-top #cart {bottom: 110px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
 		.masthead #head-top #cart #checkout {}
 	.masthead #head-top #admin {width: 15%;bottom: 115px;position: relative;}
-.masthead .navbar {bottom: 110px;position: relative;}
+.masthead .navbar {bottom: 93px;position: relative;}
 	.masthead .navbar .navbar-inner .container .nav .dropdown {height: 56px;vertical-align: middle;width: 129px;}
 	   .masthead .navbar .navbar-inner .container .nav .dropdown label {font-weight: bold;}
 	   
 .grtmenu {background-color: #FAFAFA;background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);background-repeat: repeat-x;border: 1px solid #D4D4D4;border-radius: 0 0 4px 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);padding: 10px;display: block;bottom:0;text-align: center;}
 	.grtmenu #container {margin-left: auto;margin-right: auto;width: 960px;}
-		.grtmenu #container .login {bottom: 20px;float: right;position: relative;}
+		.grtmenu #container .login {bottom: 20px;float: right;position: relative;display: inline-flex;}
+			.grtmenu #container .login #admin {margin-right: 10px;}
 		.grtmenu #container .special-offer {color: #FBAB00;}
 		
 

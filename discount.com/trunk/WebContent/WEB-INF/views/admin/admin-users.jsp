@@ -3,7 +3,17 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<div class="tab-pane fade in active" id="users">
-	Add User
-</div>
-				
+<spring:message code="admin.tab.users" var="title"/>
+<layout:page title="${title}">
+	<jsp:attribute name="extraHeader">
+    </jsp:attribute>
+	<jsp:attribute name="extraBottom">
+    </jsp:attribute>
+	<jsp:body>
+	   
+		<div id="users">
+			Add User
+		</div>
+	</jsp:body>
+</layout:page>
+			

@@ -62,7 +62,7 @@ a.prev span,a.next span {display: none;}
 	 a:hover {text-decoration: none;}
 .product-img {max-height: 200px;max-width: 207px;}
 .sale-img {float: left;height: 80px;}
-.producer-img {max-height: 85px;max-width: 200px;}
+.producer-img {max-height: 85px;max-width: 155px;}
 
 .category-img {height: 75%;}
 
@@ -103,3 +103,5 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
 #register-user-container {margin-left: auto;margin-right: auto;text-align: center;width: 30%;}
 
 #register-btn {left: 73px;position: relative;}
+
+.title {padding-bottom: 15px;}

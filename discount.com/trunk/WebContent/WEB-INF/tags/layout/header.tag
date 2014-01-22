@@ -74,9 +74,6 @@
     		</div>
 
 	    </div>
-		<div id="admin">
-	    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
-    	</div>
 	</div>
 	
 	<!-- NAVIGATION -->

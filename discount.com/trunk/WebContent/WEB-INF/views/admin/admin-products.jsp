@@ -3,65 +3,78 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<div class="tab-pane fade" id="products">
-					
-	<ul class="nav nav-tabs" id="categoryTab">
-	    <li class="active"><a href="#create_product" data-toggle="tab"><spring:message code="admin.tab.products.create" /></a></li>
-	    <li><a href="#all_products" data-toggle="tab"><spring:message code="admin.tab.products.all" /></a></li>
-	</ul>
-	<div class="tab-content">
-  		
-		<!-- CREATE PRODUCT -->
-    
-		<div class="tab-pane fade in active" id="create_product">
-		
-	    	<form:form class="select-category-form">
-			    <div class="dropdown">
-				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				    	<spring:message code="admin.tab.category.select"/>
-			    		<b class="caret"></b>
-			    	</a>
-				    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				    	<c:forEach items="${childCategories}" var="category">
-						    <li role="presentation">
-								<a href="${pageContext.request.contextPath}/admin/new-product/${category.id}" tabindex="-1" role="menuitem">${category.name}</a>
-							</li>
-						</c:forEach>
-				    </ul>
-			    </div>	
-			</form:form>
-	    </div>
-	    
-	    <!-- ALL PRODUCTS -->
-	    
-	    <div class="tab-pane fade" id="all_products">
-		    <div>
-		        <ul>
-		        	<c:forEach items="${products}" var="product">
+<spring:message code="products.title" var="title"/>
+<layout:page title="${title}">
+	<jsp:attribute name="extraHeader">
+    </jsp:attribute>
+	<jsp:attribute name="extraBottom">
+    </jsp:attribute>
+	<jsp:body>
+	    <div class="title">
+			<h3><spring:message code="products.title"/></h3>
+			<hr/>
+		</div>
+		<div id="products">
 							
-					    <div class="span3">
-						    <div id="${product.id}" class="thumbnail product-small">
-						    	<div class="action-icons">
-							    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
-							    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
-						    	</div>
-						    	<div class="small-img-container">
-								    <a href="products/get/${product.id}">
-									    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
-									    <h4>${product.name}</h4>
-								    </a>
+			<ul class="nav nav-tabs" id="categoryTab">
+			    <li class="active"><a href="#create_product" data-toggle="tab"><spring:message code="admin.tab.products.create" /></a></li>
+			    <li><a href="#all_products" data-toggle="tab"><spring:message code="admin.tab.products.all" /></a></li>
+			</ul>
+			<div class="tab-content">
+		  		
+				<!-- CREATE PRODUCT -->
+		    
+				<div class="tab-pane fade in active" id="create_product">
+				
+			    	<form:form class="select-category-form">
+					    <div class="dropdown">
+						    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						    	<spring:message code="admin.tab.category.select"/>
+					    		<b class="caret"></b>
+					    	</a>
+						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						    	<c:forEach items="${childCategories}" var="category">
+								    <li role="presentation">
+										<a href="${pageContext.request.contextPath}/admin/new-product/${category.id}" tabindex="-1" role="menuitem">${category.name}</a>
+									</li>
+								</c:forEach>
+						    </ul>
+					    </div>	
+					</form:form>
+			    </div>
+			    
+			    <!-- ALL PRODUCTS -->
+			    
+			    <div class="tab-pane fade" id="all_products">
+				    <div>
+				        <ul>
+				        	<c:forEach items="${products}" var="product">
+									
+							    <div class="span3">
+								    <div id="${product.id}" class="thumbnail product-small">
+								    	<div class="action-icons">
+									    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
+									    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
+								    	</div>
+								    	<div class="small-img-container">
+										    <a href="products/get/${product.id}">
+											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
+											    <h4>${product.name}</h4>
+										    </a>
+									    </div>
+									    <div class="properties-container">
+										    <p>${product.category.name}</p>
+										    <p>${product.price}</p>
+									    </div>
+								    </div>
 							    </div>
-							    <div class="properties-container">
-								    <p>${product.category.name}</p>
-								    <p>${product.price}</p>
-							    </div>
-						    </div>
-					    </div>
-				    
-				    </c:forEach>
-			    </ul>
-	    	</div>
-    
-	    </div>
-	</div>
-</div>
+						    
+						    </c:forEach>
+					    </ul>
+			    	</div>
+		    
+			    </div>
+			</div>
+		</div>
+	</jsp:body>
+</layout:page>

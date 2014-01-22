@@ -19,11 +19,13 @@ import com.discount.domain.Producer;
 import com.discount.domain.Product;
 import com.discount.domain.ProductCategory;
 import com.discount.domain.Range;
+import com.discount.domain.StaticPage;
 import com.discount.domain.User;
 import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
 import com.discount.service.RangeService;
+import com.discount.service.StaticPageService;
 
 @Controller
 @RequestMapping(UrlConstants.ADMIN)
@@ -40,6 +42,9 @@ public class AdminController extends BaseController {
 
 	@Autowired
 	private RangeService rangeService;
+
+	@Autowired
+	private StaticPageService staticPageService;
 
 	@RequestMapping("/default")
 	public String defaultAfterLogin(HttpServletRequest request) {
@@ -69,6 +74,70 @@ public class AdminController extends BaseController {
 		map.put("ranges", ranges);
 
 		return "admin/admin";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_USERS)
+	public String getUsers(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("user", new User());
+
+		return "admin/admin-users";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_CATEGORIES)
+	public String getCategories(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("category", new ProductCategory());
+
+		List<ProductCategory> categories = categoryService
+				.findChildCategories();
+		List<ProductCategory> allCategories = categoryService.findAll();
+		map.put("childCategories", categories);
+		map.put("allCategories", allCategories);
+		return "admin/admin-categories";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_PRODUCERS)
+	public String getProducers(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("producer", new Producer());
+		map.put("producers", producerService.findAll());
+		map.put("allCategories", categoryService.findAll());
+
+		return "admin/admin-producers";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_PRODUCTS)
+	public String getProducts(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("product", new Product());
+		map.put("products", productService.findAll());
+
+		return "admin/admin-products";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_RANGES)
+	public String getRanges(Map<String, Object> map) {
+		putRootCategories(map);
+
+		List<Range> ranges = rangeService.findAll();
+		map.put("ranges", ranges);
+
+		return "admin/admin-ranges";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_STATIC_PAGES)
+	public String getStaticPages(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("staticPage", new StaticPage());
+		map.put("staticPages", staticPageService.findAll());
+
+		return "admin/admin-static-pages";
 	}
 
 	@RequestMapping(value = UrlConstants.NEW_CATEGORY, method = RequestMethod.GET)

@@ -12,34 +12,67 @@
 	
     </jsp:attribute>
 	<jsp:body>
-	
-	
-		 <div class="tabbable tabs-left">
-	        <ul class="nav nav-tabs" id="adminTab">
-			    <li class="active"><a href="#users" data-toggle="tab"><spring:message code="admin.tab.users" /></a></li>
-			    <li><a href="#categories" data-toggle="tab"><spring:message code="admin.tab.categories" /></a></li>
-			    <li><a href="#products" data-toggle="tab"><spring:message code="admin.tab.products" /></a></li>
-			    <li><a href="#producers" data-toggle="tab"><spring:message code="admin.tab.producer" /></a></li>
-			    <li><a href="#ranges" data-toggle="tab"><spring:message code="admin.tab.ranges" /></a></li>
-	   		</ul>
-	   		
-	   		<div class="tab-content">
-	   		
-	   			<!-- USERS -->
-				<jsp:include page="admin-users.jsp"/> 
-				
-				<!-- CATEGORIES -->
-				<jsp:include page="admin-categories.jsp"/> 
-				
-				<!-- PRODUCTS -->
-				<jsp:include page="admin-products.jsp"/> 
-				
-				<!-- PRODUCERS -->
-				<jsp:include page="admin-producers.jsp"/> 
-				
-				<!-- RANGES -->
-				<jsp:include page="admin-ranges.jsp"/> 
-			 </div>
+		<div class="title">
+			<h3><spring:message code="header.admin"/></h3>
+			<hr/>
 		</div>
+	
+		<div id="child-categories">
+	    	<ul class="thumbnails">
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/users">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/users.png">
+							<h4>Manage Users</h4>
+						</a>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/products">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/products.jpg">
+							<h4>Manage Products</h4>
+						</a>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/producers">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/producers.png">
+							<h4>Manage Producers</h4>
+						</a>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/categories">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/categories.jpg">
+							<h4>Manage Category</h4>
+						</a>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/static-pages">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/static-pages.png">
+							<h4>Manage Static Pages</h4>
+						</a>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/ranges">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/ranges.png">
+							<h4>Manage Ranges</h4>
+						</a>
+					</div>
+				</div>
+		    </ul>
+	    </div>
 	</jsp:body>
 </layout:page>

@@ -8,7 +8,7 @@
 			#producers #create_producer .categories .category {}
 				#producers #create_producer .categories .category .category-checkbox {bottom: 3px;margin-right: 5px;position: relative;}
 				
-		#producers #create_producer #proerties {position: absolute;top: 60px;}
+		#producers #create_producer #proerties {position: absolute;top: 115px;}
 		#producers #create_producer #create-producer-btn {}
 
 #edit-product-container {}

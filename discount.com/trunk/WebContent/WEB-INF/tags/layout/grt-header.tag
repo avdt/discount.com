@@ -19,6 +19,11 @@
 			<sec:authorize access="authenticated" var="authenticated"/>
 			<c:choose>
 				<c:when test="${authenticated}">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<div id="admin">
+					    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
+				    	</div>
+					</sec:authorize>
 					<div>
 						<sec:authentication property="principal.name" />
 						<c:url var="logoutUrl" value="/logout"/>
