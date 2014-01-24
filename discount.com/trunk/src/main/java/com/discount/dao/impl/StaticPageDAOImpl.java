@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.discount.dao.StaticPageDAO;
+import com.discount.domain.LinkType;
 import com.discount.domain.StaticPage;
 
 @Repository
@@ -55,6 +56,30 @@ public class StaticPageDAOImpl implements StaticPageDAO {
 		return (StaticPage) sessionFactory.getCurrentSession()
 				.createQuery("from StaticPage sP where sP.url = " + " :url")
 				.setString("url", url).list().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<StaticPage> findTopMenuPages() {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from StaticPage sP where sP.location = "
+								+ " :location")
+				.setString("location", LinkType.TOP_MENU.toString()).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<StaticPage> findBottomMenuPages() {
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from StaticPage sP where sP.location = "
+								+ " :location")
+				.setString("location", LinkType.BOTTOM_MENU.toString()).list();
 	}
 
 }

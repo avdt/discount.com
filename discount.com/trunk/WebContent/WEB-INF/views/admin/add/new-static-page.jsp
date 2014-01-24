@@ -29,6 +29,12 @@
 			     		<label for="title"><spring:message code="admin.tab.products.description"/></label>
 						<form:textarea path="description"/>
 					</div>
+					
+					<div class="link-location">
+						<c:forEach items="${linkTypes}" var="linkType">
+							<form:radiobutton path="location" label="${linkType.value}" value="${linkType}" />
+						</c:forEach>
+					</div>
 		     	<input type="submit" value="<spring:message code="general.save"/>" />
 			</form:form>
 		</div>
