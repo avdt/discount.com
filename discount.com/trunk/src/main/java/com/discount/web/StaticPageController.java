@@ -3,11 +3,14 @@ package com.discount.web;
 import java.beans.PropertyEditorSupport;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,7 +19,6 @@ import com.discount.domain.StaticPage;
 import com.discount.service.StaticPageService;
 
 @Controller
-@RequestMapping(UrlConstants.ADMIN + UrlConstants.CONTENT)
 public class StaticPageController extends BaseController {
 
 	@Autowired
@@ -38,6 +40,40 @@ public class StaticPageController extends BaseController {
 		staticPageService.save(staticPage);
 
 		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = UrlConstants.EDIT_STATIC_PAGE, method = RequestMethod.GET)
+	public String editStaticPage(Map<String, Object> map,
+			@PathVariable("staticPageUrl") String pageUrl) {
+		putRootCategories(map);
+
+		StaticPage staticPage = staticPageService.findBuUrl(pageUrl);
+
+		map.put("staticPage", staticPage);
+		map.put("linkTypes", LinkType.values());
+
+		return "admin/edit/edit-static-page";
+	}
+
+	@RequestMapping(value = UrlConstants.UPDATE_STATIC_PAGE, method = RequestMethod.POST)
+	public String updateStaticPage(
+			@ModelAttribute("staticPage") StaticPage staticPage) {
+		staticPageService.update(staticPage);
+
+		return "redirect:/" + staticPage.getUrl();
+	}
+
+	@RequestMapping(value = { "/about", "/contacts", "/sale",
+			"/special-offers", "/payment", "/delivery", "/markdown" }, method = RequestMethod.GET)
+	public String renderReservedStaticPage(Map<String, Object> map,
+			HttpServletRequest request) {
+		putRootCategories(map);
+
+		StaticPage staticPage = staticPageService.findBuUrl(request
+				.getServletPath());
+		map.put("staticPage", staticPage);
+
+		return "static-page";
 	}
 
 	@InitBinder

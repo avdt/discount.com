@@ -36,6 +36,9 @@ public class StaticPage {
 	private boolean published;
 
 	@Column
+	private boolean reserved;
+
+	@Column
 	@Enumerated(EnumType.STRING)
 	private LinkType location;
 
@@ -85,5 +88,13 @@ public class StaticPage {
 
 	public void setLocation(LinkType location) {
 		this.location = location;
+	}
+
+	public boolean isReserved() {
+		return reserved;
+	}
+
+	public void setReserved(boolean reserved) {
+		this.reserved = reserved;
 	}
 }

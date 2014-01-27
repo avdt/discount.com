@@ -7,7 +7,7 @@ import com.discount.domain.StaticPage;
 public interface StaticPageService extends GenericService<StaticPage> {
 	StaticPage findBuUrl(String url);
 
-	List<StaticPage> findTopMenuPages();
+	List<StaticPage> findTopMenuNotReservedPages();
 
-	List<StaticPage> findBottomMenuPages();
+	List<StaticPage> findBottomMenuNotReservedPages();
 }

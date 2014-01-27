@@ -22,7 +22,7 @@
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
-						<form:input style="display:none;" path="id" type="text" value="${category.id}"/>
+						<form:hidden path="id" type="text" value="${category.id}"/>
 						<form:input path="image" type="text" value="${category.image}"/>
 						<form:input path="name" type="text" placeholder="${productName}"/>
 						<form:checkbox path="root" value="root" label="${root}"/>

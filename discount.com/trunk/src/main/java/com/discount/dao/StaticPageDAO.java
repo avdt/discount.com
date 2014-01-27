@@ -7,7 +7,7 @@ import com.discount.domain.StaticPage;
 public interface StaticPageDAO extends GenericDAO<StaticPage> {
 	StaticPage findByUrl(String url);
 
-	List<StaticPage> findTopMenuPages();
+	List<StaticPage> findTopMenuNotReservedPages();
 
-	List<StaticPage> findBottomMenuPages();
+	List<StaticPage> findBottomMenuNotReservedPages();
 }

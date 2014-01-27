@@ -10,9 +10,14 @@
 <div class="grtmenu">
 	<div id="container">
 		<div class="">
-			<a class="special-offer common-url" href="#"><spring:message code="header.action"/></a> |
-			<a class="special-offer common-url" href="#"><spring:message code="header.markdown"/></a> |
-			<a class="common-url" href="#"><spring:message code="header.delivery"/></a>
+			<a class="special-offer common-url" href="${pageContext.request.contextPath}/special-offers"><spring:message code="header.action"/></a> |
+			<a class="special-offer common-url" href="${pageContext.request.contextPath}/markdown"><spring:message code="header.markdown"/></a> |
+			<a class="common-url" href="${pageContext.request.contextPath}/payment"><spring:message code="header.payment"/></a> |
+			<a class="common-url" href="${pageContext.request.contextPath}/delivery"><spring:message code="header.delivery"/></a>
+			<c:forEach items="${topMenuStaticPages}" var="topMenuPage">
+				|<a class="common-url" href="${pageContext.request.contextPath}${topMenuPage.url}">${topMenuPage.title}</a>
+			
+			</c:forEach>
 		</div>
 		
 		<div class="login">

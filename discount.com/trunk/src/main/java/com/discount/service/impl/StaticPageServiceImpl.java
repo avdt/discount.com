@@ -16,8 +16,8 @@ public class StaticPageServiceImpl implements StaticPageService {
 	private StaticPageDAO staticPageDAO;
 
 	@Override
-	public void save(StaticPage object) {
-		staticPageDAO.save(object);
+	public void save(StaticPage staticPage) {
+		staticPageDAO.save(staticPage);
 	}
 
 	@Override
@@ -26,8 +26,8 @@ public class StaticPageServiceImpl implements StaticPageService {
 	}
 
 	@Override
-	public void delete(StaticPage object) {
-		staticPageDAO.delete(object);
+	public void delete(StaticPage staticPage) {
+		staticPageDAO.delete(staticPage);
 	}
 
 	@Override
@@ -43,6 +43,16 @@ public class StaticPageServiceImpl implements StaticPageService {
 	@Override
 	public StaticPage findBuUrl(String url) {
 		return staticPageDAO.findByUrl(url);
+	}
+
+	@Override
+	public List<StaticPage> findTopMenuNotReservedPages() {
+		return staticPageDAO.findTopMenuNotReservedPages();
+	}
+
+	@Override
+	public List<StaticPage> findBottomMenuNotReservedPages() {
+		return staticPageDAO.findBottomMenuNotReservedPages();
 	}
 
 }

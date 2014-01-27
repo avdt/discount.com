@@ -20,7 +20,7 @@
 				<!-- CREATE STATIC PAGE -->
 		    
 				<div id="create_static_page">
-					<a href="content/add-static-page"><spring:message code="staticPage.create"/><i class="icon-plus-sign"></i></a>
+					<a href="add-static-page"><spring:message code="staticPage.create"/><i class="icon-plus-sign"></i></a>
 			    	
 			    </div>
 			    
@@ -36,10 +36,10 @@
 									    <div id="${staticPage.id}">
 									    	<div class="action-icons">
 										    	<a class="category-remove-icon" href="admin/product/delete/${staticPage.id}"><i class="icon-remove" ></i></a>
-										    	<a class="category-remove-icon" href="admin/product/edit/${staticPage.id}"><i class="icon-pencil" ></i></a>
+										    	<a class="category-remove-icon" href="edit${staticPage.url}"><i class="icon-pencil" ></i></a>
 									    	</div>
 									    	<div class="small-img-container">
-											    <a href="${pageContext.request.contextPath}/${staticPage.url}">
+											    <a href="${pageContext.request.contextPath}${staticPage.url}">
 												    <h4>${staticPage.title}</h4>
 											    </a>
 										    </div>

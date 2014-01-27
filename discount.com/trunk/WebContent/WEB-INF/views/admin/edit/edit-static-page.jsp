@@ -12,7 +12,7 @@
     </jsp:attribute>
 	<jsp:body>
 	    <div id="new-static-page-container">
-		    <form:form method="post" action="add-static-page/save" commandName="staticPage" enctype="multipart/form-data">
+		    <form:form method="post" action="${staticPage.url}/update" commandName="staticPage" enctype="multipart/form-data">
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
 					<spring:message code="product.range" var="range"/>
@@ -36,6 +36,7 @@
 						</c:forEach>
 					</div>
 					<form:hidden path="reserved" value="false"/>
+					<form:hidden path="id"/>
 		     	<input type="submit" value="<spring:message code="general.save"/>" />
 			</form:form>
 		</div>

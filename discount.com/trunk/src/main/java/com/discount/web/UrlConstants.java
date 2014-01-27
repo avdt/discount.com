@@ -31,18 +31,18 @@ public class UrlConstants {
 	public final static String ADD_CATEGORY = "/new-category/{parentCategoryId}/add";
 	public final static String DELETE_CATEGORY = "/category/delete/{categoryId}";
 	public final static String EDIT_CATEGORY = "/category/edit/{categoryId}";
-	public final static String UPDATE_CATEGORY = "/category/edit/{categoryId}/update";
+	public final static String UPDATE_CATEGORY = EDIT_CATEGORY + "/update";
 
 	public final static String PRODUCERS = "/producers";
 	public final static String NEW_PRODUCER = "/new-producer/{categoryId}";
 	public final static String ADD_PRODUCER = "/new-producer/add";
 	public final static String DELETE_PRODUCER = "/producer/delete/{producerId}";
 	public final static String EDIT_PRODUCER = "/producer/edit/{producerId}";
-	public final static String UPDATE_PRODUCER = "/producer/edit/{producerId}/update";
+	public final static String UPDATE_PRODUCER = EDIT_PRODUCER + "/update";
 
 	public final static String PRODUCTS = "/products";
 	public final static String NEW_PRODUCT = "/new-product/{categoryId}";
-	public final static String ADD_PRODUCT = "/new-product/{categoryId}/add";
+	public final static String ADD_PRODUCT = NEW_PRODUCT + "/add";
 	public final static String UPDATE_PRODUCT = "/product/edit/{productId}/{categoryId}/update";
 	public final static String DELETE_PRODUCT = "/product/delete/{productId}";
 	public final static String EDIT_PRODUCT = "/product/edit/{productId}";
@@ -53,7 +53,7 @@ public class UrlConstants {
 	public final static String GET_PRODUCT_BY_RANGE = "/producer/range/{rangeId}";
 
 	public final static String NEW_RANGE = "/new-range/{producerId}";
-	public final static String ADD_RANGE = "/new-range/{producerId}/add";
+	public final static String ADD_RANGE = NEW_RANGE + "/add";
 	public final static String EDIT_RANGE = "/range/edit/{rangeId}";
 	public final static String UPDATE_RANGE = "/range/update";
 	public final static String DELETE_RANGE = "/range/delete/{rangeId}";
@@ -78,7 +78,10 @@ public class UrlConstants {
 	public final static String CLEAR_CART = "/clear";
 
 	public final static String CONTENT = "/content";
-	public final static String NEW_STATIC_PAGE = "/add-static-page";
+	public final static String NEW_STATIC_PAGE = "/admin/add-static-page";
 	public final static String SAVE_STATIC_PAGE = NEW_STATIC_PAGE + "/save";
+	public final static String EDIT_STATIC_PAGE = "/admin/edit/{staticPageUrl}";
+	public final static String UPDATE_STATIC_PAGE = EDIT_STATIC_PAGE
+			+ "/update";
 
 }

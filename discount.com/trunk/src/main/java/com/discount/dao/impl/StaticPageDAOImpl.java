@@ -61,25 +61,25 @@ public class StaticPageDAOImpl implements StaticPageDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<StaticPage> findTopMenuPages() {
+	public List<StaticPage> findTopMenuNotReservedPages() {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"from StaticPage sP where sP.location = "
-								+ " :location")
-				.setString("location", LinkType.TOP_MENU.toString()).list();
+						"from StaticPage sP where sP.location = :location and reserved = :reserved")
+				.setParameter("location", LinkType.TOP_MENU)
+				.setParameter("reserved", false).list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<StaticPage> findBottomMenuPages() {
+	public List<StaticPage> findBottomMenuNotReservedPages() {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"from StaticPage sP where sP.location = "
-								+ " :location")
-				.setString("location", LinkType.BOTTOM_MENU.toString()).list();
+						"from StaticPage sP where sP.location = :location and reserved = :reserved")
+				.setParameter("location", LinkType.BOTTOM_MENU)
+				.setParameter("reserved", false).list();
 	}
 
 }
