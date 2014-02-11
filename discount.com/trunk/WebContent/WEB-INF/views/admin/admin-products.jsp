@@ -53,11 +53,11 @@
 							    <div class="span3">
 								    <div id="${product.id}" class="thumbnail product-small">
 								    	<div class="action-icons">
-									    	<a class="category-remove-icon" href="admin/product/delete/${product.id}"><i class="icon-remove" ></i></a>
-									    	<a class="category-remove-icon" href="admin/product/edit/${product.id}"><i class="icon-pencil" ></i></a>
+									    	<a class="category-remove-icon" href="product/delete/${product.id}"><i class="icon-remove" ></i></a>
+									    	<a class="category-remove-icon" href="product/edit/${product.id}"><i class="icon-pencil" ></i></a>
 								    	</div>
 								    	<div class="small-img-container">
-										    <a href="products/get/${product.id}">
+										    <a href="../products/get/${product.id}">
 											    <img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${product.image}">
 											    <h4>${product.name}</h4>
 										    </a>

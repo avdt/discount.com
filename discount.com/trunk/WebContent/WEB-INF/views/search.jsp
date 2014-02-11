@@ -37,7 +37,7 @@
 				<div id="products">
 				    <div>
 			        	<c:forEach items="${searchResults.matchedProducts}" var="product">
-							<model:product product="${product}" url="get/"></model:product>	
+							<model:product product="${product}" url="products/get/"></model:product>	
 					    </c:forEach>
 			    	</div>
 				</div>	 

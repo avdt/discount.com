@@ -53,11 +53,11 @@
 							    <div class="span3">
 								    <div id="${range.id}" class="thumbnail range-small">
 								    	<div class="action-icons">
-									    	<a class="range-remove-icon" href="admin/range/delete/${range.id}"><i class="icon-remove" ></i></a>
-									    	<a class="range-remove-icon" href="admin/range/edit/${range.id}"><i class="icon-pencil" ></i></a>
+									    	<a class="range-remove-icon" href="range/delete/${range.id}"><i class="icon-remove" ></i></a>
+									    	<a class="range-remove-icon" href="range/edit/${range.id}"><i class="icon-pencil" ></i></a>
 								    	</div>
 								    	<div class="small-img-container">
-										    <a href="ranges/get/${range.id}">
+										    <a href="../products/producer/range/${range.id}">
 											    <img class="range-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${range.image}">
 											    <h4>${range.name}</h4>
 										    </a>
