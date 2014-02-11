@@ -60,7 +60,7 @@ public class StaticPageController extends BaseController {
 			@ModelAttribute("staticPage") StaticPage staticPage) {
 		staticPageService.update(staticPage);
 
-		return "redirect:/" + staticPage.getUrl();
+		return "redirect:/content/" + staticPage.getUrl();
 	}
 
 	@RequestMapping(value = { "/about", "/contacts", "/sale",
@@ -74,6 +74,28 @@ public class StaticPageController extends BaseController {
 		map.put("staticPage", staticPage);
 
 		return "static-page";
+	}
+
+	@RequestMapping(value = UrlConstants.CONTENT + "{staticPageUrl}", method = RequestMethod.GET)
+	public String renderStaticPage(Map<String, Object> map,
+			@PathVariable final String staticPageUrl) {
+		putRootCategories(map);
+
+		StaticPage staticPage = staticPageService.findBuUrl(staticPageUrl);
+		map.put("staticPage", staticPage);
+
+		return "static-page";
+	}
+
+	@RequestMapping(UrlConstants.DELETE_STATIC_PAGE)
+	public String deleteProduct(
+			@PathVariable("staticPageUrl") String staticPageUrl,
+			HttpServletRequest request) {
+
+		staticPageService.delete(staticPageService.findBuUrl(staticPageUrl));
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 
 	@InitBinder

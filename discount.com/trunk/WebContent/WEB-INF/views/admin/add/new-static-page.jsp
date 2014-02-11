@@ -22,14 +22,22 @@
 						<form:input path="title" type="text"/>
 					</div>
 					<div>
-			     		<label for="title">Url</label>
+			     		<label for="url">Url</label>
 						<form:input path="url" type="text"/>
 					</div>
 					<div>
-			     		<label for="title"><spring:message code="admin.tab.products.description"/></label>
+			     		<label for="description"><spring:message code="admin.tab.products.description"/></label>
 						<form:textarea path="description"/>
 					</div>
 					
+					<div>
+						<form:textarea id="content" path="content"/>
+					</div>
+				 	<script>
+		                // Replace the <textarea id="editor1"> with a CKEditor
+		                // instance, using default configuration.
+		                CKEDITOR.replace( 'content' );
+		            </script>
 					<div class="link-location">
 						<c:forEach items="${linkTypes}" var="linkType">
 							<form:radiobutton path="location" label="${linkType.value}" value="${linkType}" />

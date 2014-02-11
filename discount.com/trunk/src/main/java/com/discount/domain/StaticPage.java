@@ -42,6 +42,9 @@ public class StaticPage {
 	@Enumerated(EnumType.STRING)
 	private LinkType location;
 
+	@Column
+	private String content;
+
 	public Integer getId() {
 		return id;
 	}
@@ -96,5 +99,13 @@ public class StaticPage {
 
 	public void setReserved(boolean reserved) {
 		this.reserved = reserved;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

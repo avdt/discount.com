@@ -30,9 +30,11 @@
 <script type="text/javascript" src="<c:url value="/js/libs/caroufredsel/jquery.carouFredSel-6.2.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/qtip/jquery.qtip.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/smartspinner/smartspinner.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/ckeditor/ckeditor.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/product-filter.js" /> "></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <jsp:invoke fragment="extraHeader" />
 </head>

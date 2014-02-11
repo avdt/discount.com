@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/tags/model/approve-window.tag=UTF-8
 encoding//WebContent/WEB-INF/views/admin/admin-products.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/admin/admin-static-pages.jsp=UTF-8

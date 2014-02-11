@@ -29,7 +29,22 @@
 			     		<label for="title"><spring:message code="admin.tab.products.description"/></label>
 						<form:textarea path="description"/>
 					</div>
-					
+					<div>
+						<form:textarea id="content" path="content"/>
+					</div>
+				 	<script>
+		                // Replace the <textarea id="editor1"> with a CKEditor
+		                // instance, using default configuration.
+		                CKEDITOR.replace( 'content' );
+		            </script>
+		            <div>
+		            	<label for="reserved">
+			            	<spring:message code="staticPage.reserved"/>
+			            	<form:checkbox path="reserved"/>
+		            	</label>
+		            	<span>
+		            	</span>
+		            </div>
 					<div class="link-location">
 						<c:forEach items="${linkTypes}" var="linkType">
 							<form:radiobutton path="location" label="${linkType.value}" value="${linkType}" />

@@ -18,11 +18,12 @@
 		    </a>
 	    </div>
 	    <div class="product-metadata">
-		    <a href="products/get/${product.id}">
+		    <a href="${url}${product.id}">
 				<h4>${product.name}</h4>
 		    </a>
 		    <p>${product.category.name}</p>
 		    <p>${product.price} <spring:message code="product.currency"/></p>
 	    </div>
+	    <span class="producer" style="display: none;">${product.producer.name}</span>
     </div>
 </div>

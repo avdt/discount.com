@@ -15,7 +15,7 @@
 			<a class="common-url" href="${pageContext.request.contextPath}/payment"><spring:message code="header.payment"/></a> |
 			<a class="common-url" href="${pageContext.request.contextPath}/delivery"><spring:message code="header.delivery"/></a>
 			<c:forEach items="${topMenuStaticPages}" var="topMenuPage">
-				|<a class="common-url" href="${pageContext.request.contextPath}${topMenuPage.url}">${topMenuPage.title}</a>
+				|<a class="common-url" href="${pageContext.request.contextPath}/content/${topMenuPage.url}">${topMenuPage.title}</a>
 			
 			</c:forEach>
 		</div>

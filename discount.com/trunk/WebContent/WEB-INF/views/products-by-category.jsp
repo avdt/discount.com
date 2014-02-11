@@ -51,10 +51,21 @@
 						    </c:forEach>
 					    </div>
 		    	</c:when>
-		    	
-		    	
+		    		
 		    	<c:otherwise>
-			    	<div id="products">
+		    		<div class="span2 producer-checkboxes">
+		    			<h5>
+		    				<spring:message code="general.producers" />
+		    			</h5>
+		    			<c:forEach items="${category.producers}" var="producer">
+		    				<div class="prducer-checkbox">
+				    			<input id="${producer.id}" type="checkbox" value="${producer.name}">
+			    				<label for="${producer.id}">${producer.name}</label>
+			    			</div>
+			    		</c:forEach>
+		    		</div>
+		    	
+			    	<div id="products" class="span10">
 					    <div>
 				        	<c:forEach items="${productsByCategory}" var="product">
 								<model:product product="${product}" url="get/"></model:product>	

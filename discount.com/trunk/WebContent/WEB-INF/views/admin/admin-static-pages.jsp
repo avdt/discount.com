@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -35,8 +36,11 @@
 								    <div class="span3">
 									    <div id="${staticPage.id}">
 									    	<div class="action-icons">
-										    	<a class="category-remove-icon" href="admin/product/delete/${staticPage.id}"><i class="icon-remove" ></i></a>
-										    	<a class="category-remove-icon" href="edit${staticPage.url}"><i class="icon-pencil" ></i></a>
+										    	<a role="button" data-toggle="modal" class="category-remove-icon" href="#deleteModal-${staticPage.url}"><i class="icon-remove" ></i></a>
+										    	<a class="category-remove-icon" href="edit/${staticPage.url}"><i class="icon-pencil" ></i></a>
+										    	<spring:message var="modalQuestion" arguments="${staticPage.title}" code="staticPage.delete.question"/>
+										    	<spring:message var="modalTitle" arguments="${staticPage.title}" code="staticPage.delete.title"/>
+										    	<model:approve-window pageUrl="${staticPage.url}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
 									    	</div>
 									    	<div class="small-img-container">
 											    <a href="${pageContext.request.contextPath}${staticPage.url}">
@@ -45,7 +49,6 @@
 										    </div>
 									    </div>
 								    </div>
-							    
 							    </c:forEach>
 						    </ul>
 				    	</div>

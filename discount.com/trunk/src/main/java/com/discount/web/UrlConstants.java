@@ -77,11 +77,12 @@ public class UrlConstants {
 	public final static String CHECKOUT = "/checkout";
 	public final static String CLEAR_CART = "/clear";
 
-	public final static String CONTENT = "/content";
+	public final static String CONTENT = "/content/";
 	public final static String NEW_STATIC_PAGE = "/admin/add-static-page";
 	public final static String SAVE_STATIC_PAGE = NEW_STATIC_PAGE + "/save";
 	public final static String EDIT_STATIC_PAGE = "/admin/edit/{staticPageUrl}";
 	public final static String UPDATE_STATIC_PAGE = EDIT_STATIC_PAGE
 			+ "/update";
+	public final static String DELETE_STATIC_PAGE = "/admin/delete/{staticPageUrl}";
 
 }

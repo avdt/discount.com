@@ -2,7 +2,7 @@
 	.masthead #head-top #title {width: 75px;}
 	.masthead #head-top #search {bottom: 40px;left: 25%;position: relative;text-align: center;width: 50%;}
     	.masthead #head-top #search .form-search {}
-    		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 45%;}
+    		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 80%;}
 	.masthead #head-top #cart-container{height: 60px;}
 	.masthead #head-top #cart {bottom: 110px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
 		.masthead #head-top #cart #checkout {}

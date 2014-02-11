@@ -18,7 +18,7 @@
 		<div id="static-pages">
 			<c:forEach items="${bottomMenuStaticPages}" var="staticPage">
 				<div>
-					<a class="common-url" href="${pageContext.request.contextPath}/${staticPage.url}">${staticPage.title}</a>
+					<a class="common-url" href="${pageContext.request.contextPath}/content/${staticPage.url}">${staticPage.title}</a>
 				</div>
 			</c:forEach>
 		</div>
