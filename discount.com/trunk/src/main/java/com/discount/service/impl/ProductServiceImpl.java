@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findByCategoryId(Integer productCategoryId) {
+	public List<Product> findByCategoryId(int productCategoryId) {
 		return productDAO.findByCategoryId(productCategoryId);
 	}
 
@@ -95,13 +95,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findByProducerId(Integer producerId) {
+	public List<Product> findByProducerId(int producerId) {
 		return productDAO.findByProducerId(producerId);
 	}
 
 	@Override
 	public List<Product> findByRange(int range) {
 		return productDAO.findByRange(range);
+	}
+
+	@Override
+	public List<Product> findByCategoryAndProducer(int productCategoryId,
+			int producerId) {
+		return productDAO.findByCategoryAndProducer(productCategoryId,
+				producerId);
 	}
 
 }

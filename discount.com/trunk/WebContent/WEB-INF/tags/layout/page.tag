@@ -16,21 +16,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Essential scripts -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap-responsive.css" />" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap-responsive.min.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap.min.css" /> " />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/bootstrap/bootstrap-select.css" /> " />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/qtip/jquery.qtip.min.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/js/libs/filtrify/css/filtrify.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/header.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/product-filter.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/jquery-ui/jquery-ui-1.10.3.custom.css" />" />
 
 <script type="text/javascript" src="<c:url value="/js/libs/jquery/jquery-1.10.2.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.min.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap-select.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/libs/caroufredsel/jquery.carouFredSel-6.2.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/qtip/jquery.qtip.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/libs/smartspinner/smartspinner.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/libs/ckeditor/ckeditor.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/filtrify/js/filtrify.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/jquery.shuffle.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/libs/jquery.tinysort.min.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/main.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/admin.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>

@@ -1,6 +1,7 @@
 package com.discount.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.discount.domain.Producer;
+import com.discount.domain.ProductCategory;
 import com.discount.domain.Review;
 import com.discount.domain.Product;
 import com.discount.domain.Range;
@@ -44,9 +47,22 @@ public class ProductController extends BaseController {
 			Map<String, Object> map) {
 		putRootCategories(map);
 
-		map.put("category", categoryService.findById(categoryId));
+		// List<Producer> producersByCategory = producerService
+		// .findByCategoryId(categoryId);
+		ProductCategory category = categoryService.findById(categoryId);
+		List<Producer> producers = category.getProducers();
+		Map<Integer, List<Product>> productsByCategoryAndProducer = new HashMap<Integer, List<Product>>();
+
+		for (Producer producer : producers) {
+			productsByCategoryAndProducer.put(producer.getId(), productService
+					.findByCategoryAndProducer(categoryId, producer.getId()));
+		}
+
+		map.put("category", category);
+		map.put("producers", producers);
 		map.put("productsByCategory",
 				productService.findByCategoryId(categoryId));
+		map.put("productsByCategoryAndProducer", productsByCategoryAndProducer);
 
 		return "products-by-category";
 	}

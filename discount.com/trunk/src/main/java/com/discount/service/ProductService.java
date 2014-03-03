@@ -7,11 +7,14 @@ import com.discount.domain.Product;
 public interface ProductService extends GenericService<Product> {
 	Product findByName(String name);
 
-	List<Product> findByCategoryId(Integer productCategoryId);
+	List<Product> findByCategoryId(int productCategoryId);
 
 	List<Product> findSale();
 
-	List<Product> findByProducerId(Integer producerId);
+	List<Product> findByProducerId(int producerId);
+
+	List<Product> findByCategoryAndProducer(int productCategoryId,
+			int producerId);
 
 	List<Product> findByRange(int range);
 }

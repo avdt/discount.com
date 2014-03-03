@@ -51,21 +51,43 @@
 						    </c:forEach>
 					    </div>
 		    	</c:when>
-		    		
+	    		
 		    	<c:otherwise>
-		    		<div class="span2 producer-checkboxes">
-		    			<h5>
-		    				<spring:message code="general.producers" />
-		    			</h5>
-		    			<c:forEach items="${category.producers}" var="producer">
-		    				<div class="prducer-checkbox">
-				    			<input id="${producer.id}" type="checkbox" value="${producer.name}">
-			    				<label for="${producer.id}">${producer.name}</label>
-			    			</div>
-			    		</c:forEach>
+	    		<!-- PRODUCTS -->
+		    		<div class="span3 producer-checkboxes">
+						<div id="wrapper" class="ft-panel">
+						    <ul class="menu">
+						        <li class="item1"><a href="#"><spring:message code="general.producers" /> <span>${producers.size()}</span></a>
+						            <ul>
+						                <c:forEach items="${category.producers}" var="producer">
+						    				<li class="subitem1">
+						    					<input id="${producer.id}" type="checkbox" value="${producer.name}"/> 
+						    					<a href="#">${producer.name}<span>${productsByCategoryAndProducer.get(producer.id).size()}</span>
+						    					</a>
+					    					</li>
+							    		</c:forEach>
+						            </ul>
+						        </li>
+						    </ul>
+						</div>
 		    		</div>
 		    	
-			    	<div id="products" class="span10">
+			    	<div id="products" class="span9">
+			    		<div>
+			    			<span><spring:message code="general.sort"/></span>
+							<select id="sort-order" class="form-control" title='Choose one of the following...'>
+								<option><spring:message code="general.sort.default"/></option>
+								<option value="asc"><spring:message code="general.sort.cheap"/></option>
+								<option value="desc"><spring:message code="general.sort.expensive"/></option>
+								<option value="byName"><spring:message code="general.sort.byName"/></option>
+							</select>
+							
+							<select class="selectpicker show-menu-arrow" multiple title='Choose one of the following...'>
+								<option>Mustard</option>
+								<option>Ketchup</option>
+								<option>Relish</option>
+							</select>
+			    		</div>
 					    <div>
 				        	<c:forEach items="${productsByCategory}" var="product">
 								<model:product product="${product}" url="get/"></model:product>	

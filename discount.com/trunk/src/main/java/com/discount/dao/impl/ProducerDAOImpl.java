@@ -61,7 +61,7 @@ public class ProducerDAOImpl implements ProducerDAO {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"from Producer a join a.category cs where cs.id= :categoryId")
+						"from Producer p inner join p.categories cs where cs.id= :categoryId")
 				.setInteger("categoryId", categoryId).list();
 	}
 

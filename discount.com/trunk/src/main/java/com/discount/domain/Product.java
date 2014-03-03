@@ -42,7 +42,8 @@ public class Product implements Serializable {
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory category;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToOne(cascade = { CascadeType.MERGE,
 			CascadeType.REFRESH }, targetEntity = Producer.class)
 	@JoinColumn(name = "producer_id")
 	private Producer producer;

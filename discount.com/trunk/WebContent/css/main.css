@@ -109,5 +109,5 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
 
 textarea, input {width: 400px;}
 .left-navigation{display: table-caption;width: 100%;}
-.prducer-checkbox {display: flex;left: 5px;position: relative;}
-	.prducer-checkbox input {margin-right: 5px;}
+.producer-checkbox {display: flex;left: 5px;position: relative;}
+	.producer-checkbox input {margin-right: 5px;}

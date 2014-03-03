@@ -6,7 +6,7 @@
 <%@ attribute name="product" required="true" type="com.discount.domain.Product" %>
 <%@ attribute name="url" required="true"%>
  
-<div class="span3">
+<div class="span3" data-price="${product.price}" data-name="${product.name}">
     <div id="${product.id}" class="thumbnail product-small">
     	<div class="product-url-container">
 		    <a href="${url}${product.id}">
