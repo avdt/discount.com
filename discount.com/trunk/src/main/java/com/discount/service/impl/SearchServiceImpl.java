@@ -28,6 +28,16 @@ public class SearchServiceImpl implements SearchService {
 		return result;
 	}
 
+	@Override
+	public Set<Product> searchByCategory(String keyWord, int categoryId) {
+		Set<Product> result = new HashSet<Product>();
+
+		List<Product> productsByCategory = productService
+				.findByCategoryId(categoryId);
+		result = matchByKeyword(keyWord, productsByCategory);
+		return result;
+	}
+
 	private Set<Product> matchByKeyword(String keyword,
 			List<Product> allProducts) {
 		Set<Product> matchedProducts = new HashSet<Product>();

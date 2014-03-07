@@ -8,6 +8,7 @@ public class SearchResults implements Serializable {
 	private static final long serialVersionUID = 1605792191820081618L;
 	private String keyword;
 	private Set<Product> matchedProducts;
+	private int serchedCategoryId;
 
 	public String getKeyword() {
 		return keyword;
@@ -23,5 +24,13 @@ public class SearchResults implements Serializable {
 
 	public void setMatchedProducts(Set<Product> matchedProducts) {
 		this.matchedProducts = matchedProducts;
+	}
+
+	public int getSerchedCategoryId() {
+		return serchedCategoryId;
+	}
+
+	public void setSerchedCategoryId(int serchedCategoryId) {
+		this.serchedCategoryId = serchedCategoryId;
 	}
 }

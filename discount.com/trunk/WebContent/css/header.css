@@ -1,8 +1,10 @@
 .masthead #head-top {}
 	.masthead #head-top #title {width: 75px;}
-	.masthead #head-top #search {bottom: 40px;left: 25%;position: relative;text-align: center;width: 50%;}
+	.masthead #head-top #search {bottom: 40px;position: relative;text-align: center;width: 50%;height: 50px;margin-left: auto;margin-right: auto;}
     	.masthead #head-top #search .form-search {}
-    		.masthead #head-top #search .form-search #search-input {font-size: 17px;width: 80%;}
+    		.masthead #head-top #search .form-search #search-input {font-size: 17px;position: relative;right: 115px;width: 336px;border-radius: 4px 0 0 4px;}
+    		.masthead #head-top #search .form-search #search-botton {left: 150px;position: relative;bottom: 30px;}
+    		.masthead #head-top #search .form-search .searchCategories {bottom: 30px;left: 151px;position: relative;width: 140px;border-radius: 0 4px 4px 0;}
 	.masthead #head-top #cart-container{height: 60px;}
 	.masthead #head-top #cart {bottom: 110px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
 		.masthead #head-top #cart #checkout {}
@@ -20,3 +22,16 @@
 
 /* style for cart width */		
 .cart_width {max-width: 750px;min-width: 700px;}
+
+#header-small {position: fixed;z-index: 10;top: 0;width: 98%;background-color: #FAFAFA;background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);background-repeat: repeat-x;border: 1px solid #D4D4D4;border-radius: 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);height: 40px;padding-left: 20px;padding-right: 20px;}
+	#header-small #header-small-content {margin-left: auto;margin-right: auto;width: 960px;}
+	#header-small #head-top #search {position: relative;width: 50%;}
+	#header-small #head-top #search .form-search #search-input {font-size: 17px;position: relative;right: 115px;top: 30px;width: 336px;}
+	#header-small #head-top #search .form-search .searchCategories {top: 0;}
+	#header-small #head-top #search .form-search #search-botton {top: 0;}
+	#header-small #head-top #title {bottom: 10px;position: relative;}
+	#header-small #head-top #search .form-search {bottom: 45px;position: relative;}
+	#cart-container-small {height: 0;}
+
+
+

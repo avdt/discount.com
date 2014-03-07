@@ -10,7 +10,13 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
-	   
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="admin.tab.staticPages"/></li>
+		    </ul>
+		</div>
 		<div id="users">
 			Add User
 		</div>

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -10,6 +11,13 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="products.title"/></li>
+		    </ul>
+		</div>
 	    <div class="title">
 			<h3><spring:message code="products.title"/></h3>
 			<hr/>
@@ -53,8 +61,11 @@
 							    <div class="span3">
 								    <div id="${product.id}" class="thumbnail product-small">
 								    	<div class="action-icons">
-									    	<a class="category-remove-icon" href="product/delete/${product.id}"><i class="icon-remove" ></i></a>
+									    	<a class="category-remove-icon" href="#deleteModal-${product.id}" data-toggle="modal"><i class="icon-remove" ></i></a>
 									    	<a class="category-remove-icon" href="product/edit/${product.id}"><i class="icon-pencil" ></i></a>
+									    	<spring:message var="modalQuestion" arguments="${product.name}" code="staticPage.delete.question"/>
+									    	<spring:message var="modalTitle" arguments="${product.name}" code="staticPage.delete.title"/>
+									    	<model:approve-window actionUrl="product/delete/${product.id}" id="${product.id}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
 								    	</div>
 								    	<div class="small-img-container">
 										    <a href="../products/get/${product.id}">

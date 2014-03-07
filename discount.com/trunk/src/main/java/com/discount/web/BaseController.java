@@ -24,7 +24,10 @@ public class BaseController {
 	public void putRootCategories(Map<String, Object> map) {
 		List<ProductCategory> rootCategoryList = categoryService
 				.findRootCategories();
+		
+		List<ProductCategory> childCategories = categoryService.findChildCategories();
 		map.put("rootCategoryList", rootCategoryList);
+		map.put("childCategories", childCategories);
 		map.put("searchResults", new SearchResults());
 
 		List<StaticPage> topMenuPages = staticPageService

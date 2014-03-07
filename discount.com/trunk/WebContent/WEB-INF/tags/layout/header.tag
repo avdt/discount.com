@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 
 <div class="masthead">
 
@@ -19,14 +20,7 @@
 		</div>
 		
 		<!-- SEARCH -->
-		
-		<div id="search">
-		    <form:form class="form-search" method="get" action="${pageContext.request.contextPath}/search" commandName="searchResults">
-				<spring:message code="general.search" var="search"/>
-			    <form:input id="search-input" path="keyword" type="text" class="input-large" placeholder="${search}" ></form:input>
-			    <button type="submit" class="btn"><i class="icon-search"></i></button>
-		    </form:form>
-	    </div>
+	    <model:search/>
 	    
 	    <!-- CART -->
 	    

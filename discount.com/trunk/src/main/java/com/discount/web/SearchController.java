@@ -27,16 +27,23 @@ public class SearchController extends BaseController {
 			@ModelAttribute("searchResults") SearchResults searchResults,
 			Map<String, Object> map) {
 		putRootCategories(map);
+		String searchKeyWord = searchResults.getKeyword();
 		try {
-			searchResults.setKeyword(new String(searchResults.getKeyword()
+			searchResults.setKeyword(new String(searchKeyWord
 					.getBytes("iso-8859-1"), "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (searchResults.getKeyword().length() >= MIN_KEYWORD_LENGTH) {
-			Set<Product> searchResultsSet = searchService.search(searchResults
-					.getKeyword());
+		if (searchKeyWord.length() >= MIN_KEYWORD_LENGTH) {
+			Set<Product> searchResultsSet;
+			int serchCategoryId = searchResults.getSerchedCategoryId();
+			if (serchCategoryId > 0) {
+				searchResultsSet = searchService.searchByCategory(
+						searchKeyWord, serchCategoryId);
+			} else {
+				searchResultsSet = searchService.search(searchKeyWord);
+			}
 			searchResults.setMatchedProducts(searchResultsSet);
 		}
 		map.put("searchResults", searchResults);

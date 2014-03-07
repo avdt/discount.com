@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -10,6 +11,13 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="general.producers"/></li>
+		    </ul>
+		</div>
 		<div class="title">
 			<h3><spring:message code="general.producers"/></h3>
 			<hr/>
@@ -60,12 +68,15 @@
 									
 							    <li class="span3">
 								    <div id="${producer.id}" class="thumbnail producer-small">
-								    	<a class="category-remove-icon" href="admin/producer/delete/${producer.id}"><i class="icon-remove" ></i></a>
+								    	<a class="category-remove-icon" href="#deleteModal-${producer.id}" data-toggle="modal"><i class="icon-remove" ></i></a>
 								    	<a class="category-remove-icon" href="admin/producer/edit/${producer.id}"><i class="icon-pencil" ></i></a>
 									    <a href="products/producer/${producer.id}">
 										    <img class="producer-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}">
 									    </a>
-								    </div>
+								    	<spring:message var="modalQuestion" arguments="${producer.name}" code="staticPage.delete.question"/>
+								    	<spring:message var="modalTitle" arguments="${producer.name}" code="staticPage.delete.title"/>
+								    	<model:approve-window actionUrl="producer/delete/${producer.id}" id="${producer.id}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
+							    	</div>
 							    </li>
 						    
 						    </c:forEach>

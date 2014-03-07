@@ -88,7 +88,7 @@ public class StaticPageController extends BaseController {
 	}
 
 	@RequestMapping(UrlConstants.DELETE_STATIC_PAGE)
-	public String deleteProduct(
+	public String deleteStaticPage(
 			@PathVariable("staticPageUrl") String staticPageUrl,
 			HttpServletRequest request) {
 

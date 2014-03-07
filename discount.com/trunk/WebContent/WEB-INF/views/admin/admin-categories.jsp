@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
+<%@ taglib tagdir="/WEB-INF/tags/model" prefix="model"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page import="com.discount.domain.FieldTypes" %>
@@ -11,6 +12,13 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="general.categories"/></li>
+		    </ul>
+		</div>
 		<div class="title">
 			<h3><spring:message code="general.categories"/></h3>
 			<hr/>
@@ -55,13 +63,16 @@
 									<div class="thumbnails">
 									<c:forEach items="${allCategories}" var="category">
 											<div class="span3 thumbnail category-small"  data-placement="right" data-toggle="tooltip" data-original-title="Tooltip on right">
-								    			<a class="category-remove-icon" href="category/delete/${category.id}"><i class="icon-remove" ></i></a>
+								    			<a class="category-remove-icon" href="#deleteModal-${category.id}" data-toggle="modal" ><i class="icon-remove" ></i></a>
 												<a class="category-remove-icon" href="category/edit/${category.id}"><i class="icon-pencil" ></i></a>
 												<a href="#">
 													<img class="category-img" alt="260x180" data-src="holder.js/260x180" src="http://${pageContext.request.serverName}:1234/${category.image}">
 													<h4>${category.name}</h4>
 												</a>
-											</div>
+												<spring:message var="modalQuestion" arguments="${category.name}" code="staticPage.delete.question"/>
+										    	<spring:message var="modalTitle" arguments="${category.name}" code="staticPage.delete.title"/>
+										    	<model:approve-window actionUrl="category/delete/${category.id}" id="${category.id}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
+									    	</div>
 									
 									</c:forEach>
 									</div>

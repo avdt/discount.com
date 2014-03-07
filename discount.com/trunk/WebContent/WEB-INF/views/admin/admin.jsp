@@ -5,13 +5,20 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page import="com.discount.domain.FieldTypes" %>
-<layout:page title="Admin Tools">
+<spring:message code="header.admin" var="title"/>
+<layout:page title="${title}">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
 	<jsp:attribute name="extraBottom">
 	
     </jsp:attribute>
 	<jsp:body>
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="header.admin"/></li>
+		    </ul>
+		</div>
 		<div class="title">
 			<h3><spring:message code="header.admin"/></h3>
 			<hr/>

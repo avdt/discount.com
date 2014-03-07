@@ -11,6 +11,13 @@
 	<jsp:attribute name="extraBottom">
     </jsp:attribute>
 	<jsp:body>
+		<div id="breadcrumb">
+		    <ul class="breadcrumb">
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin"/></a> <span class="divider">/</span></li>
+			    <li class="active"><spring:message code="admin.tab.staticPages"/></li>
+		    </ul>
+		</div>
 	    <div class="title">
 			<h3><spring:message code="admin.tab.staticPages"/></h3>
 			<hr/>
@@ -40,7 +47,7 @@
 										    	<a class="category-remove-icon" href="edit/${staticPage.url}"><i class="icon-pencil" ></i></a>
 										    	<spring:message var="modalQuestion" arguments="${staticPage.title}" code="staticPage.delete.question"/>
 										    	<spring:message var="modalTitle" arguments="${staticPage.title}" code="staticPage.delete.title"/>
-										    	<model:approve-window pageUrl="${staticPage.url}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
+										    	<model:approve-window actionUrl="delete/${staticPage.url}" id="${staticPage.url}" question="${modalQuestion}" title="${modalTitle}"></model:approve-window>
 									    	</div>
 									    	<div class="small-img-container">
 											    <a href="${pageContext.request.contextPath}${staticPage.url}">

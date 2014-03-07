@@ -12,7 +12,7 @@
 	<jsp:body>
 		<div id="breadcrumb">
 		    <ul class="breadcrumb">
-			    <li><a href="${pageContext.request.contextPath}/index"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
+			    <li><a href="${pageContext.request.contextPath}"><spring:message code="general.home"/></a> <span class="divider">/</span></li>
 			    <c:if test="${category.parentCategory!=null}">
 			    	<li><a href="${category.parentCategory.id}">${category.parentCategory.name}</a> <span class="divider">/</span></li>
 			    </c:if>
@@ -54,46 +54,42 @@
 	    		
 		    	<c:otherwise>
 	    		<!-- PRODUCTS -->
-		    		<div class="span3 producer-checkboxes">
-						<div id="wrapper" class="ft-panel">
-						    <ul class="menu">
-						        <li class="item1"><a href="#"><spring:message code="general.producers" /> <span>${producers.size()}</span></a>
-						            <ul>
-						                <c:forEach items="${category.producers}" var="producer">
-						    				<li class="subitem1">
-						    					<input id="${producer.id}" type="checkbox" value="${producer.name}"/> 
-						    					<a href="#">${producer.name}<span>${productsByCategoryAndProducer.get(producer.id).size()}</span>
-						    					</a>
-					    					</li>
-							    		</c:forEach>
-						            </ul>
-						        </li>
-						    </ul>
-						</div>
-		    		</div>
-		    	
-			    	<div id="products" class="span9">
-			    		<div>
-			    			<span><spring:message code="general.sort"/></span>
-							<select id="sort-order" class="form-control" title='Choose one of the following...'>
-								<option><spring:message code="general.sort.default"/></option>
-								<option value="asc"><spring:message code="general.sort.cheap"/></option>
-								<option value="desc"><spring:message code="general.sort.expensive"/></option>
-								<option value="byName"><spring:message code="general.sort.byName"/></option>
-							</select>
-							
-							<select class="selectpicker show-menu-arrow" multiple title='Choose one of the following...'>
-								<option>Mustard</option>
-								<option>Ketchup</option>
-								<option>Relish</option>
-							</select>
+		    		<div id="category-products">
+			    		<div class="span3 producer-checkboxes">
+							<div id="wrapper" class="ft-panel">
+							    <ul class="menu">
+							        <li class="item1"><a href="#"><spring:message code="general.producers" /> <span>${producers.size()}</span></a>
+							            <ul>
+							                <c:forEach items="${category.producers}" var="producer">
+							    				<li class="subitem1">
+							    					<input id="${producer.id}" type="checkbox" value="${producer.name}"/> 
+							    					<a href="#">${producer.name}<span>${productsByCategoryAndProducer.get(producer.id).size()}</span>
+							    					</a>
+						    					</li>
+								    		</c:forEach>
+							            </ul>
+							        </li>
+							    </ul>
+							</div>
 			    		</div>
-					    <div>
-				        	<c:forEach items="${productsByCategory}" var="product">
-								<model:product product="${product}" url="get/"></model:product>	
-						    </c:forEach>
-				    	</div>
-					</div>	   
+			    	
+				    	<div id="products" class="span12">
+				    		<div>
+				    			<span><spring:message code="general.sort"/></span>
+								<select id="sort-order" class="form-control" title='Choose one of the following...'>
+									<option><spring:message code="general.sort.default"/></option>
+									<option value="asc"><spring:message code="general.sort.cheap"/></option>
+									<option value="desc"><spring:message code="general.sort.expensive"/></option>
+									<option value="byName"><spring:message code="general.sort.byName"/></option>
+								</select>
+				    		</div>
+						    <div>
+					        	<c:forEach items="${productsByCategory}" var="product">
+									<model:product product="${product}" url="get/"></model:product>	
+							    </c:forEach>
+					    	</div>
+						</div>
+					</div>
 		    	</c:otherwise>
 	    	</c:choose>
 	    </div>
