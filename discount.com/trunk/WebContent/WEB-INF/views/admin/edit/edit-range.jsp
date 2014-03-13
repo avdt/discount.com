@@ -16,7 +16,10 @@
 				<div id=left-area>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${range}"/>
+						<form:errors path="name" class="error"></form:errors>
+						
 						<form:select path="producer.id" items="${allProducers}" itemLabel="name" itemValue="id"/>
+						<form:errors path="producer.id" class="error"></form:errors>
 					</div>
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>

@@ -16,9 +16,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -35,24 +39,33 @@ public class User implements Serializable {
 	private Integer id;
 
 	@Column(name = "login")
+	@Size(min = 3, max = 30)
+	@NotNull
 	private String login;
 
 	@Column(name = "password")
+	@Size(min = 6, max = 30)
+	@NotNull
 	private String password;
 
 	@Column(name = "first_name")
+	@NotNull
 	private String firstName;
 
 	@Column(name = "last_name")
+	@NotNull
 	private String lastName;
 
 	@Transient
 	private String fullName;
 
 	@Column(name = "email")
+	@Email
+	@NotEmpty
 	private String email;
 
 	@Column(name = "phone_number")
+	@Size(min = 10, max = 13)
 	private String phoneNumber;
 
 	@Column(name = "city")

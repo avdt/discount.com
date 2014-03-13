@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,11 +43,20 @@ public class RegistrationController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.SAVE_USER, method = RequestMethod.POST)
-	public String saveUser(@ModelAttribute("user") User user) {
+	public String saveUser(@Valid @ModelAttribute("user") User user,
+			BindingResult result, Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		userService.save(user);
-		userContext.setCurrentUser(user);
-		return "redirect:/";
+		if (result.hasErrors()) {
+			path = UrlConstants.REGISTRATION;
+		} else {
+			userService.save(user);
+			userContext.setCurrentUser(user);
+			path = "redirect:/";
+		}
+
+		return path;
 	}
 
 	@InitBinder

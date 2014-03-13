@@ -17,6 +17,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -43,8 +47,7 @@ public class Product implements Serializable {
 	private ProductCategory category;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToOne(cascade = { CascadeType.MERGE,
-			CascadeType.REFRESH }, targetEntity = Producer.class)
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, targetEntity = Producer.class)
 	@JoinColumn(name = "producer_id")
 	private Producer producer;
 
@@ -53,18 +56,28 @@ public class Product implements Serializable {
 	private List<ProductSettings> settings;
 
 	@Column(name = "name")
+	@NotNull
+	@Size(min = 3, max = 30)
 	private String name;
 
 	@Column(name = "description")
+	@NotNull
+	@Size(min = 3)
 	private String description;
 
 	@Column(name = "price")
+	@NotNull
+	@Min(1)
 	private Integer price = 0;
 
 	@Column(name = "discount_price")
+	@NotNull
+	@Min(1)
 	private Integer discountPrice;
 
 	@Column(name = "discount")
+	@Min(0)
+	@Max(100)
 	private Integer discount;
 
 	@Column(name = "image")
@@ -74,6 +87,7 @@ public class Product implements Serializable {
 	private MultipartFile file;
 
 	@Column(name = "sale")
+	@NotNull
 	private boolean sale;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE,

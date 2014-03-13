@@ -19,6 +19,7 @@
 					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${range}"/>
+						<form:errors path="name" class="error"></form:errors>
 					</div>
 		     	</div>
 		     	

@@ -59,7 +59,7 @@
 								</div>
 							</div>
 						    <div>	
-						    	<a id="checkout" href="${pageContext.request.contextPath}/cart" class="btn"><spring:message code="cart.checkout" /></a>
+						    	<a id="checkout" href="${pageContext.request.contextPath}/cart/checkout" class="btn"><spring:message code="cart.checkout" /></a>
 					    	</div>
 					</c:when>
 					<c:otherwise>

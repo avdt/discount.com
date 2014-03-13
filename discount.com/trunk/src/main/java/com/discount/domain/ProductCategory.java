@@ -18,9 +18,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -38,6 +41,9 @@ public class ProductCategory implements Serializable {
 	private Integer id;
 
 	@Column(name = "name", nullable = false, length = 100)
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 30)
 	private String name;
 
 	@Transient

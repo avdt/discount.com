@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "category_settings", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
@@ -27,12 +29,18 @@ public class CategorySettings implements Serializable {
 	private Integer id;
 
 	@Column(name = "field_name")
+	@NotNull
+	@Size(min = 3, max = 30)
 	private String fieldName;
 
 	@Column(name = "field_type")
+	@NotNull
+	@Size(min = 3, max = 30)
 	private String fieldType;
 
 	@Column(name = "unit")
+	@NotNull
+	@Size(min = 3, max = 30)
 	private String unit;
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,

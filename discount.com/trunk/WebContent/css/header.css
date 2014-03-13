@@ -7,7 +7,7 @@
     		.masthead #head-top #search .form-search .searchCategories {bottom: 30px;left: 151px;position: relative;width: 140px;border-radius: 0 4px 4px 0;}
 	.masthead #head-top #cart-container{height: 60px;}
 	.masthead #head-top #cart {bottom: 110px;margin-left: auto;position: relative;text-align: left;max-width: 20%;width: -moz-max-content;border: 1px solid #000000;border-radius: 5px 5px 0 0;padding: 5px 5px 0;}
-		.masthead #head-top #cart #checkout {}
+		.masthead #head-top #cart #checkout {font-size: 12px;height: 15px; position: relative;width: 135px;}
 	.masthead #head-top #admin {width: 15%;bottom: 115px;position: relative;}
 .masthead .navbar {bottom: 93px;position: relative;}
 	.masthead .navbar .navbar-inner .container .nav .dropdown {height: 56px;vertical-align: middle;width: 129px;}
@@ -33,5 +33,5 @@
 	#header-small #head-top #search .form-search {bottom: 45px;position: relative;}
 	#cart-container-small {height: 0;}
 
-
-
+	#header-small #header-small-content #head-top #cart-container-small #cart {border: medium none;bottom: 110px;left: 30px;margin-left: auto;max-width: 25%;padding: 0px 5px 0;position: relative;right: 0;text-align: left;width: auto;} 
+	#header-small #head-top #cart #checkout {bottom: 25px;font-size: 12px;height: 15px;left: 90px;position: relative;width: 135px;}

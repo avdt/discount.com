@@ -20,18 +20,22 @@
 			     	<div>
 			     		<label for="title">Title</label>
 						<form:input path="title" type="text"/>
+						<form:errors path="title" class="error"></form:errors>
 					</div>
 					<div>
 			     		<label for="url">Url</label>
 						<form:input path="url" type="text"/>
+						<form:errors path="url" class="error"></form:errors>
 					</div>
 					<div>
 			     		<label for="description"><spring:message code="admin.tab.products.description"/></label>
 						<form:textarea path="description"/>
+						<form:errors path="description" class="error"></form:errors>
 					</div>
 					
 					<div>
 						<form:textarea id="content" path="content"/>
+						<form:errors path="content" class="error"></form:errors>
 					</div>
 				 	<script>
 		                // Replace the <textarea id="editor1"> with a CKEditor
@@ -41,6 +45,7 @@
 					<div class="link-location">
 						<c:forEach items="${linkTypes}" var="linkType">
 							<form:radiobutton path="location" label="${linkType.value}" value="${linkType}" />
+							<form:errors path="location" class="error"></form:errors>
 						</c:forEach>
 					</div>
 					<form:hidden path="reserved" value="false"/>

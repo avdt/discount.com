@@ -24,6 +24,7 @@
 		    		</div>
 		    		<hr/>
 			    	<form:checkboxes class="category" items="${allCategories}" path="categoriesIds" itemLabel="name" itemValue="id" />
+					<form:errors path="category" class="error"></form:errors>
 			    </div>
 			    
 			    <!-- RANGES -->
@@ -41,20 +42,23 @@
 						</div>
 			     	</c:forEach>			    	
 			    </div>
-			     
+			    
 			    <div id="proerties">
 			    	<div>
 			    		<img class="product-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/${producer.image}"/>
 			    		<form:input path="image"/>
+						<form:errors path="image" class="error"></form:errors>
 					</div>
 				    <div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
 					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${producerName}"/>
+						<form:errors path="name" class="error"></form:errors>
 					</div>
 					<div>
 						<form:textarea path="description" type="text" placeholder="${producerDescription}"/>
+						<form:errors path="description" class="error"></form:errors>
 					</div>
 				</div>
 				<div id="create-producer-btn">

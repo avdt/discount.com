@@ -23,24 +23,30 @@
 					</div>
 			     	<div>
 						<form:input path="name" type="text" placeholder="${productName}"/>
+						<form:errors path="name" class="error"></form:errors>
 					</div>
 					<div>
 						<form:select path="producer" items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>
+						<form:errors path="producer" class="error"></form:errors>
 					</div>
 			     	<div class="ranges">
 						<form:select path="range" items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
+						<form:errors path="range" class="error"></form:errors>
 					</div>
 					<div>
 						<form:textarea path="description"  placeholder="${description}"/>
+						<form:errors path="description" class="error"></form:errors>
 					</div>
 					<div>
 						<form:input path="price" type="text" placeholder="${price}"/>
+						<form:errors path="price" class="error"></form:errors>
 					</div>
 					<div>
 				     	<c:forEach items="${selectedCategory.settings}" var="setting" varStatus="status">
 				     		<div>
 								<form:input path="settings[${status.count-1}].propertyValue" type="text" placeholder="${setting.fieldName}"/>
-								<form:input style="display:none;" path="settings[${status.count-1}].propertyName" type="text" value="${setting.fieldName}"/>
+								<form:errors path="settings[${status.count-1}].propertyValue" class="error"></form:errors>
+								<form:hidden path="settings[${status.count-1}].propertyName" value="${setting.fieldName}"/>
 							</div>
 				     	</c:forEach>
 			     	</div>
@@ -48,7 +54,7 @@
 		     	
 		     	<div id="right-area">
 		     		<label>
-			     		<form:input path="sale" type="checkbox" value="true"/>
+			     		<form:checkbox path="sale" value="true"/>
 			     		<spring:message code="sale"/>
 		     		</label>
 		     		
@@ -65,6 +71,7 @@
 					    	<option><c:out value="80"></c:out></option>
 					    	<option><c:out value="90"></c:out></option>
 					    </form:select>
+						<form:errors path="discount" class="error"></form:errors>
 		     		</div>
 		     	</div>
 		     	<input type="submit" value="<spring:message code="general.save"/>" />

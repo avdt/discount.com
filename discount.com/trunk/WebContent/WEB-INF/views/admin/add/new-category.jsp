@@ -38,7 +38,7 @@
 					</c:otherwise>
 				</c:choose>
 			</c:set>
-		    <form:form method="post" action="${parentCategoryId}/add" commandName="category" enctype="multipart/form-data">
+		    <form:form method="post" action="${pageContext.request.contextPath}/admin/new-category/${parentCategoryId}/add" commandName="category" enctype="multipart/form-data">
 				<fieldset>
 					<spring:message code="admin.tab.category.name" var="categoryName"/>
 					<spring:message code="admin.tab.category.property" var="property"/>
@@ -50,19 +50,25 @@
 					</div>
 					<div>
 						<form:input path="name" type="text" placeholder="${categoryName}"/>
+						<form:errors path="name" class="error"></form:errors>
 					</div>
 					<div>
 						<form:checkbox path="root" value="root" label="${root}"/>
+						<form:errors path="root" class="error"></form:errors>
 					</div>
 					<div class="category-settings-container">
 						<div class="category-setting">
 							<form:input path="settings[0].fieldName" type="text" placeholder="${property}"/>
+							<form:errors path="settings[0].fieldName" class="error"></form:errors>
 							<c:set var="fieldTypes" value="<%=FieldTypes.values()%>"/>
 					        <form:select id="field-type-select" path="settings[0].fieldType">
 						    	<option><c:out value="TEXT"></c:out></option>
 						    	<option><c:out value="NUMBER"></c:out></option>
 						    </form:select>
+						    <form:errors path="settings[0].fieldType" class="error"></form:errors>
+							
 						    <form:input path="settings[0].unit" type="text" placeholder="${unit}"/>
+						    <form:errors path="settings[0].unit" class="error"></form:errors>
 						</div>
 					</div>
 				    <a class="btn" href="#" id="add-category-setting"><i class="icon-plus"></i></a>

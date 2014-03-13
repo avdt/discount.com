@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "settings", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
@@ -31,9 +33,13 @@ public class ProductSettings implements Serializable {
 	private Product product;
 
 	@Column(name = "property_name")
+	@Size(min = 3, max = 30)
+	@NotNull
 	private String propertyName;
 
 	@Column(name = "property_value")
+	@Size(min = 3, max = 30)
+	@NotNull
 	private String propertyValue;
 
 	public Integer getId() {

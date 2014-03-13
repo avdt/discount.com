@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "comment", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
@@ -29,6 +32,7 @@ public class Review implements Serializable {
 	private Integer id;
 
 	@Column(name = "owner_name")
+	@NotNull
 	private String ownerName;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
@@ -36,6 +40,7 @@ public class Review implements Serializable {
 	private Product product;
 
 	@Column(name = "content", unique = false, nullable = false, length = 1000)
+	@NotEmpty
 	private String content;
 
 	@Column

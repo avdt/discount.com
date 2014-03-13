@@ -20,7 +20,7 @@
 			<!-- SEARCH -->
    			<model:search/>
    
-			<%-- <!-- CART -->
+			<!-- CART -->
 
 			<div id="cart-container-small">
 				<div id="cart">
@@ -48,22 +48,27 @@
 
 							<div id="cart-info">
 								<div id="product-count">
-									<a href="${pageContext.request.contextPath}/cart"> <span><spring:message
-												code="cart.in" /></span> <span class="total-count">${cart.size}</span>
-										<span>${productCountText}</span> <br> <span><spring:message
-												code="cart.on" /></span> <span class="total-price">${cart.totalPrice}</span>
+									<a href="${pageContext.request.contextPath}/cart"> 
+										<span><spring:message code="cart.in" /></span> 
+										<span class="total-count">${cart.size}</span>
+										<span>${productCountText}</span>
+										<br/>
+										<span><spring:message code="cart.on" /></span> 
+										<span class="total-price">${cart.totalPrice}</span>
 										<span><spring:message code="product.currency" /></span>
 									</a>
 								</div>
 							</div>
+							<div>	
+						    	<a id="checkout" href="${pageContext.request.contextPath}/cart/checkout" class="btn"><spring:message code="cart.checkout" /></a>
+					    	</div>
 						</c:when>
 						<c:otherwise>
 							<span><spring:message code="cart.empty" /></span>
 						</c:otherwise>
 					</c:choose>
 				</div> 
-
-			</div>--%>
+			</div>
 		</div>
 	</div>
 </div>

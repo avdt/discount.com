@@ -16,6 +16,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -34,6 +36,8 @@ public class Range {
 	private Integer id;
 
 	@Column(name = "name")
+	@NotNull
+	@Size(min = 5, max = 30)
 	private String name;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,

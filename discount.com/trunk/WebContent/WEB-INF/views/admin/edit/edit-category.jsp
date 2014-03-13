@@ -11,7 +11,7 @@
     </jsp:attribute>
 	<jsp:body>
 		<div id="new-product-container">
-		    <form:form method="post" action="${category.id}/update" commandName="category" enctype="multipart/form-data">
+		    <form:form method="post" action="${pageContext.request.contextPath}/admin/category/edit/${category.id}/update" commandName="category" enctype="multipart/form-data">
 				<div id=left-area>
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
@@ -25,7 +25,9 @@
 						<form:hidden path="id" value="${category.id}"/>
 						<form:input path="image" type="text" value="${category.image}"/>
 						<form:input path="name" type="text" placeholder="${productName}"/>
+						<form:errors path="name" class="error"></form:errors>
 						<form:checkbox path="root" value="root" label="${root}"/>
+						<form:errors path="root" class="error"></form:errors>
 						<form:select path="parentCategory" items="${allCategories}" itemLabel="name" itemValue="id"/>
 					</div>
 					<div>

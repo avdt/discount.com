@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -156,16 +158,24 @@ public class AdminController extends BaseController {
 
 	@RequestMapping(value = UrlConstants.ADD_CATEGORY, method = RequestMethod.POST)
 	public String saveCategory(
-			@ModelAttribute("category") ProductCategory category,
-			@PathVariable("parentCategoryId") Integer parentCategoryId) {
+			@Valid @ModelAttribute("category") ProductCategory category,
+			BindingResult result,
+			@PathVariable("parentCategoryId") Integer parentCategoryId,
+			Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		ProductCategory parentCategory = categoryService
-				.findById(parentCategoryId);
-		category.setParentCategory(parentCategory);
+		if (result.hasErrors()) {
+			path = "admin/add/new-category";
+		} else {
+			ProductCategory parentCategory = categoryService
+					.findById(parentCategoryId);
+			category.setParentCategory(parentCategory);
 
-		categoryService.save(category);
-
-		return "redirect:/admin";
+			categoryService.save(category);
+			path = "redirect:/admin";
+		}
+		return path;
 	}
 
 	@RequestMapping(UrlConstants.DELETE_CATEGORY)
@@ -190,11 +200,20 @@ public class AdminController extends BaseController {
 
 	@RequestMapping(value = UrlConstants.UPDATE_CATEGORY, method = RequestMethod.POST)
 	public String updateCategory(
-			@ModelAttribute("category") ProductCategory category) {
+			@Valid @ModelAttribute("category") ProductCategory category,
+			BindingResult result, Map<String, Object> map) {
 
-		categoryService.update(category);
+		final String path;
+		putRootCategories(map);
 
-		return "redirect:/admin";
+		if (result.hasErrors()) {
+			path = "admin/edit/edit-category";
+		} else {
+			categoryService.update(category);
+			path = "redirect:/admin";
+		}
+
+		return path;
 	}
 
 	@RequestMapping(value = UrlConstants.NEW_PRODUCT, method = RequestMethod.GET)
@@ -211,15 +230,26 @@ public class AdminController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_PRODUCT, method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("product") Product product,
-			@PathVariable("categoryId") Integer categoryId) {
+	public String saveProduct(
+			@Valid @ModelAttribute("product") Product product,
+			BindingResult result,
+			@PathVariable("categoryId") Integer categoryId,
+			Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		ProductCategory category = categoryService.findById(categoryId);
-		product.setCategory(category);
+		if (result.hasErrors()) {
+			path = "admin/add/new-product";
+		} else {
+			ProductCategory category = categoryService.findById(categoryId);
+			product.setCategory(category);
 
-		productService.save(product);
+			productService.save(product);
 
-		return "redirect:/admin";
+			path = "redirect:/admin";
+		}
+
+		return path;
 	}
 
 	@RequestMapping(UrlConstants.DELETE_PRODUCT)
@@ -245,22 +275,39 @@ public class AdminController extends BaseController {
 
 	@RequestMapping(value = UrlConstants.UPDATE_PRODUCT, method = RequestMethod.POST)
 	public String updateProduct(@PathVariable("categoryId") Integer categoryId,
-			@ModelAttribute("product") Product product) {
+			@Valid @ModelAttribute("product") Product product,
+			BindingResult result, Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		ProductCategory category = categoryService.findById(categoryId);
-		product.setCategory(category);
+		if (result.hasErrors()) {
+			path = "admin/edit/edit-product";
+		} else {
+			ProductCategory category = categoryService.findById(categoryId);
+			product.setCategory(category);
 
-		productService.update(product);
+			productService.update(product);
 
-		return "redirect:/admin";
+			path = "redirect:/admin";
+		}
+
+		return path;
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_PRODUCER, method = RequestMethod.POST)
-	public String saveProducer(@ModelAttribute("producer") Producer producer) {
+	public String saveProducer(
+			@Valid @ModelAttribute("producer") Producer producer,
+			BindingResult result, Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		producerService.save(producer);
-
-		return "redirect:/admin";
+		if (result.hasErrors()) {
+			path = "admin/admin-producers";
+		} else {
+			producerService.save(producer);
+			path = "redirect:/admin";
+		}
+		return path;
 	}
 
 	@RequestMapping(UrlConstants.DELETE_PRODUCER)
@@ -292,11 +339,19 @@ public class AdminController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.UPDATE_PRODUCER, method = RequestMethod.POST)
-	public String updateProducer(@ModelAttribute("producer") Producer producer) {
+	public String updateProducer(
+			@Valid @ModelAttribute("producer") Producer producer,
+			BindingResult result, Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		producerService.update(producer);
-
-		return "redirect:/admin";
+		if (result.hasErrors()) {
+			path = "admin/edit/edit-producer";
+		} else {
+			producerService.update(producer);
+			path = "redirect:/admin";
+		}
+		return path;
 	}
 
 	@RequestMapping(value = UrlConstants.NEW_RANGE, method = RequestMethod.GET)
@@ -313,14 +368,23 @@ public class AdminController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_RANGE, method = RequestMethod.POST)
-	public String saveRange(@ModelAttribute("range") Range range,
+	public String saveRange(@Valid @ModelAttribute("range") Range range,
+			BindingResult result, Map<String, Object> map,
 			@PathVariable("producerId") Integer producerId) {
+		final String path;
+		putRootCategories(map);
 
-		Producer producer = producerService.findById(producerId);
-		range.setProducer(producer);
-		rangeService.save(range);
+		if (result.hasErrors()) {
+			path = "admin/add/new-range";
+		} else {
+			Producer producer = producerService.findById(producerId);
+			range.setProducer(producer);
+			rangeService.save(range);
 
-		return "redirect:/admin";
+			path = "redirect:/admin";
+		}
+
+		return path;
 	}
 
 	@RequestMapping(UrlConstants.EDIT_RANGE)
@@ -336,11 +400,20 @@ public class AdminController extends BaseController {
 	}
 
 	@RequestMapping(value = UrlConstants.UPDATE_RANGE, method = RequestMethod.POST)
-	public String updateRange(@ModelAttribute("range") Range range) {
+	public String updateRange(@Valid @ModelAttribute("range") Range range,
+			BindingResult result, Map<String, Object> map) {
+		final String path;
+		putRootCategories(map);
 
-		rangeService.update(range);
+		if (result.hasErrors()) {
+			path = "admin/edit/edit-range";
+		} else {
+			rangeService.update(range);
 
-		return "redirect:/admin";
+			path = "redirect:/admin";
+		}
+
+		return path;
 	}
 
 	@RequestMapping(UrlConstants.DELETE_RANGE)

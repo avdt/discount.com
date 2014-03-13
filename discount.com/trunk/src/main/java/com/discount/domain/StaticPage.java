@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "static_page", uniqueConstraints = {
@@ -24,18 +26,26 @@ public class StaticPage {
 	private Integer id;
 
 	@Column
+	@Size(min=8, max=256)
+	@NotNull
 	private String title;
 
 	@Column
+	@Size(min=8)
+	@NotNull
 	private String description;
 
 	@Column
+	@Size(min=5)
+	@NotNull
 	private String url;
 
 	@Column
+	@NotNull
 	private boolean published;
 
 	@Column
+	@NotNull
 	private boolean reserved;
 
 	@Column
