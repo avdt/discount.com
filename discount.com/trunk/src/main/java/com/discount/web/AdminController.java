@@ -28,6 +28,7 @@ import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
 import com.discount.service.RangeService;
 import com.discount.service.StaticPageService;
+import com.discount.service.UserService;
 
 @Controller
 @RequestMapping(UrlConstants.ADMIN)
@@ -35,18 +36,16 @@ public class AdminController extends BaseController {
 
 	@Autowired
 	private ProductCategoryService categoryService;
-
 	@Autowired
 	private ProductService productService;
-
 	@Autowired
 	private ProducerService producerService;
-
 	@Autowired
 	private RangeService rangeService;
-
 	@Autowired
 	private StaticPageService staticPageService;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/default")
 	public String defaultAfterLogin(HttpServletRequest request) {
@@ -82,6 +81,9 @@ public class AdminController extends BaseController {
 	public String getUsers(Map<String, Object> map) {
 		putRootCategories(map);
 
+		List<User> users = userService.findAll();
+
+		map.put("users", users);
 		map.put("user", new User());
 
 		return "admin/admin-users";
@@ -238,10 +240,12 @@ public class AdminController extends BaseController {
 		final String path;
 		putRootCategories(map);
 
+		ProductCategory category = categoryService.findById(categoryId);
+
 		if (result.hasErrors()) {
+			map.put("selectedCategory", category);
 			path = "admin/add/new-product";
 		} else {
-			ProductCategory category = categoryService.findById(categoryId);
 			product.setCategory(category);
 
 			productService.save(product);

@@ -24,15 +24,23 @@
 			<sec:authorize access="authenticated" var="authenticated"/>
 			<c:choose>
 				<c:when test="${authenticated}">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<div id="admin">
-					    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
-				    	</div>
-					</sec:authorize>
 					<div>
 						<sec:authentication property="principal.name" />
-						<c:url var="logoutUrl" value="/logout"/>
-						<a class="common-url" href="${logoutUrl}"><spring:message code="header.logout"/></a>
+					</div>
+					<div id="authorized-links">
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<div id="admin">
+						    	<a href="${pageContext.request.contextPath}/admin"><spring:message code="header.admin" /></a>
+					    	</div>
+						</sec:authorize>
+				    	<div>
+							<sec:authentication property="principal.login" var="login"/>
+				    		<a href="${pageContext.request.contextPath}/profile/${login}"><spring:message code="profile" /></a>
+				    	</div>
+						<div>
+							<c:url var="logoutUrl" value="/logout"/>
+							<a class="common-url" href="${logoutUrl}"><spring:message code="header.logout"/></a>
+						</div>
 					</div>
 				</c:when>
 				<c:otherwise>

@@ -85,4 +85,9 @@ public class UrlConstants {
 			+ "/update";
 	public final static String DELETE_STATIC_PAGE = "/admin/delete/{staticPageUrl}";
 
+	public final static String PROFILE = "/profile";
+	public final static String GET_PROFILE = "/{login}";
+	public final static String EDIT_PROFILE = "/{login}/edit";
+	public final static String UPDATE_PROFILE = "/{login}/update";
+	
 }

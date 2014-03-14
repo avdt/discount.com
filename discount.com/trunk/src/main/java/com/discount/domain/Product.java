@@ -71,7 +71,6 @@ public class Product implements Serializable {
 	private Integer price = 0;
 
 	@Column(name = "discount_price")
-	@NotNull
 	@Min(1)
 	private Integer discountPrice;
 
@@ -149,7 +148,6 @@ public class Product implements Serializable {
 
 			if (this.getName().equals(product.getName())
 					&& this.getDiscount().equals(product.getDiscount())
-					&& this.getId().equals(product.getId())
 					&& this.getPrice().equals(product.getPrice())
 					&& this.getDescription().equals(product.getDescription())) {
 				result = true;
@@ -160,7 +158,7 @@ public class Product implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return this.id;
+		return name.length() * description.length();
 	}
 
 	public String getDescription() {

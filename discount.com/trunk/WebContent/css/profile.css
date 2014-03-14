@@ -1,0 +1,4 @@
+#profile {display: inline-flex;}
+	#profile .right-area {left: 0;min-width: 300px;position: relative;top: 0;}
+	#profile .left-area {min-width: 60%;}
+	#profile #edit-profile {position: absolute;right: 20px;}

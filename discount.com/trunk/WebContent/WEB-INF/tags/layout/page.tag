@@ -25,6 +25,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/header.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/cart.css" />" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/profile.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/product-filter.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/libs/jquery-ui/jquery-ui-1.10.3.custom.css" />" />
 

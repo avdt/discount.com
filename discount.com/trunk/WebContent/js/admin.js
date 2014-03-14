@@ -38,7 +38,7 @@ $(document).ready(function() {
 		var $rangeSelect = $("#new-product-container #left-area .ranges #range");
 		var producerId = $("#producer option:selected").val();
 		
-		$rangeSelect.find('option').remove();
+		$rangeSelect.find('option:gt(0)').remove();
 		$rangeSelect.show("slow");
 		
 		$.ajax({

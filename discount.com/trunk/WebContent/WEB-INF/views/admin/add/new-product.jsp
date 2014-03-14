@@ -11,12 +11,14 @@
     </jsp:attribute>
 	<jsp:body>
 		<div id="new-product-container">
-		    <form:form method="post" action="${selectedCategory.id}/add" commandName="product" enctype="multipart/form-data">
+		    <form:form method="post" action="${pageContext.request.contextPath}/admin/new-product/${selectedCategory.id}/add" commandName="product" enctype="multipart/form-data">
 				<div id=left-area>
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.description" var="description"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
 					<spring:message code="product.range" var="range"/>
+					<spring:message code="admin.tab.producer.select" var="selectProducer"/>
+					<spring:message code="product.selectRange" var="selectRange"/>
 					
 					<div>
 						<form:input path="file" type="file" id="upload" name="upload"/>
@@ -26,11 +28,17 @@
 						<form:errors path="name" class="error"></form:errors>
 					</div>
 					<div>
-						<form:select path="producer" items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>
+						<form:select path="producer">
+							<form:option value="-1" label="${selectProducer}"></form:option>
+						    <form:options items="${selectedCategory.producers}" itemLabel="name" itemValue="id"/>
+						</form:select>
 						<form:errors path="producer" class="error"></form:errors>
 					</div>
 			     	<div class="ranges">
-						<form:select path="range" items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
+						<form:select path="range">
+							<form:option value="-1" label="${selectRange}"></form:option>
+						    <form:options items="${product.producer.ranges}" itemLabel="name" itemValue="id"/>
+						</form:select>
 						<form:errors path="range" class="error"></form:errors>
 					</div>
 					<div>

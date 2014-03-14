@@ -38,7 +38,7 @@ public class User implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@Column(name = "login")
+	@Column(name = "login", unique = true)
 	@Size(min = 3, max = 30)
 	@NotNull
 	private String login;
@@ -78,6 +78,9 @@ public class User implements Serializable {
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "role_id", nullable = false, updatable = false) })
 	private List<UserRole> roles;
+
+	@Column
+	private String image;
 
 	public Integer getId() {
 		return id;
@@ -193,6 +196,14 @@ public class User implements Serializable {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
