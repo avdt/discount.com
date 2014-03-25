@@ -4,6 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <layout:page title="Registration">
 	<jsp:attribute name="extraHeader">
     </jsp:attribute>
@@ -22,6 +23,7 @@
 		     	<div class="registration-input">
 					<form:input class="form-input" path="login" type="text" placeholder="${login}"/>
 					<form:errors path="login" class="error"></form:errors>
+					<span id="duplicate-user-error" hidden="true"><spring:message code="registration.duplicateUser"/></span>
 				</div>
 		     	<div class="registration-input">
 					<form:input class="form-input" path="password" type="text" placeholder="${password}"/>

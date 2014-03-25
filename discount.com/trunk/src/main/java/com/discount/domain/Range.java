@@ -51,10 +51,13 @@ public class Range {
 	private List<Product> products;
 
 	@Column(name = "image")
-	private String image;
+	private String image = "images/default.jpg";
 
 	@Transient
 	private MultipartFile file;
+
+	@Column
+	private boolean published;
 
 	public Integer getId() {
 		return id;
@@ -102,5 +105,13 @@ public class Range {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 }

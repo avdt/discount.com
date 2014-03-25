@@ -113,8 +113,6 @@ public class ProductController extends BaseController {
 	public String getProductPopupInfo(
 			@PathVariable("productId") Integer productId,
 			Map<String, Object> map) {
-		putRootCategories(map);
-
 		Product product = productService.findById(productId);
 		map.put("product", product);
 		Range range = product.getRange();

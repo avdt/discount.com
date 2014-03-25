@@ -50,7 +50,7 @@ public class ProductCategory implements Serializable {
 	private MultipartFile file;
 
 	@Column(name = "image", nullable = true)
-	private String image;
+	private String image = "images/default.jpg";
 
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE,
@@ -76,6 +76,9 @@ public class ProductCategory implements Serializable {
 	@ManyToMany(mappedBy = "categories", cascade = { CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
 	private List<Producer> producers;
+
+	@Column
+	private boolean published;
 
 	public Integer getId() {
 		return id;
@@ -169,6 +172,14 @@ public class ProductCategory implements Serializable {
 
 	public void setProducers(List<Producer> producers) {
 		this.producers = producers;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 
 }

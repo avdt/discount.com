@@ -80,7 +80,7 @@ public class User implements Serializable {
 	private List<UserRole> roles;
 
 	@Column
-	private String image;
+	private String image = "images/default.jpg";
 
 	public Integer getId() {
 		return id;
@@ -151,7 +151,7 @@ public class User implements Serializable {
 
 			if (this.getLogin().equals(user.getLogin())
 					&& this.getEmail().equals(user.getEmail())
-					&& this.getPassword().equals(user.getPassword())
+//					&& this.getPassword().equals(user.getPassword())
 					&& this.getFirstName().equals(user.getFirstName())
 					&& this.getLastName().equals(user.getLastName())
 			/* && this.getRoles().equals(user.getRoles()) */) {

@@ -8,4 +8,5 @@ public class RestUrls {
 	public final static String RANGE_URL = "/rest/range";
 	public final static String CART_URL = "/rest/cart";
 	public final static String CART_UPDATE_URL = "/update/{productId}/{productCount}";
+	public final static String VALIDATOR = "/rest/validate";
 }

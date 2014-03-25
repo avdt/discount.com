@@ -44,14 +44,14 @@ public class Producer implements Serializable {
 
 	@Column
 	@NotNull
-	@Size(min=3, max=30)
+	@Size(min = 3, max = 30)
 	private String name;
 
 	@Column
 	private String image = "images/default.jpg";
 
 	@Column
-	@Size(min=3, max=300)
+	@Size(min = 3, max = 300)
 	private String description;
 
 	@LazyCollection(LazyCollectionOption.TRUE)
@@ -78,6 +78,9 @@ public class Producer implements Serializable {
 
 	@Transient
 	private MultipartFile file;
+
+	@Column
+	private boolean published;
 
 	public String getName() {
 		return name;
@@ -162,6 +165,14 @@ public class Producer implements Serializable {
 
 	public void setRangeNames(List<String> rangeNames) {
 		this.rangeNames = rangeNames;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 
 }

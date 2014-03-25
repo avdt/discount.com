@@ -80,7 +80,7 @@ public class Product implements Serializable {
 	private Integer discount;
 
 	@Column(name = "image")
-	private String image;
+	private String image = "images/default.jpg";
 
 	@Transient
 	private MultipartFile file;
@@ -97,6 +97,9 @@ public class Product implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "product")
 	private List<Review> review;
+	
+	@Column
+	private boolean published;
 
 	public Integer getId() {
 		return id;
@@ -231,6 +234,14 @@ public class Product implements Serializable {
 
 	public void setComments(List<Review> comments) {
 		this.review = comments;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 
 }

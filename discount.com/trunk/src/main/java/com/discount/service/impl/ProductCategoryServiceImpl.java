@@ -3,6 +3,8 @@ package com.discount.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +28,63 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		uploadImage(category);
 		matchCategorySettings(category);
 
+		evictCache(category);
+
 		this.categoryDAO.save(category);
+	}
+
+	@Override
+	public void update(ProductCategory category) {
+		uploadEditedImage(category);
+		matchCategorySettings(category);
+
+		evictCache(category);
+
+		this.categoryDAO.update(category);
+	}
+
+	@Override
+	public void delete(ProductCategory object) {
+		this.categoryDAO.delete(object);
+	}
+
+	@Override
+	public ProductCategory findById(Integer id) {
+		return this.categoryDAO.findById(id);
+	}
+
+	@Override
+	public List<ProductCategory> findAll() {
+		return this.categoryDAO.findAll();
+	}
+
+	@Override
+	@Cacheable(value = { "rootCategories" })
+	public List<ProductCategory> findRootCategories() {
+		return this.categoryDAO.findRootCategories();
+	}
+
+	@Override
+	public List<ProductCategory> findChildCategories() {
+		return this.categoryDAO.findChildCategories();
+	}
+
+	private void evictCache(ProductCategory category) {
+		if (category.isRoot()) {
+			evictRootCategoriesCache();
+		} else {
+			evictChildCategoriesCache();
+		}
+	}
+
+	@CacheEvict(value = { "rootCategories" })
+	private void evictRootCategoriesCache() {
+
+	}
+
+	@CacheEvict(value = { "childCategories" })
+	private void evictChildCategoriesCache() {
+
 	}
 
 	private void matchCategorySettings(ProductCategory category) {
@@ -54,39 +112,6 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 				category.setImage(filePath);
 			}
 		}
-	}
-
-	@Override
-	public void update(ProductCategory category) {
-		uploadEditedImage(category);
-		matchCategorySettings(category);
-
-		this.categoryDAO.update(category);
-	}
-
-	@Override
-	public void delete(ProductCategory object) {
-		this.categoryDAO.delete(object);
-	}
-
-	@Override
-	public ProductCategory findById(Integer id) {
-		return this.categoryDAO.findById(id);
-	}
-
-	@Override
-	public List<ProductCategory> findAll() {
-		return this.categoryDAO.findAll();
-	}
-
-	@Override
-	public List<ProductCategory> findRootCategories() {
-		return this.categoryDAO.findRootCategories();
-	}
-
-	@Override
-	public List<ProductCategory> findChildCategories() {
-		return this.categoryDAO.findChildCategories();
 	}
 
 }

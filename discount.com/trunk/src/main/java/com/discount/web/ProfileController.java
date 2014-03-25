@@ -1,13 +1,19 @@
 package com.discount.web;
 
+import java.beans.PropertyEditorSupport;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,16 +62,35 @@ public class ProfileController extends BaseController {
 			BindingResult result, Map<String, Object> map) {
 
 		final String path;
-		putRootCategories(map);
+		List<UserRole> roles = roleService.findAll();
+		map.put("roles", roles);
 
 		if (result.hasErrors()) {
 			path = "edit-profile";
 		} else {
 			userService.update(user);
-			path = "redirect:/profile" + user.getLogin();
+			path = "redirect:/profile/" + user.getLogin();
 		}
 
 		return path;
 	}
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+
+		binder.registerCustomEditor(List.class, "roles",
+				new PropertyEditorSupport() {
+					@Override
+					public void setAsText(String text) {
+						List<String> roleIds = Arrays.asList(text.split(","));
+						List<UserRole> roles = new ArrayList<UserRole>();
+						for (String roleId : roleIds) {
+							UserRole role = roleService.findById(Integer
+									.valueOf(roleId));
+							roles.add(role);
+						}
+						setValue(roles);
+					}
+				});
+	}
 }

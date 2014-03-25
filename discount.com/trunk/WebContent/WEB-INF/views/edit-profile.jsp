@@ -36,30 +36,36 @@
 					</div>
 			    </div>
 			    <div class=right-area>
+				    <spring:message code="user.login" var="login"/>
+					<spring:message code="user.password" var="password"/>
+					<spring:message code="user.firstName" var="firstName"/>
+					<spring:message code="user.lastName" var="lastName"/>
+					<spring:message code="user.email" var="email"/>
+					<spring:message code="user.phoneNumber" var="phoneNumber"/>
+				
+				<form:hidden path="id"/>
 			    	<div>
-			    		<form:input path="firstName"/>
+			    		<form:input path="firstName" placeholder="${firstName}"/>
+		    		</div>
+			    	<div>
+			    		<form:input path="lastName" placeholder="${lastName}"/>
 		    		</div>
 		    		<div>
-			    		<form:input path="login"/>
+			    		<form:input path="login" placeholder="${login}"/>
+		    		</div>
+			    	<form:input path="password" placeholder="${password}"/>
+		    		<div>
+			    		<form:input path="email" placeholder="${email}"/>
 		    		</div>
 		    		<div>
-			    		<form:input path="email"/>
+			    		<form:input path="phoneNumber" placeholder="${phoneNumber}"/>
 		    		</div>
 		    		<div>
-			    		<form:input path="phoneNumber"/>
-		    		</div>
-		    		<div>
-			    		<form:input path="address"/>
+			    		<form:input path="address" placeholder="${firstName}"/>
 		    		</div>
 		    		<div>
 				    	Roles:
-				    	<form:checkboxes items="${roles}" itemLabel="role" path="${user.roles}"/>
-				    	
-				    	<%-- <c:forEach items="${user.roles}" var="role">
-					    	<div>
-					    		<span>${role.role}</span>
-				    		</div>		    		
-				    	</c:forEach> --%>
+				    	<form:checkboxes items="${roles}" itemLabel="role" itemValue="id" path="roles"/>
 			    	</div>
 			    </div>
 			    

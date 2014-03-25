@@ -2,6 +2,7 @@ package com.discount.service.impl;
 
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	private UserDAO userDAO;
 
 	@Override
-	public void save(User user) {
+	public void save(User user){
 		userDAO.save(user);
 	}
 

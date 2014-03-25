@@ -44,6 +44,7 @@
 <script type="text/javascript" src="<c:url value="/js/cart.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/product-filter.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/js/header.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/js/registration.js" /> "></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <jsp:invoke fragment="extraHeader" />
 </head>

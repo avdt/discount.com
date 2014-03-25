@@ -105,7 +105,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
 #register-user-container {margin-left: auto;margin-right: auto;width: 45%;}
 	#register-user-container .registration-input {display: inline-flex;}
 	#register-user-container .registration-input .form-input {width: 300px;}
-	#register-user-container .registration-input .error {width: -moz-max-content;}
+	#register-user-container .registration-input .error {width: 380px;}
+	#register-user-container .registration-input #duplicate-user-error {width: 380px;}
 
 #register-btn {left: 73px;position: relative;}
 
