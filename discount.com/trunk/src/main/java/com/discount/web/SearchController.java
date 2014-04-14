@@ -45,6 +45,11 @@ public class SearchController extends BaseController {
 				searchResultsSet = searchService.search(searchKeyWord);
 			}
 			searchResults.setMatchedProducts(searchResultsSet);
+		} else {
+			Set<Product> matchedProducts = searchResults.getMatchedProducts();
+			if (matchedProducts != null) {
+				matchedProducts.clear();
+			}
 		}
 		map.put("searchResults", searchResults);
 		return "search";

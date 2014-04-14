@@ -19,4 +19,11 @@ public class HTTPErrorController extends BaseController {
 		putRootCategories(map);
 		return "/error/403";
 	}
+	
+
+	@RequestMapping(value = "/500")
+	public String handle500(Map<String, Object> map) {
+		putRootCategories(map);
+		return "/error/500";
+	}
 }

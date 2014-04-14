@@ -15,6 +15,9 @@
 		<div id="search-results">
 			<div class="title">
 				<c:choose>
+					<c:when test="${searchResults.keyword.length()<2}">
+						<span><spring:message code="search.keywordToSmall"/></span>
+					</c:when>
 					<c:when test="${searchResults.matchedProducts.size()==0}">
 						<span><spring:message code="search.noResults" arguments="${searchResults.keyword}" /></span>
 					</c:when>
