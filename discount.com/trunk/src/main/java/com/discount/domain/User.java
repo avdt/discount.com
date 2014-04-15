@@ -2,6 +2,7 @@ package com.discount.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -82,6 +83,11 @@ public class User implements Serializable {
 	@Column
 	private String image = "images/default.jpg";
 
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(mappedBy = "users", cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
+	private Set<Notification> notifications;
+
 	public Integer getId() {
 		return id;
 	}
@@ -151,7 +157,7 @@ public class User implements Serializable {
 
 			if (this.getLogin().equals(user.getLogin())
 					&& this.getEmail().equals(user.getEmail())
-//					&& this.getPassword().equals(user.getPassword())
+					// && this.getPassword().equals(user.getPassword())
 					&& this.getFirstName().equals(user.getFirstName())
 					&& this.getLastName().equals(user.getLastName())
 			/* && this.getRoles().equals(user.getRoles()) */) {
@@ -204,6 +210,14 @@ public class User implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
 	}
 
 }

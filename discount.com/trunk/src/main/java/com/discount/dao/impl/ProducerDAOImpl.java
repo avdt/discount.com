@@ -21,7 +21,6 @@ public class ProducerDAOImpl implements ProducerDAO {
 	@Transactional
 	public void save(Producer object) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		// currentSession.flush();
 		currentSession.save(object);
 		currentSession.flush();
 	}

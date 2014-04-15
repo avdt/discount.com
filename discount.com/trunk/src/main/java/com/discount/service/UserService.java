@@ -1,6 +1,6 @@
 package com.discount.service;
 
-import org.hibernate.exception.ConstraintViolationException;
+import java.util.Set;
 
 import com.discount.domain.User;
 
@@ -10,4 +10,5 @@ public interface UserService extends GenericService<User> {
 
 	User findByLogin(String login);
 
+	Set<User> findAdminUsers();
 }

@@ -36,5 +36,6 @@
 		<mapping class="com.discount.domain.ProducerCategories" />
 		<mapping class="com.discount.domain.Range" />
 		<mapping class="com.discount.domain.StaticPage" />
+		<mapping class="com.discount.domain.Notification" />
 	</session-factory>
 </hibernate-configuration>

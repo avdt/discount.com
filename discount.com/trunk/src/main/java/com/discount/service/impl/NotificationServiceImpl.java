@@ -1,6 +1,9 @@
 package com.discount.service.impl;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -12,7 +15,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.discount.dao.NotificationDAO;
 import com.discount.domain.Cart;
+import com.discount.domain.Notification;
+import com.discount.domain.NotificationType;
 import com.discount.domain.Product;
 import com.discount.domain.Review;
 import com.discount.domain.User;
@@ -25,6 +31,9 @@ public class NotificationServiceImpl implements NotificationService {
 	private JavaMailSender mailSender;
 
 	@Autowired
+	private NotificationDAO notificationDAO;
+
+	@Autowired
 	private OrderExportService orderExportService;
 
 	@Override
@@ -33,10 +42,10 @@ public class NotificationServiceImpl implements NotificationService {
 		String subject = review.getOwnerName() + " added new review to "
 				+ product.getName();
 
-		String from = "system@alfero.com";
-		String to = "andriyvintoniv@ukr.net";
+		Notification notification = notificationDAO
+				.findByType(NotificationType.REVIEW_NOTIFICATION);
 
-		send(from, to, subject, message);
+		send(getEmailsToNotify(notification), subject, message);
 	}
 
 	@Override
@@ -46,20 +55,21 @@ public class NotificationServiceImpl implements NotificationService {
 		String subject = "Користувач " + user.getFullName()
 				+ " зробив замовлення.";
 		StringBuffer message = new StringBuffer();
-
-		String from = "system@alfero.com";
-		String to = "andriyvintoniv@ukr.net";
-
+		//
+		// String from = "system@alfero.com";
+		// String to = "andriyvintoniv@ukr.net";
+		Notification notification = notificationDAO
+				.findByType(NotificationType.ORDER_NOTIFICATION);
 		String pathToOrder = orderExportService.export(cart);
 
-		send(from, to, subject, message.toString(), pathToOrder);
+		send(getEmailsToNotify(notification), subject, message.toString(),
+				pathToOrder);
 	}
 
-	private void send(String from, String to, String subject, String msg) {
+	private void send(String[] to, String subject, String msg) {
 		SimpleMailMessage message = new SimpleMailMessage();
 
 		message.setTo(to);
-		message.setFrom(from);
 		message.setSubject(subject);
 		message.setText(msg);
 		message.setSentDate(new Date());
@@ -67,14 +77,21 @@ public class NotificationServiceImpl implements NotificationService {
 		mailSender.send(message);
 	}
 
-	private void send(String from, String to, String subject, String msg,
+	/**
+	 * Send an email with attachment
+	 * 
+	 * @param to
+	 * @param subject
+	 * @param msg
+	 * @param attachmentPath
+	 */
+	private void send(String[] to, String subject, String msg,
 			String attachmentPath) {
 		MimeMessage message = mailSender.createMimeMessage();
 
 		MimeMessageHelper helper;
 		try {
 			helper = new MimeMessageHelper(message, true);
-			helper.setFrom(from);
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(msg);
@@ -96,4 +113,42 @@ public class NotificationServiceImpl implements NotificationService {
 		this.mailSender = mailSender;
 	}
 
+	@Override
+	public void save(Notification object) {
+		notificationDAO.save(object);
+	}
+
+	@Override
+	public void update(Notification object) {
+		notificationDAO.update(object);
+	}
+
+	@Override
+	public void delete(Notification object) {
+		notificationDAO.delete(object);
+	}
+
+	@Override
+	public Notification findById(Integer id) {
+		return notificationDAO.findById(id);
+	}
+
+	@Override
+	public List<Notification> findAll() {
+		return notificationDAO.findAll();
+	}
+
+	@Override
+	public void sendNotification(Notification notification) {
+
+	}
+
+	private String[] getEmailsToNotify(Notification notification) {
+		Set<User> users = notification.getUsers();
+		Set<String> emails = new HashSet<String>();
+		for (User user : users) {
+			emails.add(user.getEmail());
+		}
+		return emails.toArray(new String[0]);
+	}
 }
