@@ -23,6 +23,7 @@ import com.discount.domain.ProductCategory;
 import com.discount.domain.Range;
 import com.discount.domain.StaticPage;
 import com.discount.domain.User;
+import com.discount.service.NotificationService;
 import com.discount.service.ProducerService;
 import com.discount.service.ProductCategoryService;
 import com.discount.service.ProductService;
@@ -46,6 +47,8 @@ public class AdminController extends BaseController {
 	private StaticPageService staticPageService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private NotificationService notificationService;
 
 	@RequestMapping("/default")
 	public String defaultAfterLogin(HttpServletRequest request) {
@@ -142,6 +145,15 @@ public class AdminController extends BaseController {
 		map.put("staticPages", staticPageService.findAll());
 
 		return "admin/admin-static-pages";
+	}
+
+	@RequestMapping(UrlConstants.ADMIN_NOTIFICATIONS)
+	public String getNotifications(Map<String, Object> map) {
+		putRootCategories(map);
+
+		map.put("notifications", notificationService.findAll());
+
+		return "admin/admin-notifications";
 	}
 
 	@RequestMapping(value = UrlConstants.NEW_CATEGORY, method = RequestMethod.GET)

@@ -3,6 +3,8 @@ package com.discount.service.impl;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.mail.MessagingException;
@@ -38,6 +40,14 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Override
 	public void sendReviewNotification(Review review, Product product) {
+		Locale locale = new Locale("en", "US");
+
+		ResourceBundle labels = ResourceBundle.getBundle(
+				"messages_notification", locale);
+
+		System.out.println(labels.getString("notofication.review.subject"));
+
+		// String from = "system@alfero.com";
 		String message = review.getContent();
 		String subject = review.getOwnerName() + " added new review to "
 				+ product.getName();
@@ -150,5 +160,10 @@ public class NotificationServiceImpl implements NotificationService {
 			emails.add(user.getEmail());
 		}
 		return emails.toArray(new String[0]);
+	}
+
+	@Override
+	public Notification findByType(NotificationType type) {
+		return notificationDAO.findByType(type);
 	}
 }

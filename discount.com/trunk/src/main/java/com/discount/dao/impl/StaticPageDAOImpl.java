@@ -54,7 +54,7 @@ public class StaticPageDAOImpl implements StaticPageDAO {
 	@Transactional
 	public StaticPage findByUrl(String url) {
 		return (StaticPage) sessionFactory.getCurrentSession()
-				.createQuery("from StaticPage sP where sP.url = " + " :url")
+				.createQuery("from StaticPage sP where sP.url = :url")
 				.setString("url", url).list().get(0);
 	}
 

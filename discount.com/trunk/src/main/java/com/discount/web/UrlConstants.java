@@ -12,6 +12,7 @@ public class UrlConstants {
 	public final static String ADMIN_PRODUCERS = "/producers";
 	public final static String ADMIN_RANGES = "/ranges";
 	public final static String ADMIN_STATIC_PAGES = "/static-pages";
+	public final static String ADMIN_NOTIFICATIONS = "/notifications";
 
 	public final static String BOILERS = "/boilers";
 	public final static String CLIENT = "/client";
@@ -89,5 +90,7 @@ public class UrlConstants {
 	public final static String GET_PROFILE = "/{login}";
 	public final static String EDIT_PROFILE = "/{login}/edit";
 	public final static String UPDATE_PROFILE = "/{login}/update";
+
+	public final static String EDIT_NOTIFICATIONS = "/admin/edit-notification/{notificationType}";
 	
 }

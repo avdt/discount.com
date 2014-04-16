@@ -79,6 +79,15 @@
 						</a>
 					</div>
 				</div>
+				
+				<div class="span3">
+					<div class="thumbnail category-small">
+						<a href="admin/notifications">
+							<img class="category-img" data-src="holder.js/300x200" alt="" src="http://${pageContext.request.serverName}:1234/images/notification.png">
+							<h4>Manage Notification</h4>
+						</a>
+					</div>
+				</div>
 		    </ul>
 	    </div>
 	</jsp:body>

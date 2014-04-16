@@ -54,8 +54,8 @@ public class NotificationDAOImpl implements NotificationDAO {
 	@Transactional
 	public Notification findByType(NotificationType type) {
 		return (Notification) sessionFactory.getCurrentSession()
-				.createQuery("from Notification n  where n= :type")
-				.setString("type", type.getValue()).list().get(0);
+				.createQuery("from Notification n  where n.type= :type")
+				.setParameter("type", type).list().get(0);
 
 	}
 

@@ -1,7 +1,8 @@
 package com.discount.domain;
 
 public enum NotificationType {
-	REVIEW_NOTIFICATION("Top Menu"), ORDER_NOTIFICATION("Bottom Menu");
+	REVIEW_NOTIFICATION("Review notification"), ORDER_NOTIFICATION(
+			"Order notification");
 
 	private String value;
 

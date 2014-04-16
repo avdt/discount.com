@@ -16,24 +16,20 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name = "notification", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "id"),
-		@UniqueConstraint(columnNames = "name") })
+@Table(name = "notification", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
 public class Notification {
 	@Id
 	@SequenceGenerator(name = "id_seq", sequenceName = "notification_id_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
 	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private NotificationType type;
 
@@ -43,11 +39,11 @@ public class Notification {
 	@JoinTable(name = "notification_user", joinColumns = { @JoinColumn(name = "notification_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false) })
 	private Set<User> users;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
