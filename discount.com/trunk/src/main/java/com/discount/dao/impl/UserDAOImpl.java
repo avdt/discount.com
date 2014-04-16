@@ -75,4 +75,14 @@ public class UserDAOImpl implements UserDAO {
 				.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> findAdmins() {
+		return (List<User>) sessionFactory.getCurrentSession()
+				.createQuery("from User u inner join u.roles r where r.id=1")
+				.list();
+
+	}
+
 }

@@ -1,6 +1,6 @@
 package com.discount.service;
 
-import java.util.Set;
+import java.util.List;
 
 import com.discount.domain.User;
 
@@ -10,5 +10,5 @@ public interface UserService extends GenericService<User> {
 
 	User findByLogin(String login);
 
-	Set<User> findAdminUsers();
+	List<User> findAdmins();
 }
