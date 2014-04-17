@@ -79,9 +79,10 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	@Transactional
 	public List<User> findAdmins() {
-		return (List<User>) sessionFactory.getCurrentSession()
+		List<User> users = (List<User>) sessionFactory.getCurrentSession()
 				.createQuery("from User u inner join u.roles r where r.id=1")
 				.list();
+		return users;
 
 	}
 

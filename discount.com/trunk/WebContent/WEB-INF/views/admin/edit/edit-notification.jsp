@@ -13,19 +13,19 @@
     </jsp:attribute>
 	<jsp:body>
 	    <div id="notification-container">
-		    <form:form method="post" action="${notification.id}/update" commandName="notification" enctype="multipart/form-data">
+		    <form:form method="post" action="${notification.type}/update" commandName="notification" enctype="multipart/form-data">
 					<spring:message code="admin.tab.products.name" var="productName"/>
 					<spring:message code="admin.tab.products.price" var="price"/>
 					<spring:message code="product.range" var="range"/>
 					
 			     	<div>
 			     		<span>${notification.type.value}</span>
+			     		<form:hidden path="type"/>
 					</div>
 					<div>
 						<c:forEach items="${adminUsers}" var="user">
-							<form:checkbox path="users" label="${fullName}" value="id"/>
+							<form:checkbox path="users" label="${user[0].fullName}" value="${user[0]}"/>
 						</c:forEach>
-						<%-- <form:checkboxes items="${adminUsers}" itemLabel="fullName" itemValue="fullName" path="users"/> --%>
 					</div>
 					<form:hidden path="id"/>
 		     	<input type="submit" value="<spring:message code="general.save"/>" />

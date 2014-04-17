@@ -92,5 +92,6 @@ public class UrlConstants {
 	public final static String UPDATE_PROFILE = "/{login}/update";
 
 	public final static String EDIT_NOTIFICATIONS = "/admin/edit-notification/{notificationType}";
-	
+	public final static String UPDATE_NOTIFICATION = EDIT_NOTIFICATIONS
+			+ "/update";
 }
